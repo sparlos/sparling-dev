@@ -31,10 +31,10 @@ export default function LinkButton({
       <button
         onFocus={() => setIsButtonFocused(true)}
         onBlur={() => setIsButtonFocused(false)}
-        className={'relative w-32 h-28 ' + className}
+        className={'relative h-28 w-32 ' + className}
       >
         <motion.div
-          className="peer flex relative z-10 flex-col p-4 w-full h-full items-center shadow-md rounded bg-white dark:bg-slate-700"
+          className="peer relative z-10 flex h-full w-full flex-col items-center rounded bg-white p-4 shadow-md dark:bg-slate-700"
           transition={DEFAULT_SPRING_TRANSITION}
           animate={isButtonFocused ? BUTTON_ACTIVE_ANIMATION : {}}
           onHoverStart={() => setIsButtonFocused(true)}
@@ -44,11 +44,11 @@ export default function LinkButton({
           <div>{label}</div>
         </motion.div>
         <div
-          className={'absolute inset-0 rounded-md w-full h-full z-0 ' + bgColor}
+          className={'absolute inset-0 z-0 h-full w-full rounded-md ' + bgColor}
         />
         <div
           className={
-            'opacity-0 dark:opacity-25 absolute blur scale-125 peer-hover:scale-50 transition duration-500 p-6 inset-0 rounded-md w-full h-full z-0 ' +
+            'absolute inset-0 z-0 h-full w-full scale-125 rounded-md p-6 opacity-0 blur transition duration-500 peer-hover:scale-50 dark:opacity-25 ' +
             bgColor
           }
         />
