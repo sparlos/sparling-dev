@@ -15,8 +15,8 @@ export default function Layout({ children }: LayoutProps) {
   }, [])
 
   return (
-    <div className="flex h-full w-full items-center justify-center transition-colors duration-200 dark:bg-slate-700">
-      <div className="container relative mx-auto flex h-full w-full flex-col items-center justify-center">
+    <div className="flex h-full w-full transition-colors duration-200 dark:bg-slate-700">
+      <div className="container relative mx-auto flex h-full w-full flex-col">
         <div className="absolute inset-0 flex h-full w-full items-start justify-end py-8 px-8">
           {mounted && (
             <div className="relative rounded shadow-md">
@@ -54,7 +54,7 @@ export default function Layout({ children }: LayoutProps) {
             </div>
           )}
         </div>
-        <main>{children}</main>
+        <main className="h-full w-full">{children}</main>
       </div>
     </div>
   )
