@@ -18,6 +18,7 @@ specifiers:
   sass: ^1.54.8
   tailwindcss: ^3.1.8
   typescript: 4.8.2
+  usehooks-ts: ^2.6.0
 
 dependencies:
   framer-motion: 7.2.1_biqbaboplfbrettd7655fr4n2y
@@ -26,6 +27,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
   sass: 1.54.8
+  usehooks-ts: 2.6.0_react@18.2.0
 
 devDependencies:
   '@types/node': 18.7.14
@@ -2281,6 +2283,14 @@ packages:
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /usehooks-ts/2.6.0_react@18.2.0:
+    resolution: {integrity: sha512-Kj/4oc2nOxRDGTDb2v1ZulF7+tpeXFuqI6cUesM0Vic7TPPDlFORxKh4ivsYg+NTvX/YbM+lhqqkfFTiIt23eg==}
+    peerDependencies:
+      react: '>=16.9.0'
     dependencies:
       react: 18.2.0
     dev: false
