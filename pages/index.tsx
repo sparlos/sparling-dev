@@ -5,7 +5,7 @@ import { FiUser, FiCode, FiSend } from 'react-icons/fi'
 
 const Home: NextPage = () => {
   return (
-    <div className="flex h-full flex-col items-center text-center dark:bg-slate-700 dark:text-white">
+    <div className="flex h-full flex-col items-center text-center dark:text-white">
       <Head>
         <title>stephen sparling</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
