@@ -28,7 +28,7 @@ export default function LinkButton({
         className={'relative w-32 h-28 ' + className}
       >
         <motion.div
-          className="flex relative z-10 flex-col p-4 w-full h-full items-center shadow-md rounded bg-white"
+          className="flex relative z-10 flex-col p-4 w-full h-full items-center shadow-md rounded bg-white dark:bg-slate-700"
           animate={isButtonFocused ? { x: 10, y: -10 } : {}}
           whileHover={{
             x: 10,

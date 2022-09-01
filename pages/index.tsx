@@ -4,10 +4,10 @@ import { FiUser, FiCode, FiSend } from 'react-icons/fi'
 
 const Home: NextPage = () => {
   return (
-    <div className="dark:bg-slate-700 items-center flex h-full flex-col text-center">
+    <div className="dark:bg-slate-700 dark:text-white items-center flex h-full flex-col text-center">
       <div className="my-auto flex items-center flex-col">
-        <h1 className="text-6xl font-sans font-semibold dark:text-white">stephen sparling</h1>
-        <h2 className="mt-8 dark:text-white">web developer | making cool stuff</h2>
+        <h1 className="text-6xl font-sans font-semibold">stephen sparling</h1>
+        <h2 className="mt-8">web developer | making cool stuff</h2>
         <div className="mt-12 flex flex-col sm:flex-row">
           <LinkButton
             Icon={FiUser}
