@@ -15,13 +15,13 @@ export default function Layout({ children }: LayoutProps) {
   }, [])
 
   return (
-    <div className="flex h-full w-full transition-colors duration-200 dark:bg-slate-700">
+    <div className="flex h-full w-full transition-colors duration-200 dark:bg-gradient-to-b dark:from-slate-600 dark:to-slate-700">
       <div className="container relative mx-auto flex h-full w-full flex-col">
-        <div className="absolute inset-0 flex h-full w-full items-start justify-end py-8 px-8">
+        <div className="pointer-events-none absolute inset-0 flex h-full w-full items-start justify-end py-8 px-8">
           {mounted && (
             <div className="relative rounded shadow-md">
               <button
-                className="peer relative z-10 block h-full w-full rounded bg-white p-4 dark:bg-slate-700"
+                className="peer pointer-events-auto relative z-10 block h-full w-full rounded bg-white p-4 dark:bg-slate-700"
                 onClick={() =>
                   setTheme(
                     theme === 'dark' ||

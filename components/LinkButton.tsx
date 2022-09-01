@@ -31,7 +31,7 @@ export default function LinkButton({
       <button
         onFocus={() => setIsButtonFocused(true)}
         onBlur={() => setIsButtonFocused(false)}
-        className={'relative h-28 w-32 ' + className}
+        className={'relative h-28 w-32 ' + (className || '')}
       >
         <motion.div
           className="peer relative z-10 flex h-full w-full flex-col items-center rounded bg-white p-4 shadow-md dark:bg-slate-700"
