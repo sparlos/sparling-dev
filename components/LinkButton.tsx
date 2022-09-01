@@ -38,6 +38,7 @@ export default function LinkButton({
   return (
     <Link href={href}>
       <button
+        aria-label={`link to ${label}`}
         onClick={() => setBackgroundIcon(null)}
         onFocus={() => handleFocusButton(true)}
         onBlur={() => handleFocusButton(false)}

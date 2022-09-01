@@ -13,6 +13,8 @@ export default function Layout({ children }: LayoutProps) {
   const [isDarkModeToggleHovered, setIsDarkModeToggleHovered] = useState(false)
   const { theme, systemTheme, setTheme } = useTheme()
 
+  const currentTheme = theme !== 'system' ? theme : systemTheme
+
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -24,16 +26,14 @@ export default function Layout({ children }: LayoutProps) {
           {mounted && (
             <div className="relative rounded shadow-md">
               <motion.button
+                aria-label={`turn dark mode ${
+                  currentTheme === 'dark' ? 'off' : 'on'
+                }`}
                 onHoverStart={() => setIsDarkModeToggleHovered(true)}
                 onHoverEnd={() => setIsDarkModeToggleHovered(false)}
                 className="peer pointer-events-auto relative z-10 block h-full w-full rounded bg-white p-4 dark:bg-slate-700"
                 onClick={() =>
-                  setTheme(
-                    theme === 'dark' ||
-                      (theme === 'system' && systemTheme === 'dark')
-                      ? 'light'
-                      : 'dark'
-                  )
+                  setTheme(currentTheme === 'dark' ? 'light' : 'dark')
                 }
               >
                 <motion.div
@@ -43,24 +43,14 @@ export default function Layout({ children }: LayoutProps) {
                   transition={DEFAULT_SPRING_TRANSITION}
                 >
                   <FiSun
-                    className={
-                      theme === 'dark' ||
-                      (theme === 'system' && systemTheme === 'dark')
-                        ? 'block'
-                        : 'hidden'
-                    }
+                    className={currentTheme === 'dark' ? 'block' : 'hidden'}
                   />
                   <FiMoon
-                    className={
-                      theme === 'light' ||
-                      (theme === 'system' && systemTheme === 'light')
-                        ? 'block'
-                        : 'hidden'
-                    }
+                    className={currentTheme === 'light' ? 'block' : 'hidden'}
                   />
                 </motion.div>
               </motion.button>
-              {theme === 'dark' && (
+              {currentTheme === 'dark' && (
                 <div className="absolute inset-0 h-full w-full scale-105 rounded-md bg-white opacity-10 blur-sm transition duration-300 peer-hover:scale-125" />
               )}
             </div>
