@@ -8,7 +8,7 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { theme, systemTheme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -22,10 +22,31 @@ export default function Layout({ children }: LayoutProps) {
             <div className="relative rounded shadow-md">
               <button
                 className="peer relative z-10 block h-full w-full rounded bg-white p-4 dark:bg-slate-700"
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                onClick={() =>
+                  setTheme(
+                    theme === 'dark' ||
+                      (theme === 'system' && systemTheme === 'dark')
+                      ? 'light'
+                      : 'dark'
+                  )
+                }
               >
-                <FiSun className={theme === 'dark' ? 'block' : 'hidden'} />
-                <FiMoon className={theme === 'light' ? 'block' : 'hidden'} />
+                <FiSun
+                  className={
+                    theme === 'dark' ||
+                    (theme === 'system' && systemTheme === 'dark')
+                      ? 'block'
+                      : 'hidden'
+                  }
+                />
+                <FiMoon
+                  className={
+                    theme === 'light' ||
+                    (theme === 'system' && systemTheme === 'light')
+                      ? 'block'
+                      : 'hidden'
+                  }
+                />
               </button>
               {theme === 'dark' && (
                 <div className="absolute inset-0 h-full w-full scale-105 rounded-md bg-white opacity-10 blur-sm transition duration-300 peer-hover:scale-125" />
