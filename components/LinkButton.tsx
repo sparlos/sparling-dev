@@ -3,6 +3,7 @@ import { motion, TargetAndTransition } from 'framer-motion'
 import { IconType } from 'react-icons'
 import { useState } from 'react'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
+import useUIStore, { BackgroundIcon } from '../store/uiStore'
 
 type LinkButtonProps = {
   className?: string
@@ -10,6 +11,7 @@ type LinkButtonProps = {
   label: string
   href: string
   Icon?: IconType
+  backgroundIcon: BackgroundIcon
 }
 
 const BUTTON_ACTIVE_ANIMATION: TargetAndTransition = {
@@ -23,22 +25,29 @@ export default function LinkButton({
   label,
   href,
   Icon,
+  backgroundIcon,
 }: LinkButtonProps) {
   const [isButtonFocused, setIsButtonFocused] = useState(false)
+  const { setBackgroundIcon } = useUIStore()
+
+  const handleFocusButton = (isFocused: boolean) => {
+    setBackgroundIcon(isFocused ? backgroundIcon : null)
+    setIsButtonFocused(isFocused)
+  }
 
   return (
     <Link href={href}>
       <button
-        onFocus={() => setIsButtonFocused(true)}
-        onBlur={() => setIsButtonFocused(false)}
+        onFocus={() => handleFocusButton(true)}
+        onBlur={() => handleFocusButton(false)}
         className={'relative h-28 w-32 ' + (className || '')}
       >
         <motion.div
           className="peer relative z-10 flex h-full w-full flex-col items-center rounded bg-white p-4 shadow-md dark:bg-slate-700"
           transition={DEFAULT_SPRING_TRANSITION}
           animate={isButtonFocused ? BUTTON_ACTIVE_ANIMATION : {}}
-          onHoverStart={() => setIsButtonFocused(true)}
-          onHoverEnd={() => setIsButtonFocused(false)}
+          onHoverStart={() => handleFocusButton(true)}
+          onHoverEnd={() => handleFocusButton(false)}
         >
           <motion.div
             animate={{
