@@ -38,6 +38,7 @@ export default function LinkButton({
   return (
     <Link href={href}>
       <button
+        onClick={() => setBackgroundIcon(null)}
         onFocus={() => handleFocusButton(true)}
         onBlur={() => handleFocusButton(false)}
         className={'relative h-28 w-32 ' + (className || '')}
