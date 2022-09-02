@@ -19,9 +19,9 @@ const MAX_JOYSTICK_MOVEMENT_SPEED = 0.35
 
 const getRandomItemPosition = (width: number, height: number): ItemPosition => {
   return [
-    Math.max(Math.random(), 0.05) * (width - 20),
+    Math.round(Math.max(Math.random(), 0.05) * (width - 20)),
     // make sure items do not spawn inside joystick area
-    Math.max(Math.random(), 0.05) * (height - 210),
+    Math.round(Math.max(Math.random(), 0.05) * (height - 210)),
   ]
 }
 
@@ -162,7 +162,10 @@ export default function useHomeScreenGame() {
             newYPosition = height - 30
           }
         }
-        handleSetPlayerPosition([newXPosition, newYPosition])
+        handleSetPlayerPosition([
+          Math.round(newXPosition),
+          Math.round(newYPosition),
+        ])
       }
     }
     if (isGameInitialized) {
