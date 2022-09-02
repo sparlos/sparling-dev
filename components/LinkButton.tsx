@@ -12,6 +12,7 @@ type LinkButtonProps = {
   href: string
   Icon?: IconType
   backgroundIcon: BackgroundIcon
+  showIcon?: boolean
 }
 
 const BUTTON_ACTIVE_ANIMATION: TargetAndTransition = {
@@ -26,6 +27,7 @@ export default function LinkButton({
   href,
   Icon,
   backgroundIcon,
+  showIcon = true,
 }: LinkButtonProps) {
   const [isButtonFocused, setIsButtonFocused] = useState(false)
   const { setBackgroundIcon } = useUIStore()
@@ -60,7 +62,11 @@ export default function LinkButton({
             }}
             transition={DEFAULT_SPRING_TRANSITION}
           >
-            {Icon && <Icon className="mb-2 mt-4" />}
+            {Icon && (
+              <Icon
+                className={showIcon ? 'mb-2 mt-4' : 'mb-2 mt-4 opacity-0'}
+              />
+            )}
           </motion.div>
           <div>{label}</div>
         </motion.div>

@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/sat": "^0.0.31",
     "framer-motion": "^7.2.1",
     "next": "12.2.5",
     "next-themes": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
+    "react-resize-detector": "^7.1.2",
     "sass": "^1.54.8",
+    "sat": "^0.9.0",
     "usehooks-ts": "^2.6.0",
     "zustand": "^4.1.1"
   },
