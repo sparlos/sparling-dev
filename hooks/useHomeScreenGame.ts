@@ -39,6 +39,8 @@ export default function useHomeScreenGame() {
       const collided = SAT.testPolygonPolygon(playerCollision, itemCollision)
       if (collided && width && height) {
         setItemPosition(getRandomItemPosition(width, height))
+        // TODO: persist a high score in localStorage & render next
+        // to score in UI
         setScore((score) => (score === null ? 1 : score + 1))
       }
     }
@@ -47,13 +49,13 @@ export default function useHomeScreenGame() {
       let positionToUpdate = newPosition
       if (!isInitialized) {
         if (width && height) {
+          // TODO: this is not responsive, fix somehow u skrub
           positionToUpdate[0] += width * 0.2
           positionToUpdate[1] += height * 0.57
           setItemPosition(getRandomItemPosition(width, height))
         }
         setIsInitialized(true)
       }
-      // collision detection
       handleCollision(newPosition)
       setPlayerPosition(positionToUpdate)
     }
