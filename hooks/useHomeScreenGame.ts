@@ -45,7 +45,7 @@ export default function useHomeScreenGame() {
   )
   const [highScore, setHighScore] = useLocalStorage('home-screen-high-score', 0)
   const previousTime = useRef<null | number>(null)
-  const { initialize: initializeJoystick } = useJoystick({
+  const { initialize: initializeJoystick, joystickAreaRef } = useJoystick({
     handleMove: (data) => {
       const radians = data.angle.radian
       const xHeading = Math.cos(radians)
@@ -71,9 +71,9 @@ export default function useHomeScreenGame() {
   }
 
   const startGame = () => {
+    setIsGameInitialized(true)
     initializeJoystick()
     initializePlayer()
-    setIsGameInitialized(true)
   }
 
   useEffect(() => {
@@ -238,11 +238,13 @@ export default function useHomeScreenGame() {
     playerRef,
     score,
     isPlayerInitialized,
+    isGameInitialized,
     playerPosition,
     setPlayerPosition,
     itemPosition,
     setItemPosition,
     highScore,
     startGame,
+    joystickAreaRef,
   }
 }

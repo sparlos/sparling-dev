@@ -6,19 +6,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiUser, FiCode, FiSend, FiStar } from 'react-icons/fi'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import useHomeScreenGame from '../hooks/useHomeScreenGame'
-import useJoystick from '../hooks/useJoystick'
 
 const Home: NextPage = () => {
   const { backgroundIcon } = useUIStore()
   const {
     playerPosition,
     isPlayerInitialized,
+    isGameInitialized,
     playAreaRef,
     playerRef,
     itemPosition,
     score,
     highScore,
     startGame,
+    joystickAreaRef,
   } = useHomeScreenGame()
 
   return (
@@ -34,6 +35,20 @@ const Home: NextPage = () => {
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        animate={isGameInitialized ? { opacity: 1 } : {}}
+        className="pointer-events-none fixed top-0 left-0 z-30 h-full w-full"
+      >
+        <div
+          ref={joystickAreaRef}
+          className="pointer-events-auto absolute bottom-0 left-0 flex h-48 w-full items-center justify-center bg-slate-300 bg-opacity-100"
+        >
+          VIRTUAL JOYSTICK AREA
+        </div>
+      </motion.div>
       {isPlayerInitialized && (
         <motion.div
           initial={{
@@ -46,7 +61,7 @@ const Home: NextPage = () => {
             top: playerPosition[1],
             scale: 1,
           }}
-          className="pointer-events-none absolute z-50"
+          className="pointer-events-none absolute z-[65]"
         >
           <FiUser size={45} />
         </motion.div>
@@ -55,7 +70,7 @@ const Home: NextPage = () => {
         <AnimatePresence>
           <motion.div
             key={`${itemPosition[0]}, ${itemPosition[1]}`}
-            className="pointer-events-none absolute z-20 text-amber-500"
+            className="pointer-events-none absolute z-[60] text-amber-500"
             initial={{
               rotate: -15,
               left: itemPosition[0],

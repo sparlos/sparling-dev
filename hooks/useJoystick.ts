@@ -1,5 +1,5 @@
 import { JoystickManager, JoystickOutputData } from 'nipplejs'
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 
 type UseJoystickProps = {
   handleMove: (data: JoystickOutputData) => void
@@ -11,6 +11,7 @@ export default function useJoystick({
   handleEnd,
 }: UseJoystickProps) {
   const joystickRef = useRef<JoystickManager>()
+  const joystickAreaRef = useRef() as React.MutableRefObject<HTMLDivElement>
 
   const initialize = () => {
     const loadJoystick = async () => {
@@ -20,6 +21,7 @@ export default function useJoystick({
         size: 50,
         catchDistance: 50,
         color: '#38bdf8',
+        zone: joystickAreaRef.current,
       })
 
       semiJoystick.on('move', (_, data) => handleMove(data))
@@ -31,5 +33,5 @@ export default function useJoystick({
     return () => joystickRef.current?.destroy()
   }
 
-  return { joystickRef, initialize }
+  return { joystickRef, joystickAreaRef, initialize }
 }
