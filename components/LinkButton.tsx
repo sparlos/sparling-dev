@@ -46,7 +46,7 @@ export default function LinkButton({
         onClick={() => setBackgroundIcon(null)}
         onFocus={() => handleFocusButton(true)}
         onBlur={() => handleFocusButton(false)}
-        className={'relative h-28 w-32 ' + (className || '')}
+        className={'group relative h-28 w-32 ' + (className || '')}
       >
         <motion.div
           className="peer relative z-10 flex h-full w-full flex-col items-center rounded bg-white p-4 shadow-md dark:bg-slate-700"
@@ -78,7 +78,7 @@ export default function LinkButton({
         />
         <div
           className={
-            'absolute inset-0 z-0 h-full w-full scale-125 rounded-md p-6 opacity-0 blur transition duration-500 peer-hover:scale-50 dark:opacity-25 ' +
+            'absolute inset-0 z-0 h-full w-full scale-125 rounded-md p-6 opacity-0 blur transition duration-500 group-focus:scale-50 peer-hover:scale-50 dark:opacity-25 ' +
             bgColor
           }
         />
