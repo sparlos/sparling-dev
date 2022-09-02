@@ -9,8 +9,14 @@ import useHomeScreenGame from '../hooks/useHomeScreenGame'
 
 const Home: NextPage = () => {
   const { backgroundIcon } = useUIStore()
-  const { playerPosition, isInitialized, playAreaRef, itemPosition, score } =
-    useHomeScreenGame()
+  const {
+    playerPosition,
+    isInitialized,
+    playAreaRef,
+    playerRef,
+    itemPosition,
+    score,
+  } = useHomeScreenGame()
 
   return (
     <div
@@ -105,6 +111,7 @@ const Home: NextPage = () => {
             label="who I am"
             className="mb-6 sm:mr-24 sm:mb-0"
             backgroundIcon="user"
+            iconRef={playerRef}
           />
           <LinkButton
             Icon={FiCode}

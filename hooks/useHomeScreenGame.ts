@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
 import SAT from 'sat'
 
@@ -13,11 +13,12 @@ const getRandomItemPosition = (width: number, height: number): ItemPosition => {
 }
 
 export default function useHomeScreenGame() {
-  const { width, height, ref } = useResizeDetector()
+  const { width, height, ref: playAreaRef } = useResizeDetector()
   const [score, setScore] = useState<number>(0)
   const [isInitialized, setIsInitialized] = useState(false)
   const [playerPosition, setPlayerPosition] = useState<PlayerPosition>([0, 0])
   const [itemPosition, setItemPosition] = useState<ItemPosition>([0, 0])
+  const playerRef = useRef() as React.MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
     const handleCollision = (newPlayerPosition: PlayerPosition) => {
@@ -49,9 +50,16 @@ export default function useHomeScreenGame() {
       let positionToUpdate = newPosition
       if (!isInitialized) {
         if (width && height) {
-          // TODO: this is not responsive, fix somehow u skrub
-          positionToUpdate[0] += width * 0.2
-          positionToUpdate[1] += height * 0.57
+          const playerClientRect = playerRef?.current.getBoundingClientRect()
+          const playAreaClientRect =
+            playAreaRef?.current.getBoundingClientRect()
+          const initialPlayerXPosition =
+            playerClientRect.left - playAreaClientRect.left
+          const initialPlayerYPosition =
+            playerClientRect.top - playAreaClientRect.top
+
+          positionToUpdate[0] += initialPlayerXPosition
+          positionToUpdate[1] += initialPlayerYPosition
           setItemPosition(getRandomItemPosition(width, height))
         }
         setIsInitialized(true)
@@ -88,12 +96,13 @@ export default function useHomeScreenGame() {
     }
     document.addEventListener('keydown', keyListener)
     return () => document.removeEventListener('keydown', keyListener)
-  }, [height, isInitialized, itemPosition, playerPosition, width])
+  }, [height, isInitialized, itemPosition, playAreaRef, playerPosition, width])
 
   return {
-    playAreaRef: ref,
+    playAreaRef,
     playAreaWidth: width,
     playAreaHeight: height,
+    playerRef,
     score,
     isInitialized,
     playerPosition,
