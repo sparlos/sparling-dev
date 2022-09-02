@@ -16,6 +16,7 @@ const Home: NextPage = () => {
     playerRef,
     itemPosition,
     score,
+    highScore,
   } = useHomeScreenGame()
 
   return (
@@ -71,16 +72,15 @@ const Home: NextPage = () => {
         </AnimatePresence>
       )}
       <div className="relative z-10 my-auto flex flex-col items-center">
-        <h1 className="font-sans text-6xl font-semibold">stephen sparling</h1>
         <AnimatePresence mode="wait">
           {isInitialized ? (
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={DEFAULT_SPRING_TRANSITION}
               key="score"
-              className="mt-8 flex"
+              className="flex font-sans text-6xl font-semibold"
             >
-              score:
               <AnimatePresence mode="wait">
                 <motion.div
                   className="ml-1"
@@ -88,15 +88,39 @@ const Home: NextPage = () => {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.15 }}
                 >
                   {score}
                 </motion.div>
               </AnimatePresence>
+            </motion.h1>
+          ) : (
+            <motion.h1
+              exit={{ opacity: 0, y: 10 }}
+              key="name"
+              className="font-sans text-6xl font-semibold"
+              transition={DEFAULT_SPRING_TRANSITION}
+            >
+              stephen sparling
+            </motion.h1>
+          )}
+        </AnimatePresence>
+        <AnimatePresence mode="wait">
+          {isInitialized ? (
+            <motion.h2
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              key="instructions"
+              className="mt-8 flex"
+              transition={DEFAULT_SPRING_TRANSITION}
+            >
+              WASD to move. high score: {highScore}
             </motion.h2>
           ) : (
             <motion.h2
               key="subtitle"
               exit={{ opacity: 0, y: 10 }}
+              transition={DEFAULT_SPRING_TRANSITION}
               className="mt-8"
             >
               web developer | making cool stuff

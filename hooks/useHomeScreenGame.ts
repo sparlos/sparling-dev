@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useLocalStorage } from 'usehooks-ts'
 import { useResizeDetector } from 'react-resize-detector'
 import SAT from 'sat'
 
@@ -28,7 +29,7 @@ export default function useHomeScreenGame() {
     s: false,
     d: false,
   })
-  console.log(movementSpeed)
+  const [highScore, setHighScore] = useLocalStorage('home-screen-high-score', 0)
 
   useEffect(() => {
     const handleCollision = (newPlayerPosition: PlayerPosition) => {
@@ -50,10 +51,10 @@ export default function useHomeScreenGame() {
       const collided = SAT.testPolygonPolygon(playerCollision, itemCollision)
       if (collided && width && height) {
         setItemPosition(getRandomItemPosition(width, height))
-        // TODO: persist a high score in localStorage & render next
-        // to score in UI
-        setScore((score) => (score === null ? 1 : score + 1))
-        const newSpeed = movementSpeed + score * 0.01
+        const newScore = score + 1
+        setScore(newScore)
+        setHighScore(Math.max(newScore, highScore))
+        const newSpeed = movementSpeed + newScore * 0.01
         setMovementSpeed(Math.min(newSpeed, MAX_MOVEMENT_SPEED))
       }
     }
@@ -107,6 +108,7 @@ export default function useHomeScreenGame() {
     return () => cancelAnimationFrame(animationFrameRef.current)
   }, [
     height,
+    highScore,
     isInitialized,
     itemPosition,
     keymap,
@@ -114,6 +116,7 @@ export default function useHomeScreenGame() {
     playAreaRef,
     playerPosition,
     score,
+    setHighScore,
     width,
   ])
 
@@ -194,5 +197,6 @@ export default function useHomeScreenGame() {
     setPlayerPosition,
     itemPosition,
     setItemPosition,
+    highScore,
   }
 }
