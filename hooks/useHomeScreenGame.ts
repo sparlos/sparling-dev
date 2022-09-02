@@ -12,8 +12,8 @@ type Keymap = {
   d: boolean
 }
 
-const INITIAL_MOVEMENT_SPEED = 2
-const MAX_MOVEMENT_SPEED = 5
+const INITIAL_MOVEMENT_SPEED = 0.25
+const MAX_MOVEMENT_SPEED = 1
 
 const getRandomItemPosition = (width: number, height: number): ItemPosition => {
   return [Math.random() * width, Math.random() * height]
@@ -36,6 +36,7 @@ export default function useHomeScreenGame() {
     d: false,
   })
   const [highScore, setHighScore] = useLocalStorage('home-screen-high-score', 0)
+  const previousTime = useRef<null | number>(null)
 
   const initializePlayer = () => {
     if (width && height) {
@@ -80,7 +81,7 @@ export default function useHomeScreenGame() {
         const newScore = score + 1
         setScore(newScore)
         setHighScore(Math.max(newScore, highScore))
-        const newSpeed = movementSpeed + newScore * 0.01
+        const newSpeed = movementSpeed + newScore * 0.001
         setMovementSpeed(Math.min(newSpeed, MAX_MOVEMENT_SPEED))
       }
     }
@@ -91,18 +92,21 @@ export default function useHomeScreenGame() {
     }
 
     const renderLoop = (time: number) => {
+      const deltaTime = time - (previousTime.current ?? time)
+      const normalizedMovementSpeed = movementSpeed * deltaTime
+      previousTime.current = time
       animationFrameRef.current = requestAnimationFrame(renderLoop)
       let newXPosition = playerPosition[0]
       let newYPosition = playerPosition[1]
       if (keymap.w) {
-        newYPosition -= movementSpeed
+        newYPosition -= normalizedMovementSpeed
       } else if (keymap.s) {
-        newYPosition += movementSpeed
+        newYPosition += normalizedMovementSpeed
       }
       if (keymap.a) {
-        newXPosition -= movementSpeed
+        newXPosition -= normalizedMovementSpeed
       } else if (keymap.d) {
-        newXPosition += movementSpeed
+        newXPosition += normalizedMovementSpeed
       }
       if (
         newXPosition !== playerPosition[0] ||
