@@ -37,6 +37,26 @@ export default function useHomeScreenGame() {
   })
   const [highScore, setHighScore] = useLocalStorage('home-screen-high-score', 0)
 
+  const initializePlayer = () => {
+    if (width && height) {
+      const playerClientRect = playerRef?.current.getBoundingClientRect()
+      const playAreaClientRect = playAreaRef?.current.getBoundingClientRect()
+      const initialPlayerXPosition =
+        playerClientRect.left - playAreaClientRect.left
+      const initialPlayerYPosition =
+        playerClientRect.top - playAreaClientRect.top
+
+      setPlayerPosition([initialPlayerXPosition, initialPlayerYPosition])
+      setItemPosition(getRandomItemPosition(width, height))
+    }
+    setIsPlayerInitialized(true)
+  }
+
+  const startGame = () => {
+    initializePlayer()
+    setIsGameInitialized(true)
+  }
+
   useEffect(() => {
     const handleCollision = (newPlayerPosition: PlayerPosition) => {
       const [playerX, playerY] = newPlayerPosition
@@ -66,25 +86,8 @@ export default function useHomeScreenGame() {
     }
 
     const handleSetPlayerPosition = (newPosition: PlayerPosition) => {
-      let positionToUpdate = newPosition
-      if (!isPlayerInitialized) {
-        if (width && height) {
-          const playerClientRect = playerRef?.current.getBoundingClientRect()
-          const playAreaClientRect =
-            playAreaRef?.current.getBoundingClientRect()
-          const initialPlayerXPosition =
-            playerClientRect.left - playAreaClientRect.left
-          const initialPlayerYPosition =
-            playerClientRect.top - playAreaClientRect.top
-
-          positionToUpdate[0] += initialPlayerXPosition
-          positionToUpdate[1] += initialPlayerYPosition
-          setItemPosition(getRandomItemPosition(width, height))
-        }
-        setIsPlayerInitialized(true)
-      }
       handleCollision(newPosition)
-      setPlayerPosition(positionToUpdate)
+      setPlayerPosition(newPosition)
     }
 
     const renderLoop = (time: number) => {
@@ -130,7 +133,6 @@ export default function useHomeScreenGame() {
 
   useEffect(() => {
     const handleSetKeymap = (newKeymap: Keymap) => {
-      if (!isGameInitialized) setIsGameInitialized(true)
       setKeymap(newKeymap)
     }
 
@@ -189,7 +191,7 @@ export default function useHomeScreenGame() {
       document.removeEventListener('keydown', keyDownListener)
       document.removeEventListener('keyup', keyUpListener)
     }
-  }, [isGameInitialized, keymap])
+  }, [keymap])
 
   return {
     playAreaRef,
@@ -203,5 +205,6 @@ export default function useHomeScreenGame() {
     itemPosition,
     setItemPosition,
     highScore,
+    startGame,
   }
 }

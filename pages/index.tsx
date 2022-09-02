@@ -17,6 +17,7 @@ const Home: NextPage = () => {
     itemPosition,
     score,
     highScore,
+    startGame,
   } = useHomeScreenGame()
 
   return (
@@ -34,11 +35,15 @@ const Home: NextPage = () => {
       </Head>
       {isPlayerInitialized && (
         <motion.div
-          initial={{ left: playerPosition[0], top: playerPosition[1] }}
+          initial={{
+            left: playerPosition[0],
+            top: playerPosition[1],
+            scale: 1,
+          }}
           animate={{
             left: playerPosition[0],
             top: playerPosition[1],
-            scale: isPlayerInitialized ? 3 : 1,
+            scale: 3,
           }}
           className="pointer-events-none absolute z-50"
         >
@@ -125,9 +130,12 @@ const Home: NextPage = () => {
               key="subtitle"
               exit={{ opacity: 0, y: 10 }}
               transition={DEFAULT_SPRING_TRANSITION}
-              className="mt-8"
+              className="mt-8 flex"
             >
-              web developer | making cool stuff
+              web developer |
+              <button onClick={startGame} className="ml-1 underline">
+                making cool stuff
+              </button>
             </motion.h2>
           )}
         </AnimatePresence>
