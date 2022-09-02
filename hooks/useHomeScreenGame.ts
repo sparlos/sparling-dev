@@ -64,7 +64,10 @@ export default function useHomeScreenGame() {
       const initialPlayerYPosition =
         playerClientRect.top - playAreaClientRect.top
 
-      setPlayerPosition([initialPlayerXPosition, initialPlayerYPosition])
+      setPlayerPosition([
+        initialPlayerXPosition - 15,
+        initialPlayerYPosition - 3,
+      ])
       setItemPosition(getRandomItemPosition(width, height))
     }
     setIsPlayerInitialized(true)

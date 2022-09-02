@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   return (
     <div
       ref={playAreaRef}
-      className="relative flex h-full flex-col items-center text-center dark:text-white"
+      className="relative flex h-full flex-col items-center overflow-hidden text-center dark:text-white"
     >
       <Head>
         <title>
@@ -44,9 +44,11 @@ const Home: NextPage = () => {
       >
         <div
           ref={joystickAreaRef}
-          className="pointer-events-auto absolute bottom-0 left-0 flex h-48 w-full items-center justify-center bg-slate-300 bg-opacity-100"
+          className="pointer-events-auto absolute bottom-0 left-0 flex h-48 w-full items-center justify-center border-2 border-dashed border-slate-400 bg-opacity-100"
         >
-          VIRTUAL JOYSTICK AREA
+          <span className="rounded-md bg-slate-400 p-4">
+            VIRTUAL JOYSTICK AREA
+          </span>
         </div>
       </motion.div>
       {isPlayerInitialized && (
