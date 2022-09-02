@@ -3,19 +3,13 @@ import { useLocalStorage } from 'usehooks-ts'
 import { useResizeDetector } from 'react-resize-detector'
 import SAT from 'sat'
 import useJoystick from './useJoystick'
+import usePlayer, {
+  MAX_JOYSTICK_MOVEMENT_SPEED,
+  MAX_KEYBOARD_MOVEMENT_SPEED,
+  PlayerPosition,
+} from './usePlayer'
 
-type PlayerPosition = [number, number]
 type ItemPosition = [number, number]
-type Keymap = {
-  w: boolean
-  a: boolean
-  s: boolean
-  d: boolean
-}
-
-const INITIAL_MOVEMENT_SPEED = 0.25
-const MAX_KEYBOARD_MOVEMENT_SPEED = 1
-const MAX_JOYSTICK_MOVEMENT_SPEED = 0.35
 
 const getRandomItemPosition = (width: number, height: number): ItemPosition => {
   return [
@@ -28,24 +22,27 @@ const getRandomItemPosition = (width: number, height: number): ItemPosition => {
 export default function useHomeScreenGame() {
   const { width, height, ref: playAreaRef } = useResizeDetector()
   const [score, setScore] = useState<number>(0)
-  const [isPlayerInitialized, setIsPlayerInitialized] = useState(false)
   const [isGameInitialized, setIsGameInitialized] = useState(false)
-  const [playerPosition, setPlayerPosition] = useState<PlayerPosition>([0, 0])
   const [itemPosition, setItemPosition] = useState<ItemPosition>([0, 0])
-  const playerRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const animationFrameRef = useRef() as React.MutableRefObject<number>
-  const [movementSpeed, setMovementSpeed] = useState(INITIAL_MOVEMENT_SPEED)
-  const [keymap, setKeymap] = useState<Keymap>({
-    w: false,
-    a: false,
-    s: false,
-    d: false,
-  })
-  const [playerHeading, setPlayerHeading] = useState<null | [number, number]>(
-    null
-  )
   const [highScore, setHighScore] = useLocalStorage('home-screen-high-score', 0)
   const previousTime = useRef<null | number>(null)
+  const {
+    isPlayerInitialized,
+    initializePlayer,
+    movementSpeed,
+    setMovementSpeed,
+    playerPosition,
+    setPlayerPosition,
+    playerHeading,
+    setPlayerHeading,
+    keymap,
+    playerRef,
+  } = usePlayer({
+    width,
+    height,
+    playAreaRef,
+  })
   const { initialize: initializeJoystick, joystickAreaRef } = useJoystick({
     handleMove: (data) => {
       const radians = data.angle.radian
@@ -56,28 +53,13 @@ export default function useHomeScreenGame() {
     handleEnd: () => setPlayerHeading(null),
   })
 
-  const initializePlayer = () => {
-    if (width && height) {
-      const playerClientRect = playerRef?.current.getBoundingClientRect()
-      const playAreaClientRect = playAreaRef?.current.getBoundingClientRect()
-      const initialPlayerXPosition =
-        playerClientRect.left - playAreaClientRect.left
-      const initialPlayerYPosition =
-        playerClientRect.top - playAreaClientRect.top
-
-      setPlayerPosition([
-        initialPlayerXPosition - 15,
-        initialPlayerYPosition - 3,
-      ])
-      setItemPosition(getRandomItemPosition(width, height))
-    }
-    setIsPlayerInitialized(true)
-  }
-
   const startGame = () => {
     setIsGameInitialized(true)
     initializeJoystick()
     initializePlayer()
+    if (width && height) {
+      setItemPosition(getRandomItemPosition(width, height))
+    }
   }
 
   useEffect(() => {
@@ -178,79 +160,16 @@ export default function useHomeScreenGame() {
     highScore,
     isGameInitialized,
     itemPosition,
-    keymap.a,
-    keymap.d,
-    keymap.s,
-    keymap.w,
+    keymap,
     movementSpeed,
     playerHeading,
     playerPosition,
     score,
     setHighScore,
+    setMovementSpeed,
+    setPlayerPosition,
     width,
   ])
-
-  useEffect(() => {
-    const handleSetKeymap = (newKeymap: Keymap) => {
-      setKeymap(newKeymap)
-    }
-
-    const keyDownListener = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'w':
-          return handleSetKeymap({
-            ...keymap,
-            w: true,
-          })
-        case 'a':
-          return handleSetKeymap({
-            ...keymap,
-            a: true,
-          })
-        case 's':
-          return handleSetKeymap({
-            ...keymap,
-            s: true,
-          })
-        case 'd':
-          return handleSetKeymap({
-            ...keymap,
-            d: true,
-          })
-      }
-    }
-
-    const keyUpListener = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'w':
-          return setKeymap({
-            ...keymap,
-            w: false,
-          })
-        case 'a':
-          return setKeymap({
-            ...keymap,
-            a: false,
-          })
-        case 's':
-          return setKeymap({
-            ...keymap,
-            s: false,
-          })
-        case 'd':
-          return setKeymap({
-            ...keymap,
-            d: false,
-          })
-      }
-    }
-    document.addEventListener('keydown', keyDownListener)
-    document.addEventListener('keyup', keyUpListener)
-    return () => {
-      document.removeEventListener('keydown', keyDownListener)
-      document.removeEventListener('keyup', keyUpListener)
-    }
-  }, [keymap])
 
   return {
     playAreaRef,
