@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   const { backgroundIcon } = useUIStore()
   const {
     playerPosition,
-    isInitialized,
+    isPlayerInitialized,
     playAreaRef,
     playerRef,
     itemPosition,
@@ -26,24 +26,26 @@ const Home: NextPage = () => {
     >
       <Head>
         <title>
-          {isInitialized ? 'collect stars! | sparling.dev' : 'stephen sparling'}
+          {isPlayerInitialized
+            ? 'collect stars! | sparling.dev'
+            : 'stephen sparling'}
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {isInitialized && (
+      {isPlayerInitialized && (
         <motion.div
           initial={{ left: playerPosition[0], top: playerPosition[1] }}
           animate={{
             left: playerPosition[0],
             top: playerPosition[1],
-            scale: isInitialized ? 3 : 1,
+            scale: isPlayerInitialized ? 3 : 1,
           }}
           className="pointer-events-none absolute z-50"
         >
           <FiUser />
         </motion.div>
       )}
-      {isInitialized && (
+      {isPlayerInitialized && (
         <AnimatePresence>
           <motion.div
             key={`${itemPosition[0]}, ${itemPosition[1]}`}
@@ -75,7 +77,7 @@ const Home: NextPage = () => {
       )}
       <div className="relative z-10 my-auto flex flex-col items-center">
         <AnimatePresence mode="wait">
-          {isInitialized ? (
+          {isPlayerInitialized ? (
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -108,7 +110,7 @@ const Home: NextPage = () => {
           )}
         </AnimatePresence>
         <AnimatePresence mode="wait">
-          {isInitialized ? (
+          {isPlayerInitialized ? (
             <motion.h2
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -132,7 +134,7 @@ const Home: NextPage = () => {
         <div className="relative mt-12 flex flex-col sm:flex-row">
           <LinkButton
             Icon={FiUser}
-            showIcon={!isInitialized}
+            showIcon={!isPlayerInitialized}
             href="/about"
             label="who I am"
             className="mb-6 sm:mr-24 sm:mb-0"

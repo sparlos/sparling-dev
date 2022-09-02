@@ -4,8 +4,13 @@ import { useResizeDetector } from 'react-resize-detector'
 import SAT from 'sat'
 
 type PlayerPosition = [number, number]
-// percentages 0-100
 type ItemPosition = [number, number]
+type Keymap = {
+  w: boolean
+  a: boolean
+  s: boolean
+  d: boolean
+}
 
 const INITIAL_MOVEMENT_SPEED = 2
 const MAX_MOVEMENT_SPEED = 5
@@ -17,13 +22,14 @@ const getRandomItemPosition = (width: number, height: number): ItemPosition => {
 export default function useHomeScreenGame() {
   const { width, height, ref: playAreaRef } = useResizeDetector()
   const [score, setScore] = useState<number>(0)
-  const [isInitialized, setIsInitialized] = useState(false)
+  const [isPlayerInitialized, setIsPlayerInitialized] = useState(false)
+  const [isGameInitialized, setIsGameInitialized] = useState(false)
   const [playerPosition, setPlayerPosition] = useState<PlayerPosition>([0, 0])
   const [itemPosition, setItemPosition] = useState<ItemPosition>([0, 0])
   const playerRef = useRef() as React.MutableRefObject<HTMLDivElement>
   const animationFrameRef = useRef() as React.MutableRefObject<number>
   const [movementSpeed, setMovementSpeed] = useState(INITIAL_MOVEMENT_SPEED)
-  const [keymap, setKeymap] = useState({
+  const [keymap, setKeymap] = useState<Keymap>({
     w: false,
     a: false,
     s: false,
@@ -61,7 +67,7 @@ export default function useHomeScreenGame() {
 
     const handleSetPlayerPosition = (newPosition: PlayerPosition) => {
       let positionToUpdate = newPosition
-      if (!isInitialized) {
+      if (!isPlayerInitialized) {
         if (width && height) {
           const playerClientRect = playerRef?.current.getBoundingClientRect()
           const playAreaClientRect =
@@ -75,13 +81,14 @@ export default function useHomeScreenGame() {
           positionToUpdate[1] += initialPlayerYPosition
           setItemPosition(getRandomItemPosition(width, height))
         }
-        setIsInitialized(true)
+        setIsPlayerInitialized(true)
       }
       handleCollision(newPosition)
       setPlayerPosition(positionToUpdate)
     }
 
     const renderLoop = (time: number) => {
+      console.log(time)
       animationFrameRef.current = requestAnimationFrame(renderLoop)
       let newXPosition = playerPosition[0]
       let newYPosition = playerPosition[1]
@@ -102,14 +109,16 @@ export default function useHomeScreenGame() {
         handleSetPlayerPosition([newXPosition, newYPosition])
       }
     }
-    // TODO: run this only once game is initialized
-    animationFrameRef.current = requestAnimationFrame(renderLoop)
+    if (isGameInitialized) {
+      animationFrameRef.current = requestAnimationFrame(renderLoop)
+    }
 
     return () => cancelAnimationFrame(animationFrameRef.current)
   }, [
     height,
     highScore,
-    isInitialized,
+    isPlayerInitialized,
+    isGameInitialized,
     itemPosition,
     keymap,
     movementSpeed,
@@ -121,25 +130,30 @@ export default function useHomeScreenGame() {
   ])
 
   useEffect(() => {
+    const handleSetKeymap = (newKeymap: Keymap) => {
+      if (!isGameInitialized) setIsGameInitialized(true)
+      setKeymap(newKeymap)
+    }
+
     const keyDownListener = (event: KeyboardEvent) => {
       switch (event.key) {
         case 'w':
-          return setKeymap({
+          return handleSetKeymap({
             ...keymap,
             w: true,
           })
         case 'a':
-          return setKeymap({
+          return handleSetKeymap({
             ...keymap,
             a: true,
           })
         case 's':
-          return setKeymap({
+          return handleSetKeymap({
             ...keymap,
             s: true,
           })
         case 'd':
-          return setKeymap({
+          return handleSetKeymap({
             ...keymap,
             d: true,
           })
@@ -176,7 +190,7 @@ export default function useHomeScreenGame() {
       document.removeEventListener('keydown', keyDownListener)
       document.removeEventListener('keyup', keyUpListener)
     }
-  }, [keymap])
+  }, [isGameInitialized, keymap])
 
   return {
     playAreaRef,
@@ -184,7 +198,7 @@ export default function useHomeScreenGame() {
     playAreaHeight: height,
     playerRef,
     score,
-    isInitialized,
+    isPlayerInitialized,
     playerPosition,
     setPlayerPosition,
     itemPosition,
