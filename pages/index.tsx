@@ -39,16 +39,16 @@ const Home: NextPage = () => {
           initial={{
             left: playerPosition[0],
             top: playerPosition[1],
-            scale: 1,
+            scale: 0.25,
           }}
           animate={{
             left: playerPosition[0],
             top: playerPosition[1],
-            scale: 3,
+            scale: 1,
           }}
           className="pointer-events-none absolute z-50"
         >
-          <FiUser />
+          <FiUser size={45} />
         </motion.div>
       )}
       {isPlayerInitialized && (
@@ -60,13 +60,13 @@ const Home: NextPage = () => {
               rotate: -15,
               left: itemPosition[0],
               top: itemPosition[1],
-              scale: 1.75,
+              scale: 0.75,
             }}
             animate={{
               rotate: 15,
               left: itemPosition[0],
               top: itemPosition[1] - 10,
-              scale: 2,
+              scale: 1,
               transition: {
                 repeat: Infinity,
                 repeatType: 'mirror',
@@ -77,7 +77,7 @@ const Home: NextPage = () => {
               opacity: 0,
             }}
           >
-            <FiStar />
+            <FiStar size={30} />
           </motion.div>
         </AnimatePresence>
       )}
