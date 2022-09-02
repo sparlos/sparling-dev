@@ -19,7 +19,7 @@ export default function useJoystick({
         mode: 'semi',
         size: 50,
         catchDistance: 50,
-        color: 'orange',
+        color: '#38bdf8',
       })
 
       semiJoystick.on('move', (_, data) => handleMove(data))
