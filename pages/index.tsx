@@ -1,15 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import LinkButton from '../components/LinkButton'
-import useUIStore from '../store/uiStore'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiUser, FiCode, FiSend, FiStar } from 'react-icons/fi'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import useHomeScreenGame from '../hooks/useHomeScreenGame'
 import HomeGame from '../components/HomeGame'
+import IconBackground from '../components/IconBackground'
 
 const Home: NextPage = () => {
-  const { backgroundIcon } = useUIStore()
   const {
     playerPosition,
     isPlayerInitialized,
@@ -130,44 +129,7 @@ const Home: NextPage = () => {
           />
         </div>
       </div>
-      <AnimatePresence>
-        {backgroundIcon === 'user' && (
-          <motion.div
-            key="user"
-            initial={{ opacity: 0, scale: 48 }}
-            animate={{ opacity: 0.5, scale: 50 }}
-            exit={{ opacity: 0 }}
-            transition={DEFAULT_SPRING_TRANSITION}
-            className="absolute inset-0 z-0 flex items-center justify-center text-slate-200 dark:text-slate-700"
-          >
-            <FiUser width="100%" />
-          </motion.div>
-        )}
-        {backgroundIcon === 'code' && (
-          <motion.div
-            key="code"
-            initial={{ opacity: 0, scale: 48 }}
-            animate={{ opacity: 0.5, scale: 50 }}
-            exit={{ opacity: 0 }}
-            transition={DEFAULT_SPRING_TRANSITION}
-            className="absolute inset-0 z-0 flex items-center justify-center text-slate-200 dark:text-slate-700"
-          >
-            <FiCode width="100%" />
-          </motion.div>
-        )}
-        {backgroundIcon === 'mail' && (
-          <motion.div
-            key="mail"
-            initial={{ opacity: 0, scale: 48 }}
-            animate={{ opacity: 0.5, scale: 50 }}
-            exit={{ opacity: 0 }}
-            transition={DEFAULT_SPRING_TRANSITION}
-            className="absolute inset-0 z-0 flex items-center justify-center text-slate-200 dark:text-slate-700"
-          >
-            <FiSend width="100%" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <IconBackground />
     </div>
   )
 }
