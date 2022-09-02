@@ -176,15 +176,7 @@ export default function useHomeScreenGame() {
       document.removeEventListener('keydown', keyDownListener)
       document.removeEventListener('keyup', keyUpListener)
     }
-  }, [
-    height,
-    isInitialized,
-    itemPosition,
-    keymap,
-    playAreaRef,
-    playerPosition,
-    width,
-  ])
+  }, [keymap])
 
   return {
     playAreaRef,

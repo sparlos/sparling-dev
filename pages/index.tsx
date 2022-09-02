@@ -25,7 +25,9 @@ const Home: NextPage = () => {
       className="relative flex h-full flex-col items-center text-center dark:text-white"
     >
       <Head>
-        <title>stephen sparling</title>
+        <title>
+          {isInitialized ? 'collect stars! | sparling.dev' : 'stephen sparling'}
+        </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {isInitialized && (
@@ -36,7 +38,7 @@ const Home: NextPage = () => {
             top: playerPosition[1],
             scale: isInitialized ? 3 : 1,
           }}
-          className="absolute z-50"
+          className="pointer-events-none absolute z-50"
         >
           <FiUser />
         </motion.div>
@@ -45,7 +47,7 @@ const Home: NextPage = () => {
         <AnimatePresence>
           <motion.div
             key={`${itemPosition[0]}, ${itemPosition[1]}`}
-            className="absolute z-20 text-amber-500"
+            className="pointer-events-none absolute z-20 text-amber-500"
             initial={{
               rotate: -15,
               left: itemPosition[0],
