@@ -127,10 +127,10 @@ export default function useHomeScreenGame() {
       let newYPosition = playerPosition[1]
       // joystick is active
       if (playerHeading) {
-        handleSetPlayerPosition([
-          playerPosition[0] + normalizedMovementSpeed * playerHeading[0],
-          playerPosition[1] + normalizedMovementSpeed * playerHeading[1],
-        ])
+        newXPosition =
+          playerPosition[0] + normalizedMovementSpeed * playerHeading[0]
+        newYPosition =
+          playerPosition[1] + normalizedMovementSpeed * playerHeading[1]
         // handle keypress movement
       } else {
         if (keymap.w) {
@@ -143,12 +143,26 @@ export default function useHomeScreenGame() {
         } else if (keymap.d) {
           newXPosition += normalizedMovementSpeed
         }
-        if (
-          newXPosition !== playerPosition[0] ||
-          newYPosition !== playerPosition[1]
-        ) {
-          handleSetPlayerPosition([newXPosition, newYPosition])
+      }
+      if (
+        newXPosition !== playerPosition[0] ||
+        newYPosition !== playerPosition[1]
+      ) {
+        if (width && height) {
+          if (newXPosition <= -30) {
+            newXPosition = 0
+          }
+          if (newXPosition >= width - 30) {
+            newXPosition = width - 30
+          }
+          if (newYPosition <= -30) {
+            newYPosition = -10
+          }
+          if (newYPosition >= height - 20) {
+            newYPosition = height - 30
+          }
         }
+        handleSetPlayerPosition([newXPosition, newYPosition])
       }
     }
     if (isGameInitialized) {
