@@ -88,7 +88,6 @@ export default function useHomeScreenGame() {
     }
 
     const renderLoop = (time: number) => {
-      console.log(time)
       animationFrameRef.current = requestAnimationFrame(renderLoop)
       let newXPosition = playerPosition[0]
       let newYPosition = playerPosition[1]
