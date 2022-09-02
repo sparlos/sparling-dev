@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 import { useResizeDetector } from 'react-resize-detector'
 import SAT from 'sat'
+import useJoystick from './useJoystick'
 
 type PlayerPosition = [number, number]
 type ItemPosition = [number, number]
@@ -13,7 +14,8 @@ type Keymap = {
 }
 
 const INITIAL_MOVEMENT_SPEED = 0.25
-const MAX_MOVEMENT_SPEED = 1
+const MAX_KEYBOARD_MOVEMENT_SPEED = 1
+const MAX_JOYSTICK_MOVEMENT_SPEED = 0.35
 
 const getRandomItemPosition = (width: number, height: number): ItemPosition => {
   return [
@@ -38,8 +40,20 @@ export default function useHomeScreenGame() {
     s: false,
     d: false,
   })
+  const [playerHeading, setPlayerHeading] = useState<null | [number, number]>(
+    null
+  )
   const [highScore, setHighScore] = useLocalStorage('home-screen-high-score', 0)
   const previousTime = useRef<null | number>(null)
+  const { initialize: initializeJoystick } = useJoystick({
+    handleMove: (data) => {
+      const radians = data.angle.radian
+      const xHeading = Math.cos(radians)
+      const yHeading = Math.sin(radians) * -1
+      setPlayerHeading([xHeading, yHeading])
+    },
+    handleEnd: () => setPlayerHeading(null),
+  })
 
   const initializePlayer = () => {
     if (width && height) {
@@ -57,6 +71,7 @@ export default function useHomeScreenGame() {
   }
 
   const startGame = () => {
+    initializeJoystick()
     initializePlayer()
     setIsGameInitialized(true)
   }
@@ -85,7 +100,7 @@ export default function useHomeScreenGame() {
         setScore(newScore)
         setHighScore(Math.max(newScore, highScore))
         const newSpeed = movementSpeed + newScore * 0.001
-        setMovementSpeed(Math.min(newSpeed, MAX_MOVEMENT_SPEED))
+        setMovementSpeed(Math.min(newSpeed, MAX_KEYBOARD_MOVEMENT_SPEED))
       }
     }
 
@@ -96,26 +111,40 @@ export default function useHomeScreenGame() {
 
     const renderLoop = (time: number) => {
       const deltaTime = time - (previousTime.current ?? time)
-      const normalizedMovementSpeed = movementSpeed * deltaTime
+      // normalize movement speed for frame rate independence,
+      // make sure joystick movement doesn't get too fast
+      const normalizedMovementSpeed =
+        (playerHeading
+          ? Math.min(movementSpeed, MAX_JOYSTICK_MOVEMENT_SPEED)
+          : movementSpeed) * deltaTime
       previousTime.current = time
       animationFrameRef.current = requestAnimationFrame(renderLoop)
       let newXPosition = playerPosition[0]
       let newYPosition = playerPosition[1]
-      if (keymap.w) {
-        newYPosition -= normalizedMovementSpeed
-      } else if (keymap.s) {
-        newYPosition += normalizedMovementSpeed
-      }
-      if (keymap.a) {
-        newXPosition -= normalizedMovementSpeed
-      } else if (keymap.d) {
-        newXPosition += normalizedMovementSpeed
-      }
-      if (
-        newXPosition !== playerPosition[0] ||
-        newYPosition !== playerPosition[1]
-      ) {
-        handleSetPlayerPosition([newXPosition, newYPosition])
+      // joystick is active
+      if (playerHeading) {
+        handleSetPlayerPosition([
+          playerPosition[0] + normalizedMovementSpeed * playerHeading[0],
+          playerPosition[1] + normalizedMovementSpeed * playerHeading[1],
+        ])
+        // handle keypress movement
+      } else {
+        if (keymap.w) {
+          newYPosition -= normalizedMovementSpeed
+        } else if (keymap.s) {
+          newYPosition += normalizedMovementSpeed
+        }
+        if (keymap.a) {
+          newXPosition -= normalizedMovementSpeed
+        } else if (keymap.d) {
+          newXPosition += normalizedMovementSpeed
+        }
+        if (
+          newXPosition !== playerPosition[0] ||
+          newYPosition !== playerPosition[1]
+        ) {
+          handleSetPlayerPosition([newXPosition, newYPosition])
+        }
       }
     }
     if (isGameInitialized) {
@@ -126,12 +155,14 @@ export default function useHomeScreenGame() {
   }, [
     height,
     highScore,
-    isPlayerInitialized,
     isGameInitialized,
     itemPosition,
-    keymap,
+    keymap.a,
+    keymap.d,
+    keymap.s,
+    keymap.w,
     movementSpeed,
-    playAreaRef,
+    playerHeading,
     playerPosition,
     score,
     setHighScore,

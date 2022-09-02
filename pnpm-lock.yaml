@@ -11,6 +11,7 @@ specifiers:
   framer-motion: ^7.2.1
   next: 12.2.5
   next-themes: ^0.2.0
+  nipplejs: ^0.9.1
   postcss: ^8.4.16
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
@@ -30,6 +31,7 @@ dependencies:
   framer-motion: 7.2.1_biqbaboplfbrettd7655fr4n2y
   next: 12.2.5_vuxjv6o7qhupugnkyf7vyqsruq
   next-themes: 0.2.0_3xcjr4wz26biff45sz3jtokgje
+  nipplejs: 0.9.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
@@ -1673,6 +1675,10 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /nipplejs/0.9.1:
+    resolution: {integrity: sha512-Tu7ZaB1q0TgA+PH20s8i5Ngt3VmSCp8vxNVv/sOfGBAS0wwlNkJxnCD3bInC4iPg+W8dt80Pl+HU7B8y6dlXMQ==}
     dev: false
 
   /node-releases/2.0.6:

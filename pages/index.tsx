@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiUser, FiCode, FiSend, FiStar } from 'react-icons/fi'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import useHomeScreenGame from '../hooks/useHomeScreenGame'
+import useJoystick from '../hooks/useJoystick'
 
 const Home: NextPage = () => {
   const { backgroundIcon } = useUIStore()
