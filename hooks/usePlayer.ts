@@ -118,6 +118,7 @@ export default function usePlayer({
 
   return {
     isPlayerInitialized,
+    setIsPlayerInitialized,
     initializePlayer,
     movementSpeed,
     setMovementSpeed,

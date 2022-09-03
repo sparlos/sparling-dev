@@ -8,6 +8,7 @@ type HomeGameProps = {
   isPlayerInitialized: boolean
   playerPosition: [number, number]
   itemPosition: [number, number]
+  onQuitGame: () => void
 }
 
 export default function HomeGame({
@@ -16,25 +17,20 @@ export default function HomeGame({
   isPlayerInitialized,
   playerPosition,
   itemPosition,
+  onQuitGame,
 }: HomeGameProps) {
   return (
     <Fragment>
-      <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        animate={isGameInitialized ? { opacity: 1 } : {}}
-        className="pointer-events-none fixed top-0 left-0 z-30 h-full w-full"
-      >
-        <div
-          ref={joystickAreaRef}
-          className="pointer-events-auto absolute bottom-0 left-0 flex h-48 w-full items-center justify-center border-2 border-dashed border-slate-400 bg-opacity-100"
+      {isPlayerInitialized && (
+        <motion.button
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute top-8 right-24 w-48 rounded p-3 shadow-md dark:bg-slate-700"
+          onClick={() => onQuitGame()}
         >
-          <span className="rounded-md bg-slate-400 p-4 text-white">
-            VIRTUAL JOYSTICK AREA
-          </span>
-        </div>
-      </motion.div>
+          Quit Game
+        </motion.button>
+      )}
       {isPlayerInitialized && (
         <motion.div
           initial={{
@@ -83,6 +79,22 @@ export default function HomeGame({
           </motion.div>
         </AnimatePresence>
       )}
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        animate={isGameInitialized ? { opacity: 1 } : {}}
+        className="pointer-events-none fixed top-0 left-0 z-30 h-full w-full"
+      >
+        <div
+          ref={joystickAreaRef}
+          className="pointer-events-auto absolute bottom-0 left-0 flex h-48 w-full items-center justify-center border-2 border-dashed border-slate-400 bg-opacity-100"
+        >
+          <span className="rounded-md bg-slate-400 p-4 text-white">
+            VIRTUAL JOYSTICK AREA
+          </span>
+        </div>
+      </motion.div>
     </Fragment>
   )
 }
