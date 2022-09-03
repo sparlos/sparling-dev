@@ -8,22 +8,13 @@ import usePlayer, {
   MAX_KEYBOARD_MOVEMENT_SPEED,
   PlayerPosition,
 } from './usePlayer'
-
-type ItemPosition = [number, number]
-
-const getRandomItemPosition = (width: number, height: number): ItemPosition => {
-  return [
-    Math.round(Math.max(Math.random(), 0.05) * (width - 20)),
-    // make sure items do not spawn inside joystick area
-    Math.round(Math.max(Math.random(), 0.05) * (height - 210)),
-  ]
-}
+import { getRandomPosition, Position } from '../utils/game'
 
 export default function useHomeScreenGame() {
   const { width, height, ref: playAreaRef } = useResizeDetector()
   const [score, setScore] = useState<number>(0)
   const [isGameInitialized, setIsGameInitialized] = useState(false)
-  const [itemPosition, setItemPosition] = useState<ItemPosition>([0, 0])
+  const [itemPosition, setItemPosition] = useState<Position>([0, 0])
   const animationFrameRef = useRef() as React.MutableRefObject<number>
   const [highScore, setHighScore] = useLocalStorage('home-screen-high-score', 0)
   const previousTime = useRef<null | number>(null)
@@ -58,7 +49,7 @@ export default function useHomeScreenGame() {
     initializeJoystick()
     initializePlayer()
     if (width && height) {
-      setItemPosition(getRandomItemPosition(width, height))
+      setItemPosition(getRandomPosition(width, height))
     }
   }
 
@@ -81,7 +72,7 @@ export default function useHomeScreenGame() {
 
       const collided = SAT.testPolygonPolygon(playerCollision, itemCollision)
       if (collided && width && height) {
-        setItemPosition(getRandomItemPosition(width, height))
+        setItemPosition(getRandomPosition(width, height))
         const newScore = score + 1
         setScore(newScore)
         setHighScore(Math.max(newScore, highScore))
