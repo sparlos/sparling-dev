@@ -2,4 +2,5 @@ emoji bank: ⬜️ ✅ 🐞
 
 --------------------
 
-⬜️ 🐞 - Chrome android, status bar disappearing on scroll in /about causes BG gradient to not cover 100% of the height of the page
+✅ 🐞 - Chrome android, status bar disappearing on scroll in /about causes BG gradient to not cover 100% of the height of the page
+⬜️ 🐞 - scrolling not working on small screens for home page, very small height makes buttons unclickable
