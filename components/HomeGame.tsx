@@ -20,6 +20,15 @@ export default function HomeGame({
   return (
     <Fragment>
       {isPlayerInitialized && (
+        <motion.button
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute top-8 right-24 w-48 rounded p-3 shadow-md dark:bg-slate-700"
+        >
+          Quit Game
+        </motion.button>
+      )}
+      {isPlayerInitialized && (
         <motion.div
           initial={{
             left: playerPosition[0],
