@@ -71,7 +71,7 @@ export default function LinkButton({
             {Icon && (
               <Icon
                 className={
-                  showIcon ? 'mb-2 mt-1 sm:mt-4' : 'mb-2 mt-4 opacity-0'
+                  showIcon ? 'mb-2 mt-1 sm:mt-4' : 'mt-1 mb-2 opacity-0 sm:mt-4'
                 }
               />
             )}
