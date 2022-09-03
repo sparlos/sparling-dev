@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { motion, TargetAndTransition } from 'framer-motion'
 import { IconType } from 'react-icons'
-import { useState } from 'react'
+import { MutableRefObject, useState } from 'react'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import useUIStore, { BackgroundIcon } from '../store/uiStore'
 
@@ -12,6 +12,8 @@ type LinkButtonProps = {
   href: string
   Icon?: IconType
   backgroundIcon: BackgroundIcon
+  showIcon?: boolean
+  iconRef?: MutableRefObject<HTMLDivElement>
 }
 
 const BUTTON_ACTIVE_ANIMATION: TargetAndTransition = {
@@ -26,6 +28,8 @@ export default function LinkButton({
   href,
   Icon,
   backgroundIcon,
+  showIcon = true,
+  iconRef,
 }: LinkButtonProps) {
   const [isButtonFocused, setIsButtonFocused] = useState(false)
   const { setBackgroundIcon } = useUIStore()
@@ -52,6 +56,7 @@ export default function LinkButton({
           onHoverEnd={() => handleFocusButton(false)}
         >
           <motion.div
+            ref={iconRef}
             animate={{
               scale: isButtonFocused ? 1.35 : 1,
               x: isButtonFocused ? 2 : 0,
@@ -60,7 +65,11 @@ export default function LinkButton({
             }}
             transition={DEFAULT_SPRING_TRANSITION}
           >
-            {Icon && <Icon className="mb-2 mt-4" />}
+            {Icon && (
+              <Icon
+                className={showIcon ? 'mb-2 mt-4' : 'mb-2 mt-4 opacity-0'}
+              />
+            )}
           </motion.div>
           <div>{label}</div>
         </motion.div>
