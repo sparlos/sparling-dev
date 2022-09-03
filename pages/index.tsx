@@ -19,6 +19,7 @@ const Home: NextPage = () => {
     score,
     highScore,
     startGame,
+    endGame,
     joystickAreaRef,
   } = useHomeScreenGame()
 
@@ -42,6 +43,7 @@ const Home: NextPage = () => {
         isPlayerInitialized={isPlayerInitialized}
         playerPosition={playerPosition}
         itemPosition={itemPosition}
+        onQuitGame={endGame}
       />
       <div className="relative z-10 my-auto flex flex-col items-center">
         <AnimatePresence mode="wait">

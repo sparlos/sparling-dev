@@ -8,6 +8,7 @@ type HomeGameProps = {
   isPlayerInitialized: boolean
   playerPosition: [number, number]
   itemPosition: [number, number]
+  onQuitGame: () => void
 }
 
 export default function HomeGame({
@@ -16,6 +17,7 @@ export default function HomeGame({
   isPlayerInitialized,
   playerPosition,
   itemPosition,
+  onQuitGame,
 }: HomeGameProps) {
   return (
     <Fragment>
@@ -24,6 +26,7 @@ export default function HomeGame({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="absolute top-8 right-24 w-48 rounded p-3 shadow-md dark:bg-slate-700"
+          onClick={() => onQuitGame()}
         >
           Quit Game
         </motion.button>

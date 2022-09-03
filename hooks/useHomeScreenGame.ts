@@ -20,6 +20,7 @@ export default function useHomeScreenGame() {
   const previousTime = useRef<null | number>(null)
   const {
     isPlayerInitialized,
+    setIsPlayerInitialized,
     initializePlayer,
     movementSpeed,
     setMovementSpeed,
@@ -34,7 +35,11 @@ export default function useHomeScreenGame() {
     height,
     playAreaRef,
   })
-  const { initialize: initializeJoystick, joystickAreaRef } = useJoystick({
+  const {
+    initialize: initializeJoystick,
+    joystickAreaRef,
+    joystickRef,
+  } = useJoystick({
     handleMove: (data) => {
       const radians = data.angle.radian
       const xHeading = Math.cos(radians)
@@ -51,6 +56,17 @@ export default function useHomeScreenGame() {
     if (width && height) {
       setItemPosition(getRandomPosition(width, height))
     }
+  }
+
+  const endGame = () => {
+    setIsGameInitialized(false)
+    setIsPlayerInitialized(false)
+    setPlayerPosition([0, 0])
+    setItemPosition([0, 0])
+    setScore(0)
+    cancelAnimationFrame(animationFrameRef.current)
+    previousTime.current = null
+    joystickRef.current?.destroy()
   }
 
   useEffect(() => {
@@ -176,6 +192,7 @@ export default function useHomeScreenGame() {
     setItemPosition,
     highScore,
     startGame,
+    endGame,
     joystickAreaRef,
   }
 }
