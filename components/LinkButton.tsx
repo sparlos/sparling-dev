@@ -46,7 +46,10 @@ export default function LinkButton({
         onClick={() => setBackgroundIcon(null)}
         onFocus={() => handleFocusButton(true)}
         onBlur={() => handleFocusButton(false)}
-        className={'group relative h-28 w-32 ' + (className || '')}
+        className={
+          'h-18 group relative w-64 max-w-full sm:h-28 sm:w-32 ' +
+          (className || '')
+        }
       >
         <motion.div
           className="peer relative z-10 flex h-full w-full flex-col items-center rounded bg-white p-4 shadow-md dark:bg-slate-700"
@@ -67,11 +70,13 @@ export default function LinkButton({
           >
             {Icon && (
               <Icon
-                className={showIcon ? 'mb-2 mt-4' : 'mb-2 mt-4 opacity-0'}
+                className={
+                  showIcon ? 'mb-2 mt-1 sm:mt-4' : 'mb-2 mt-4 opacity-0'
+                }
               />
             )}
           </motion.div>
-          <div>{label}</div>
+          <div className="text-sm">{label}</div>
         </motion.div>
         <div
           className={'absolute inset-0 z-0 h-full w-full rounded-md ' + bgColor}

@@ -51,7 +51,7 @@ const Home: NextPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={DEFAULT_SPRING_TRANSITION}
               key="score"
-              className="flex font-sans text-6xl font-semibold"
+              className="flex font-sans text-4xl font-semibold sm:text-6xl"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
             <motion.h1
               exit={{ opacity: 0, y: 10 }}
               key="name"
-              className="font-sans text-6xl font-semibold"
+              className="font-sans text-4xl font-semibold sm:text-6xl"
               transition={DEFAULT_SPRING_TRANSITION}
             >
               stephen sparling
@@ -93,7 +93,7 @@ const Home: NextPage = () => {
               key="subtitle"
               exit={{ opacity: 0, y: 10 }}
               transition={DEFAULT_SPRING_TRANSITION}
-              className="mt-8 flex"
+              className="mt-8 flex text-sm sm:text-base"
             >
               web developer |
               <button onClick={startGame} className="ml-1 underline">
