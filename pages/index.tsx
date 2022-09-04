@@ -53,7 +53,7 @@ const Home: NextPage = () => {
         onQuitGame={endGame}
       />
       <div className="relative z-10 my-auto flex flex-col items-center py-24">
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} mode="wait">
           {isPlayerInitialized ? (
             <motion.h1
               {...scoreContainerAnimation}
@@ -75,19 +75,17 @@ const Home: NextPage = () => {
               {...headingNameAnimation}
               key="name"
               className="font-sans text-4xl font-semibold sm:text-6xl"
-              transition={DEFAULT_SPRING_TRANSITION}
             >
               stephen sparling
             </motion.h1>
           )}
         </AnimatePresence>
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} mode="wait">
           {isPlayerInitialized ? (
             <motion.h2
               {...controlsAnimation}
               key="instructions"
               className="mt-8 flex"
-              transition={DEFAULT_SPRING_TRANSITION}
             >
               WASD to move. high score: {highScore}
             </motion.h2>
@@ -95,7 +93,6 @@ const Home: NextPage = () => {
             <motion.h2
               key="subtitle"
               {...subtitleAnimation}
-              transition={DEFAULT_SPRING_TRANSITION}
               className="mt-8 flex text-sm sm:text-base"
             >
               web developer |

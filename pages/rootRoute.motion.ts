@@ -4,6 +4,7 @@ import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 export const scoreContainerAnimation: MotionProps = {
   initial: { opacity: 0, y: -20 },
   animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 20 },
   transition: { DEFAULT_SPRING_TRANSITION },
 }
 
@@ -15,14 +16,22 @@ export const scoreNumberAnimation: MotionProps = {
 }
 
 export const headingNameAnimation: MotionProps = {
+  animate: { opacity: 1, y: 0 },
+  initial: { opacity: 0, y: -10 },
   exit: { opacity: 0, y: 10 },
+  transition: DEFAULT_SPRING_TRANSITION,
 }
 
 export const controlsAnimation: MotionProps = {
   initial: { opacity: 0, y: -20 },
   animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 10 },
+  transition: DEFAULT_SPRING_TRANSITION,
 }
 
 export const subtitleAnimation: MotionProps = {
+  animate: { opacity: 1, y: 0 },
+  initial: { opacity: 0, y: -10 },
   exit: { opacity: 0, y: 10 },
+  transition: DEFAULT_SPRING_TRANSITION,
 }
