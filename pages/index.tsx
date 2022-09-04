@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     <div
       ref={playAreaRef}
       style={{ userSelect: isGameInitialized ? 'none' : 'auto' }}
-      className="relative flex h-full flex-col items-center overflow-hidden text-center dark:text-white"
+      className="relative flex h-full flex-col items-center overflow-auto text-center dark:text-white"
     >
       <Head>
         <title>

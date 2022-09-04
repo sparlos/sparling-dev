@@ -58,6 +58,8 @@ export default function Layout({ children }: LayoutProps) {
         </div>
         <main className="h-full w-full">{children}</main>
       </div>
+      {/* fix for when android URL bar disappears and gradient BG doesn't fill whole screen */}
+      <div className="fixed -z-10 h-full w-full transition-colors duration-200 dark:bg-gradient-to-b dark:from-slate-600 dark:to-slate-700" />
     </div>
   )
 }
