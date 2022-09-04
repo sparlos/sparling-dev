@@ -2,11 +2,18 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import LinkButton from '../components/LinkButton'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiUser, FiCode, FiSend, FiStar } from 'react-icons/fi'
+import { FiUser, FiCode, FiSend } from 'react-icons/fi'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import useHomeScreenGame from '../hooks/useHomeScreenGame'
 import HomeGame from '../components/HomeGame'
 import IconBackground from '../components/IconBackground'
+import {
+  controlsAnimation,
+  headingNameAnimation,
+  scoreContainerAnimation,
+  scoreNumberAnimation,
+  subtitleAnimation,
+} from './rootRoute.motion'
 
 const Home: NextPage = () => {
   const {
@@ -49,20 +56,15 @@ const Home: NextPage = () => {
         <AnimatePresence mode="wait">
           {isPlayerInitialized ? (
             <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={DEFAULT_SPRING_TRANSITION}
+              {...scoreContainerAnimation}
               key="score"
               className="flex font-sans text-4xl font-semibold sm:text-6xl"
             >
               <AnimatePresence mode="wait">
                 <motion.div
                   className="ml-1"
+                  {...scoreNumberAnimation}
                   key={score}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.15 }}
                 >
                   {score}
                 </motion.div>
@@ -70,7 +72,7 @@ const Home: NextPage = () => {
             </motion.h1>
           ) : (
             <motion.h1
-              exit={{ opacity: 0, y: 10 }}
+              {...headingNameAnimation}
               key="name"
               className="font-sans text-4xl font-semibold sm:text-6xl"
               transition={DEFAULT_SPRING_TRANSITION}
@@ -82,8 +84,7 @@ const Home: NextPage = () => {
         <AnimatePresence mode="wait">
           {isPlayerInitialized ? (
             <motion.h2
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+              {...controlsAnimation}
               key="instructions"
               className="mt-8 flex"
               transition={DEFAULT_SPRING_TRANSITION}
@@ -93,7 +94,7 @@ const Home: NextPage = () => {
           ) : (
             <motion.h2
               key="subtitle"
-              exit={{ opacity: 0, y: 10 }}
+              {...subtitleAnimation}
               transition={DEFAULT_SPRING_TRANSITION}
               className="mt-8 flex text-sm sm:text-base"
             >
