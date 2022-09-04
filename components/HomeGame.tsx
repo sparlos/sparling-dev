@@ -88,7 +88,8 @@ export default function HomeGame({
       >
         <div
           ref={joystickAreaRef}
-          className="pointer-events-auto absolute bottom-0 left-0 flex h-48 w-full items-center justify-center border-2 border-dashed border-slate-400 bg-opacity-100"
+          style={{ pointerEvents: isGameInitialized ? 'auto' : 'none' }}
+          className="absolute bottom-0 left-0 flex h-48 w-full items-center justify-center border-2 border-dashed border-slate-400 bg-opacity-100"
         >
           <span className="rounded-md bg-slate-400 p-4 text-white">
             VIRTUAL JOYSTICK AREA
