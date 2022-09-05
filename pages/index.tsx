@@ -113,7 +113,7 @@ const Home: NextPage = () => {
           />
           <LinkButton
             Icon={FiCode}
-            href="/projects-skills"
+            href="/projects-and-skills"
             label="what I do"
             className="mb-6 sm:mr-24 sm:mb-0"
             bgColor="bg-red-500"
