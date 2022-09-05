@@ -1,7 +1,8 @@
-emoji bank: ⬜️ ✅ 🐞 🤔
+emoji bank: ⬜️ ✅ 🐞 🤔 💡 (🤔 = potential feature, stretch 💡 = core feature)
 
 --------------------
 
 ✅ 🐞 - Chrome android, status bar disappearing on scroll in /about causes BG gradient to not cover 100% of the height of the page
 ✅ 🐞 - scrolling not working on small screens for home page, very small height makes buttons unclickable
-⬜️ 🐞 - prevent overflow for large background icons on hover of buttons for home page
+✅ 🐞 - prevent overflow for large background icons on hover of buttons for home page
+⬜️ 🤔 - switch home game to canvas rendering to optimize performance, make entity positions not dependent on state (use react-game-engine?)
