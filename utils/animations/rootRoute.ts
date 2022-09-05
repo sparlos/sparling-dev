@@ -1,5 +1,5 @@
 import { MotionProps } from 'framer-motion'
-import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
+import { DEFAULT_SPRING_TRANSITION } from '../framer'
 
 export const scoreContainerAnimation: MotionProps = {
   initial: { opacity: 0, y: -20 },

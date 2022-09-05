@@ -3,7 +3,6 @@ import Head from 'next/head'
 import LinkButton from '../components/LinkButton'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiUser, FiCode, FiSend } from 'react-icons/fi'
-import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import useHomeScreenGame from '../hooks/useHomeScreenGame'
 import HomeGame from '../components/HomeGame'
 import IconBackground from '../components/IconBackground'
@@ -13,7 +12,7 @@ import {
   scoreContainerAnimation,
   scoreNumberAnimation,
   subtitleAnimation,
-} from './rootRoute.motion'
+} from '../utils/animations/rootRoute'
 
 const Home: NextPage = () => {
   const {
