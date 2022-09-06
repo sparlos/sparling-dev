@@ -18,3 +18,15 @@ export const headingAnimation: MotionProps = {
   },
   transition: DEFAULT_SPRING_TRANSITION,
 }
+
+export const toggleAnimation: MotionProps = {
+  initial: {
+    x: -25,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+  },
+  transition: { ...DEFAULT_SPRING_TRANSITION, delay: 0.05 },
+}

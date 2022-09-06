@@ -2,7 +2,10 @@ import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { useState } from 'react'
 import BigToggle, { BigToggleState } from '../../components/BigToggle'
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
-import { headingAnimation } from '../../utils/animations/projectsAndSkills'
+import {
+  headingAnimation,
+  toggleAnimation,
+} from '../../utils/animations/projectsAndSkills'
 
 export default function ProjectsAndSkills() {
   const [toggleState, setToggleState] = useState<BigToggleState>(null)
@@ -22,7 +25,7 @@ export default function ProjectsAndSkills() {
               </motion.h1>
             )}
           </AnimatePresence>
-          <motion.div layout>
+          <motion.div {...toggleAnimation} layout>
             <BigToggle
               toggleState={toggleState}
               setToggleState={setToggleState}
