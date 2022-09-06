@@ -27,8 +27,6 @@ export default function BigToggle({
   toggleRightText,
 }: BigToggleProps) {
   const [hoveredState, setHoveredState] = useState<BigToggleState>(null)
-
-  const BUTTON_CLASS = 'relative border-y border-solid flex-1  '
   const isSmall = shrinkOnSelect && toggleState
 
   return (
