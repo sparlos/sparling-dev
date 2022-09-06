@@ -1,33 +1,46 @@
 import { motion } from 'framer-motion'
-import { useTheme } from 'next-themes'
 import { useState } from 'react'
-import {
-  DEFAULT_SLIDE_RIGHT_PROPS,
-  DEFAULT_SPRING_TRANSITION,
-} from '../utils/framer'
+import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
+
+export type BigToggleState = 'left' | 'right' | null
 
 type BigToggleProps = {
+  toggleState: BigToggleState
+  shrinkOnSelect?: boolean
+  setToggleState: (newState: BigToggleState) => void
   toggleLeftText: string
   toggleRightText: string
 }
 
 export default function BigToggle({
+  toggleState,
+  shrinkOnSelect = true,
+  setToggleState,
   toggleLeftText,
   toggleRightText,
 }: BigToggleProps) {
-  const [toggleState, setToggleState] = useState<null | 'left' | 'right'>(null)
   const [hoveredState, setHoveredState] = useState<null | 'left' | 'right'>(
     null
   )
-  const { theme, systemTheme } = useTheme()
-  const currentTheme = theme !== 'system' ? theme : systemTheme
 
   const BUTTON_CLASS = 'relative border-y border-solid flex-1  '
+  const isSmall = shrinkOnSelect && toggleState
 
   return (
-    <div className="relative flex h-14">
+    <motion.div
+      initial={{ height: '3.5rem' }}
+      animate={{
+        height: isSmall ? '2.5rem' : '3.5rem',
+        width: isSmall ? '34rem' : 'auto',
+      }}
+      transition={DEFAULT_SPRING_TRANSITION}
+      className="relative flex"
+    >
       <motion.button
-        className={BUTTON_CLASS + '-mr-4 overflow-hidden rounded-l-lg border-l'}
+        animate={{ marginRight: isSmall ? '-0.75rem' : '-1rem' }}
+        transition={DEFAULT_SPRING_TRANSITION}
+        initial={{ marginRight: '-1rem' }}
+        className={BUTTON_CLASS + 'overflow-hidden rounded-l-lg border-l'}
         onClick={() => setToggleState('left')}
         onHoverStart={() => setHoveredState('left')}
         onFocus={() => setHoveredState('left')}
@@ -55,8 +68,16 @@ export default function BigToggle({
           className="absolute inset-0 z-[1] h-full -skew-x-[30deg] rounded-l-lg bg-gradient-to-r from-violet-800 to-pink-500"
         />
       </motion.button>
-      <div className="z-10 -mt-1 h-[115%] w-px rotate-[30deg] bg-gray-200 dark:bg-white" />
+      <motion.div
+        transition={DEFAULT_SPRING_TRANSITION}
+        initial={{ marginTop: '-0.25rem' }}
+        animate={{ marginTop: isSmall ? '-0.2rem' : '-0.25rem' }}
+        className="z-10 h-[115%] w-px rotate-[30deg] bg-gray-200 dark:bg-white"
+      />
       <motion.button
+        transition={DEFAULT_SPRING_TRANSITION}
+        initial={{ marginLeft: '-1rem' }}
+        animate={{ marginLeft: isSmall ? '-0.75rem' : '-1rem' }}
         className={BUTTON_CLASS + '-ml-4 overflow-hidden rounded-r-lg border-r'}
         onClick={() => setToggleState('right')}
         onFocus={() => setHoveredState('right')}
@@ -85,6 +106,6 @@ export default function BigToggle({
           className="absolute inset-0 z-[1] h-full -skew-x-[30deg] bg-gradient-to-r from-cyan-600 to-teal-400"
         />
       </motion.button>
-    </div>
+    </motion.div>
   )
 }

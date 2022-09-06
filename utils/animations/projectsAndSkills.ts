@@ -10,5 +10,8 @@ export const headingAnimation: MotionProps = {
     x: 0,
     opacity: 1,
   },
+  exit: {
+    opacity: 0,
+  },
   transition: DEFAULT_SPRING_TRANSITION,
 }
