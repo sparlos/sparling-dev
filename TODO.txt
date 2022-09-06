@@ -6,4 +6,4 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ✅ 🐞 - scrolling not working on small screens for home page, very small height makes buttons unclickable
 ✅ 🐞 - prevent overflow for large background icons on hover of buttons for home page
 ⬜️ 🤔 - switch home game to canvas rendering to optimize performance, make entity positions not dependent on state (use react-game-engine?)
-⬜️ 🛠 - refactor BigToggle to at least separate out animations/refactor to make it cleaner
+✅ 🛠 - refactor BigToggle to at least separate out animations/refactor to make it cleaner

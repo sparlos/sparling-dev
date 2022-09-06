@@ -1,5 +1,4 @@
 import { Transition } from 'framer-motion'
-import { BigToggleState } from '../../components/BigToggle'
 import { DEFAULT_SPRING_TRANSITION } from '../framer'
 
 const defaultTransition: Transition = {
