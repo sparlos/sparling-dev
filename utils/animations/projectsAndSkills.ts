@@ -30,3 +30,32 @@ export const toggleAnimation: MotionProps = {
   },
   transition: { ...DEFAULT_SPRING_TRANSITION, delay: 0.05 },
 }
+
+export const dropdownAnimation: MotionProps = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  transition: { ...DEFAULT_SPRING_TRANSITION, delay: 0.05 },
+}
+
+export const dropdownLabelAnimation: MotionProps = {
+  initial: {
+    opacity: 0,
+    y: -20,
+    position: 'absolute',
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    position: 'initial',
+  },
+  exit: {
+    opacity: 0,
+    y: 20,
+    position: 'absolute',
+  },
+  transition: DEFAULT_SPRING_TRANSITION,
+}

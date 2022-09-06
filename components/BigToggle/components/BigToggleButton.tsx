@@ -31,6 +31,7 @@ export default function BigToggleButton({
       onClick={() => setToggleState(position)}
       onHoverStart={() => setHoveredState(position)}
       onFocus={() => setHoveredState(position)}
+      onBlur={() => setHoveredState(null)}
       onHoverEnd={() => setHoveredState(null)}
     >
       <div
