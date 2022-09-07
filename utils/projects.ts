@@ -1,25 +1,30 @@
 import { DropdownOption } from '../hooks/useProjectSkillsDropdown'
 
-type Project = {
+export type Project = {
   title: string
+  slug: string
   tags: string[]
 }
 
 export const mockProjectList: Project[] = [
   {
     title: 'old portfolio',
+    slug: 'old-portfolio',
     tags: ['react', 'tailwind'],
   },
   {
     title: 'new portfolio',
+    slug: 'new-portfolio',
     tags: ['react', 'tailwind', 'nextjs'],
   },
   {
     title: 'codepen stuff',
+    slug: 'codepen-stuff',
     tags: ['vueJS', 'audio', 'algorithms'],
   },
   {
     title: 'sparling creations',
+    slug: 'sparling-creations',
     tags: ['vueJS', 'audio', 'cockpit CMS'],
   },
 ]
