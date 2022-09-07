@@ -16,29 +16,24 @@ import useProjectSkillsDropdown, {
 } from '../../hooks/useProjectSkillsDropdown'
 import { mockProjectList } from '../../utils/projects'
 import ProjectCard from '../../components/ProjectCard'
+import { GetServerSidePropsContext } from 'next'
 
-export default function ProjectsAndSkills() {
-  const [hasCheckedParams, setHasCheckedParams] = useState(false)
-  const [toggleState, setToggleState] = useState<BigToggleState>(null)
+type ProjectsAndSkillsProps = {
+  toggleStateFromParams?: BigToggleState
+}
+
+export default function ProjectsAndSkills({
+  toggleStateFromParams,
+}: ProjectsAndSkillsProps) {
+  const [toggleState, setToggleState] = useState<BigToggleState>(
+    toggleStateFromParams || null
+  )
   const {
     dropdownOptions,
     dropdownValues,
     setDropdownValues,
     handleSetToggleState,
   } = useProjectSkillsDropdown({ setToggleState })
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const view = params.get('view')
-    if (view === 'projects') {
-      setToggleState('left')
-    } else if (view === 'skills') {
-      setToggleState('right')
-    }
-    setHasCheckedParams(true)
-  }, [])
-
-  if (!hasCheckedParams) return null
 
   return (
     <ScrollableContentContainer
@@ -132,4 +127,17 @@ export default function ProjectsAndSkills() {
       </motion.div>
     </ScrollableContentContainer>
   )
+}
+
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+  const { view } = query
+  return {
+    props: {
+      toggleStateFromParams: view
+        ? view === 'projects'
+          ? 'left'
+          : 'right'
+        : null,
+    },
+  }
 }

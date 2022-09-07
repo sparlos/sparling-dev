@@ -9,7 +9,7 @@ export const getToggleContainerAnimation = (isSmall: boolean) => ({
   transition: DEFAULT_SPRING_TRANSITION,
 })
 
-export const getLeftButtonAnimation = (isSmall: Boolean) => ({
+export const getLeftButtonAnimation = (isSmall: boolean) => ({
   initial: { marginRight: '-1rem' },
   animate: { marginRight: isSmall ? '-0.75rem' : '-1rem' },
   transition: DEFAULT_SPRING_TRANSITION,
