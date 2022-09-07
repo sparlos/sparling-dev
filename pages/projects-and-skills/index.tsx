@@ -41,7 +41,12 @@ export default function ProjectsAndSkills() {
   if (!hasCheckedParams) return null
 
   return (
-    <ScrollableContentContainer large>
+    <ScrollableContentContainer
+      large
+      title={`${
+        toggleState === 'right' ? 'skills' : 'projects'
+      } | sparling.dev`}
+    >
       <motion.div>
         <LayoutGroup>
           <AnimatePresence>
