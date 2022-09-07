@@ -19,7 +19,7 @@ export default function HorizontalSkillList({
   return (
     <motion.div
       {...skillsListAnimation}
-      className="relative mt-6 grid sm:grid-cols-2 sm:gap-4"
+      className="relative mt-10 grid sm:grid-cols-2 sm:gap-4"
       key="skills-list"
     >
       <div>
