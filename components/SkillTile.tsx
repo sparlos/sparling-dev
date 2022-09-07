@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import { FiChevronDown } from 'react-icons/fi'
+import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import { Skill } from '../utils/skills'
 
 type SkillTileProps = {
@@ -22,7 +24,17 @@ export default function SkillTile({
         damping: 30,
       }}
     >
-      <motion.div className="pt-2">{skill.name}</motion.div>
+      <motion.div className="w-full pt-2">
+        <span className="relative">{skill.name}</span>
+        <motion.span
+          initial={{ rotate: 0 }}
+          animate={{ rotate: isSelected ? 180 : 0 }}
+          transition={DEFAULT_SPRING_TRANSITION}
+          className="absolute right-4 top-[0.85rem]"
+        >
+          <FiChevronDown />
+        </motion.span>
+      </motion.div>
       <motion.div
         initial={{ height: 0 }}
         animate={{ height: isSelected ? 'auto' : 0 }}
