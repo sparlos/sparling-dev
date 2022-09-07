@@ -32,7 +32,7 @@ export default function BigToggle({
   return (
     <motion.div
       {...getToggleContainerAnimation(!!isSmall)}
-      className="relative flex"
+      className="relative flex max-w-full"
     >
       <BigToggleButton
         buttonAnimation={getLeftButtonAnimation(!!isSmall)}
