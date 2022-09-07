@@ -4,9 +4,8 @@ import Select from '../../components/Select'
 import BigToggle, { BigToggleState } from '../../components/BigToggle'
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
 import {
-  dropdownAnimation,
-  dropdownLabelAnimation,
   headingAnimation,
+  dropdownAnimation,
   projectListAnimation,
   projectTileAnimation,
   toggleAnimation,
@@ -70,39 +69,33 @@ export default function ProjectsAndSkills({
             />
           </motion.div>
           {!!toggleState && (
-            <AnimatePresence>
-              <motion.div
-                key="dropdownContainer"
-                {...dropdownAnimation}
-                className="relative z-50 mt-8"
-                layout
-              >
-                <AnimatePresence initial={false}>
-                  <motion.label
-                    {...dropdownLabelAnimation}
-                    key={toggleState}
-                    className="ml-1 mb-1 block text-sm text-black dark:text-slate-100"
-                    htmlFor="projectFilter"
+            <AnimatePresence mode="wait">
+              {toggleState === 'left' && (
+                <motion.div>
+                  <motion.div
+                    key="dropdownContainer"
+                    {...dropdownAnimation}
+                    className="relative z-50 mt-8"
+                    layout
                   >
-                    {toggleState === 'left'
-                      ? 'Filter by tags'
-                      : 'Select a skill'}
-                  </motion.label>
-                </AnimatePresence>
-                <Select
-                  isClearable
-                  inputId="projectFilter"
-                  options={dropdownOptions}
-                  value={dropdownValues}
-                  onChange={(newValue) =>
-                    setDropdownValues(newValue as string | DropdownOption[])
-                  }
-                  isMulti={toggleState === 'left'}
-                  placeholder="React, AWS, etc."
-                />
-              </motion.div>
-              <AnimatePresence mode="wait">
-                {toggleState === 'left' && (
+                    <motion.label
+                      className="ml-1 mb-1 block text-sm text-black dark:text-slate-100"
+                      htmlFor="projectFilter"
+                    >
+                      Filter by tags
+                    </motion.label>
+                    <Select
+                      isClearable
+                      inputId="projectFilter"
+                      options={dropdownOptions}
+                      value={dropdownValues}
+                      onChange={(newValue) =>
+                        setDropdownValues(newValue as string | DropdownOption[])
+                      }
+                      isMulti={toggleState === 'left'}
+                      placeholder="React, AWS, etc."
+                    />
+                  </motion.div>
                   <motion.div
                     key="projects-list"
                     {...projectListAnimation}
@@ -126,15 +119,15 @@ export default function ProjectsAndSkills({
                         ))}
                     </AnimatePresence>
                   </motion.div>
-                )}
-                {toggleState === 'right' && (
-                  <HorizontalSkillList
-                    selectedSkill={selectedSkill}
-                    setSelectedSkill={setSelectedSkill}
-                    skills={mockSkills}
-                  />
-                )}
-              </AnimatePresence>
+                </motion.div>
+              )}
+              {toggleState === 'right' && (
+                <HorizontalSkillList
+                  selectedSkill={selectedSkill}
+                  setSelectedSkill={setSelectedSkill}
+                  skills={mockSkills}
+                />
+              )}
             </AnimatePresence>
           )}
         </LayoutGroup>
