@@ -75,7 +75,7 @@ export default function ProjectsAndSkills({
                   <motion.div
                     key="dropdownContainer"
                     {...dropdownAnimation}
-                    className="relative z-50 mt-8"
+                    className="relative z-40 mt-8"
                     layout
                   >
                     <motion.label

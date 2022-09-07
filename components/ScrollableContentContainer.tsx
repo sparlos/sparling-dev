@@ -21,7 +21,7 @@ export default function ScrollableContentContainer({
       <div
         className={`ml-auto mr-auto ${
           large ? 'max-w-4xl' : 'max-w-3xl'
-        } px-12 pt-24 pb-32 leading-relaxed lg:ml-44 lg:mr-0`}
+        } px-6 pt-24 pb-32 leading-relaxed sm:px-12 lg:ml-44 lg:mr-0`}
       >
         {children}
       </div>
