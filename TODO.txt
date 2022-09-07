@@ -9,3 +9,4 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ✅ 🛠 - refactor BigToggle to at least separate out animations/refactor to make it cleaner
 ✅ 💡 - ability to navigate to the projects-and-skills page with a pre-defined toggle state (i.e. a link that automatically selects either projects or skills - URL query param, different route altogether? see what works best w/ next)
 ⬜️ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
+⬜️ 🛠 - completely remove dropdown for skills page, since it's not really necessary
