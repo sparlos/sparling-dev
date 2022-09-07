@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
 import {
   DEFAULT_SLIDE_DOWN_PROPS,
@@ -55,10 +56,13 @@ export default function About() {
         }}
       >
         I&apos;ve also had the chance to work with a vast array of technologies,
-        which you can take an in-depth look at on the skills page. For the sake
-        of summary, some technologies I&apos;ve had a lot of professional
-        experience with are: React, AWS, Python/Django, Kubernetes, GCP, React
-        Native, Node, Postgres, MongoDB, and MySQL.
+        which you can take an in-depth look{' '}
+        <Link href="/projects-and-skills?view=skills">
+          <button className="underline">on the skills page.</button>
+        </Link>{' '}
+        For the sake of summary, some technologies I&apos;ve had a lot of
+        professional experience with are: React, AWS, Python/Django, Kubernetes,
+        GCP, React Native, Node, Postgres, MongoDB, and MySQL.
       </motion.p>
       <motion.p
         className="mt-8"

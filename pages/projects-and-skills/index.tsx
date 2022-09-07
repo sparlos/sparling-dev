@@ -1,5 +1,5 @@
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Select from '../../components/Select'
 import BigToggle, { BigToggleState } from '../../components/BigToggle'
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
@@ -18,6 +18,7 @@ import { mockProjectList } from '../../utils/projects'
 import ProjectCard from '../../components/ProjectCard'
 
 export default function ProjectsAndSkills() {
+  const [hasCheckedParams, setHasCheckedParams] = useState(false)
   const [toggleState, setToggleState] = useState<BigToggleState>(null)
   const {
     dropdownOptions,
@@ -25,6 +26,19 @@ export default function ProjectsAndSkills() {
     setDropdownValues,
     handleSetToggleState,
   } = useProjectSkillsDropdown({ setToggleState })
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const view = params.get('view')
+    if (view === 'projects') {
+      setToggleState('left')
+    } else if (view === 'skills') {
+      setToggleState('right')
+    }
+    setHasCheckedParams(true)
+  }, [])
+
+  if (!hasCheckedParams) return null
 
   return (
     <ScrollableContentContainer>
