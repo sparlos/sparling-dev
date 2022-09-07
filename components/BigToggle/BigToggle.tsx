@@ -17,6 +17,7 @@ type BigToggleProps = {
   setToggleState: (newState: BigToggleState) => void
   toggleLeftText: string
   toggleRightText: string
+  isPreToggled: boolean
 }
 
 export default function BigToggle({
@@ -25,20 +26,22 @@ export default function BigToggle({
   setToggleState,
   toggleLeftText,
   toggleRightText,
+  isPreToggled,
 }: BigToggleProps) {
   const [hoveredState, setHoveredState] = useState<BigToggleState>(null)
   const isSmall = shrinkOnSelect && toggleState
 
   return (
     <motion.div
-      {...getToggleContainerAnimation(!!isSmall)}
+      {...getToggleContainerAnimation(!!isSmall, isPreToggled)}
       className="relative flex max-w-full"
     >
       <BigToggleButton
-        buttonAnimation={getLeftButtonAnimation(!!isSmall)}
+        buttonAnimation={getLeftButtonAnimation(!!isSmall, isPreToggled)}
         backgroundAnimation={getButtonBackgroundAnimation(
           toggleState === 'left',
-          hoveredState === 'left'
+          hoveredState === 'left',
+          isPreToggled
         )}
         position="left"
         setHoveredState={setHoveredState}
@@ -47,14 +50,15 @@ export default function BigToggle({
         text={toggleLeftText}
       />
       <motion.div
-        {...getDividerAnimation(!!isSmall)}
+        {...getDividerAnimation(!!isSmall, isPreToggled)}
         className="z-10 h-[115%] w-px rotate-[30deg] bg-gray-200 dark:bg-white"
       />
       <BigToggleButton
-        buttonAnimation={getRightButtonAnimation(!!isSmall)}
+        buttonAnimation={getRightButtonAnimation(!!isSmall, isPreToggled)}
         backgroundAnimation={getButtonBackgroundAnimation(
           toggleState === 'right',
-          hoveredState === 'right'
+          hoveredState === 'right',
+          isPreToggled
         )}
         position="right"
         setHoveredState={setHoveredState}

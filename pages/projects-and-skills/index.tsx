@@ -25,6 +25,7 @@ type ProjectsAndSkillsProps = {
 export default function ProjectsAndSkills({
   toggleStateFromParams,
 }: ProjectsAndSkillsProps) {
+  const [isPreToggled] = useState(!!toggleStateFromParams)
   const [toggleState, setToggleState] = useState<BigToggleState>(
     toggleStateFromParams || null
   )
@@ -62,6 +63,7 @@ export default function ProjectsAndSkills({
               setToggleState={handleSetToggleState}
               toggleLeftText="Personal projects"
               toggleRightText="Work experience"
+              isPreToggled={isPreToggled}
             />
           </motion.div>
           {!!toggleState && (
@@ -72,7 +74,7 @@ export default function ProjectsAndSkills({
                 className="relative z-50 mt-8"
                 layout
               >
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   <motion.label
                     {...dropdownLabelAnimation}
                     key={toggleState}
