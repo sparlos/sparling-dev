@@ -59,3 +59,29 @@ export const dropdownLabelAnimation: MotionProps = {
   },
   transition: DEFAULT_SPRING_TRANSITION,
 }
+
+export const projectListAnimation: MotionProps = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+  transition: { ...DEFAULT_SPRING_TRANSITION, delay: 0.05 },
+}
+
+export const projectTileAnimation: MotionProps = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+  transition: { duration: 0.2 },
+}

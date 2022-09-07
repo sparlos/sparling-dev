@@ -14,6 +14,14 @@ export const mockProjectList: Project[] = [
     title: 'new portfolio',
     tags: ['react', 'tailwind', 'nextjs'],
   },
+  {
+    title: 'codepen stuff',
+    tags: ['vueJS', 'audio', 'algorithms'],
+  },
+  {
+    title: 'sparling creations',
+    tags: ['vueJS', 'audio', 'cockpit CMS'],
+  },
 ]
 
 export const getUniqueTags = (projects: Project[]): string[] => {

@@ -7,9 +7,15 @@ import {
   dropdownAnimation,
   dropdownLabelAnimation,
   headingAnimation,
+  projectListAnimation,
+  projectTileAnimation,
   toggleAnimation,
 } from '../../utils/animations/projectsAndSkills'
-import useProjectSkillsDropdown from '../../hooks/useProjectSkillsDropdown'
+import useProjectSkillsDropdown, {
+  DropdownOption,
+} from '../../hooks/useProjectSkillsDropdown'
+import { mockProjectList } from '../../utils/projects'
+import ProjectCard from '../../components/ProjectCard'
 
 export default function ProjectsAndSkills() {
   const [toggleState, setToggleState] = useState<BigToggleState>(null)
@@ -27,6 +33,7 @@ export default function ProjectsAndSkills() {
           <AnimatePresence>
             {!toggleState && (
               <motion.h1
+                key="heading"
                 layout
                 className="mb-14 text-4xl"
                 {...headingAnimation}
@@ -45,7 +52,12 @@ export default function ProjectsAndSkills() {
           </motion.div>
           {!!toggleState && (
             <AnimatePresence>
-              <motion.div {...dropdownAnimation} className="mt-8" layout>
+              <motion.div
+                key="dropdownContainer"
+                {...dropdownAnimation}
+                className="relative z-50 mt-8"
+                layout
+              >
                 <AnimatePresence>
                   <motion.label
                     {...dropdownLabelAnimation}
@@ -64,12 +76,37 @@ export default function ProjectsAndSkills() {
                   options={dropdownOptions}
                   value={dropdownValues}
                   onChange={(newValue) =>
-                    setDropdownValues(newValue as string | string[])
+                    setDropdownValues(newValue as string | DropdownOption[])
                   }
                   isMulti={toggleState === 'left'}
                   placeholder="React, AWS, etc."
                 />
               </motion.div>
+              {toggleState === 'left' && (
+                <motion.div
+                  {...projectListAnimation}
+                  className="mt-6 grid grid-cols-3 gap-4"
+                  layout
+                >
+                  <AnimatePresence>
+                    {mockProjectList
+                      .filter((project) =>
+                        (dropdownValues as DropdownOption[]).every(
+                          (dropdownOption) =>
+                            project.tags.includes(dropdownOption.value)
+                        )
+                      )
+                      .map((project) => (
+                        <motion.div
+                          {...projectTileAnimation}
+                          key={project.title}
+                        >
+                          <ProjectCard title={project.title} />
+                        </motion.div>
+                      ))}
+                  </AnimatePresence>
+                </motion.div>
+              )}
             </AnimatePresence>
           )}
         </LayoutGroup>

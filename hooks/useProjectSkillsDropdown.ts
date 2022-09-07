@@ -14,7 +14,9 @@ export default function useProjectSkillsDropdown({
   setToggleState: (newState: BigToggleState) => void
 }) {
   const [dropdownOptions, setDropdownOptions] = useState<DropdownOption[]>([])
-  const [dropdownValues, setDropdownValues] = useState<string | string[]>([])
+  const [dropdownValues, setDropdownValues] = useState<
+    string | DropdownOption[]
+  >([])
 
   const handleSetToggleState = (state: BigToggleState) => {
     state === 'left'
