@@ -8,7 +8,7 @@ export default function ProjectCard({ title }: ProjectCardProps) {
   return (
     <motion.div
       layout
-      className="flex h-32 items-center justify-center rounded shadow-md dark:bg-slate-600"
+      className="mx-auto flex h-40 max-w-xs items-center justify-center rounded-lg shadow-md dark:bg-slate-600"
     >
       <div />
       {title}
