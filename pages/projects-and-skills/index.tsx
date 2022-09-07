@@ -1,5 +1,5 @@
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Select from '../../components/Select'
 import BigToggle, { BigToggleState } from '../../components/BigToggle'
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
@@ -17,6 +17,8 @@ import useProjectSkillsDropdown, {
 import { mockProjectList } from '../../utils/projects'
 import ProjectCard from '../../components/ProjectCard'
 import { GetServerSidePropsContext } from 'next'
+import { mockSkills, Skill } from '../../utils/skills'
+import HorizontalSkillList from '../../components/HorizontalSkillList'
 
 type ProjectsAndSkillsProps = {
   toggleStateFromParams?: BigToggleState
@@ -26,6 +28,7 @@ export default function ProjectsAndSkills({
   toggleStateFromParams,
 }: ProjectsAndSkillsProps) {
   const [isPreToggled] = useState(!!toggleStateFromParams)
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
   const [toggleState, setToggleState] = useState<BigToggleState>(
     toggleStateFromParams || null
   )
@@ -34,7 +37,7 @@ export default function ProjectsAndSkills({
     dropdownValues,
     setDropdownValues,
     handleSetToggleState,
-  } = useProjectSkillsDropdown({ setToggleState })
+  } = useProjectSkillsDropdown({ setToggleState, setSelectedSkill })
 
   return (
     <ScrollableContentContainer
@@ -98,31 +101,40 @@ export default function ProjectsAndSkills({
                   placeholder="React, AWS, etc."
                 />
               </motion.div>
-              {toggleState === 'left' && (
-                <motion.div
-                  {...projectListAnimation}
-                  className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
-                  layout
-                >
-                  <AnimatePresence>
-                    {mockProjectList
-                      .filter((project) =>
-                        (dropdownValues as DropdownOption[]).every(
-                          (dropdownOption) =>
-                            project.tags.includes(dropdownOption.value)
+              <AnimatePresence mode="wait">
+                {toggleState === 'left' && (
+                  <motion.div
+                    key="projects-list"
+                    {...projectListAnimation}
+                    className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
+                  >
+                    <AnimatePresence>
+                      {mockProjectList
+                        .filter((project) =>
+                          (dropdownValues as DropdownOption[]).every(
+                            (dropdownOption) =>
+                              project.tags.includes(dropdownOption.value)
+                          )
                         )
-                      )
-                      .map((project) => (
-                        <motion.div
-                          {...projectTileAnimation}
-                          key={project.title}
-                        >
-                          <ProjectCard {...project} />
-                        </motion.div>
-                      ))}
-                  </AnimatePresence>
-                </motion.div>
-              )}
+                        .map((project) => (
+                          <motion.div
+                            {...projectTileAnimation}
+                            key={project.title}
+                          >
+                            <ProjectCard {...project} />
+                          </motion.div>
+                        ))}
+                    </AnimatePresence>
+                  </motion.div>
+                )}
+                {toggleState === 'right' && (
+                  <HorizontalSkillList
+                    selectedSkill={selectedSkill}
+                    setSelectedSkill={setSelectedSkill}
+                    skills={mockSkills}
+                  />
+                )}
+              </AnimatePresence>
             </AnimatePresence>
           )}
         </LayoutGroup>

@@ -85,3 +85,16 @@ export const projectTileAnimation: MotionProps = {
   },
   transition: { duration: 0.2 },
 }
+
+export const skillsListAnimation: MotionProps = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+  transition: { ...DEFAULT_SPRING_TRANSITION, delay: 0.05 },
+}
