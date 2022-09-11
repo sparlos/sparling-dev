@@ -1,4 +1,4 @@
-import { Project } from '../../utils/projects'
+import { Project } from './index'
 
 const oldPortfolio: Project = {
   slug: 'old-portfolio',

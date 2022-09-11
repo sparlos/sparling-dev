@@ -1,4 +1,4 @@
-import { Project } from '../../utils/projects'
+import { Project } from './index'
 
 const newPortfolio: Project = {
   title: 'new portfolio',

@@ -1,10 +1,5 @@
 import { DropdownOption } from '../hooks/useProjectSkillsDropdown'
-
-export type Project = {
-  title: string
-  slug: string
-  tags: string[]
-}
+import { Project } from '../data/projects/index'
 
 export const getUniqueTags = (projects: Project[]): string[] => {
   return Object.keys(

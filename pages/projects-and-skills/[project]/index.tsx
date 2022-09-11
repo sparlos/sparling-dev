@@ -1,7 +1,7 @@
 import { GetStaticPropsContext } from 'next'
 import ScrollableContentContainer from '../../../components/ScrollableContentContainer'
 import projects from '../../../data/projects'
-import { Project } from '../../../utils/projects'
+import { Project } from '../../../data/projects/index'
 
 type DynamicProjectProps = {
   project: Project
