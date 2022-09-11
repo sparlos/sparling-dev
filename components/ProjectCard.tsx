@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { Project } from '../data/projects'
 
 type ProjectCardProps = {
-  title: string
-  slug: string
+  project: Project
 }
 
-export default function ProjectCard({ title, slug }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
+  const { slug, title } = project
+
   return (
     <motion.div
       layout

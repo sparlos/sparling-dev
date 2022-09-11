@@ -114,7 +114,7 @@ export default function ProjectsAndSkills({
                             {...projectTileAnimation}
                             key={project.title}
                           >
-                            <ProjectCard {...project} />
+                            <ProjectCard project={project} />
                           </motion.div>
                         ))}
                     </AnimatePresence>
