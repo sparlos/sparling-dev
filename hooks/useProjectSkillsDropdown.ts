@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { BigToggleState } from '../components/BigToggle'
-import { getTagSelectOptions, mockProjectList } from '../utils/projects'
+import { getTagSelectOptions } from '../utils/projects'
 import { mockSkills, Skill } from '../utils/skills'
+import projects from '../data/projects'
 
 export type DropdownOption = {
   value: string
@@ -26,7 +27,7 @@ export default function useProjectSkillsDropdown({
     const params = new URLSearchParams(window.location.search)
     const view = params.get('view')
     view === 'projects'
-      ? setDropdownOptions(getTagSelectOptions(mockProjectList))
+      ? setDropdownOptions(getTagSelectOptions(projects))
       : setDropdownOptions(
           mockSkills.map((skill) => ({ label: skill.name, value: skill.name }))
         )
@@ -34,7 +35,7 @@ export default function useProjectSkillsDropdown({
 
   const handleSetToggleState = (state: BigToggleState) => {
     state === 'left'
-      ? setDropdownOptions(getTagSelectOptions(mockProjectList))
+      ? setDropdownOptions(getTagSelectOptions(projects))
       : setDropdownOptions(
           mockSkills.map((skill) => ({ label: skill.name, value: skill.name }))
         )

@@ -13,7 +13,7 @@ import {
 import useProjectSkillsDropdown, {
   DropdownOption,
 } from '../../hooks/useProjectSkillsDropdown'
-import { mockProjectList } from '../../utils/projects'
+import projects from '../../data/projects'
 import ProjectCard from '../../components/ProjectCard'
 import { GetServerSidePropsContext } from 'next'
 import { mockSkills, Skill } from '../../utils/skills'
@@ -102,7 +102,7 @@ export default function ProjectsAndSkills({
                     className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
                   >
                     <AnimatePresence>
-                      {mockProjectList
+                      {projects
                         .filter((project) =>
                           (dropdownValues as DropdownOption[]).every(
                             (dropdownOption) =>

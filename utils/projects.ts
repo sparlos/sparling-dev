@@ -6,29 +6,6 @@ export type Project = {
   tags: string[]
 }
 
-export const mockProjectList: Project[] = [
-  {
-    title: 'old portfolio',
-    slug: 'old-portfolio',
-    tags: ['react', 'tailwind'],
-  },
-  {
-    title: 'new portfolio',
-    slug: 'new-portfolio',
-    tags: ['react', 'tailwind', 'nextjs'],
-  },
-  {
-    title: 'codepen stuff',
-    slug: 'codepen-stuff',
-    tags: ['vueJS', 'audio', 'algorithms'],
-  },
-  {
-    title: 'sparling creations',
-    slug: 'sparling-creations',
-    tags: ['vueJS', 'audio', 'cockpit CMS'],
-  },
-]
-
 export const getUniqueTags = (projects: Project[]): string[] => {
   return Object.keys(
     projects.reduce((uniqueTags, project) => {

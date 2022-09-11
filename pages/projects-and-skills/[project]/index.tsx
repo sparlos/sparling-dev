@@ -1,6 +1,7 @@
 import { GetStaticPropsContext } from 'next'
 import ScrollableContentContainer from '../../../components/ScrollableContentContainer'
-import { mockProjectList, Project } from '../../../utils/projects'
+import projects from '../../../data/projects'
+import { Project } from '../../../utils/projects'
 
 type DynamicProjectProps = {
   project: Project
@@ -16,7 +17,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
 
 export async function getStaticPaths() {
   return {
-    paths: mockProjectList.map((project) => ({
+    paths: projects.map((project) => ({
       params: { project: project.slug },
     })),
     fallback: false,
@@ -26,7 +27,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: GetStaticPropsContext) {
   return {
     props: {
-      project: mockProjectList.find(
+      project: projects.find(
         (project) => project.slug === context?.params?.project
       ),
     },
