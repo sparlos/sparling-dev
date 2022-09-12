@@ -1,5 +1,5 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/oldPortfolio/cover.png'
+import coverImage from '../../public/projects/codepen/cover.png'
 
 const codepen: Project = {
   title: 'CodePen stuff',
