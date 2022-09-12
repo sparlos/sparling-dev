@@ -15,6 +15,17 @@ export type Skill = {
   logoDarkVariant?: string
 }
 
+export const getSkillLogo = (
+  skills: Skill[],
+  skillName: string
+): string | null => {
+  const skill = skills.find((skill) => skill.name === skillName)
+  if (skill) {
+    return skill.logo || null
+  }
+  return null
+}
+
 export const mockSkills: Skill[] = [
   {
     name: 'react',
