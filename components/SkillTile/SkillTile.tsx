@@ -42,7 +42,7 @@ export default function SkillTile({
                 alt={`${skill.name} logo`}
               />
             </div>
-            <div className="hidden pt-1 dark:block">
+            <div className="hidden pt-1 text-slate-400 dark:block">
               <Image
                 width={15}
                 height={15}

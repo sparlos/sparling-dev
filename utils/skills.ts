@@ -7,21 +7,22 @@ import tailwindLogo from '../public/logos/tailwind.svg'
 import sassLogo from '../public/logos/sass.svg'
 import mysqlLogo from '../public/logos/mysql.svg'
 import mysqlLightLogo from '../public/logos/mysqlLight.svg'
+import nextJSLogo from '../public/logos/nextJS.png'
+import headphonesLogo from '../public/logos/headphones.svg'
+import headphonesLightLogo from '../public/logos/headphonesLight.svg'
+import { StaticImageData } from 'next/image'
 
 export type Skill = {
   name: string
   description: string
-  logo?: string
+  logo?: string | StaticImageData
   logoDarkVariant?: string
 }
 
-export const getSkillLogo = (
-  skills: Skill[],
-  skillName: string
-): string | null => {
+export const getSkillLogo = (skills: Skill[], skillName: string) => {
   const skill = skills.find((skill) => skill.name === skillName)
   if (skill) {
-    return skill.logo || null
+    return skill.logoDarkVariant || skill.logo || null
   }
   return null
 }
@@ -85,6 +86,17 @@ export const mockSkills: Skill[] = [
           skill is still not as good as I am`,
     logo: mysqlLogo,
     logoDarkVariant: mysqlLightLogo,
+  },
+  {
+    name: 'Next.js',
+    description: 'nextjs is cool',
+    logo: nextJSLogo,
+  },
+  {
+    name: 'audio',
+    description: 'null',
+    logo: headphonesLogo,
+    logoDarkVariant: headphonesLightLogo,
   },
 ]
 
