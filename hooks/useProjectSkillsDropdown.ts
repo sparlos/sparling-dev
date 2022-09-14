@@ -26,19 +26,12 @@ export default function useProjectSkillsDropdown({
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const view = params.get('view')
-    view === 'projects'
-      ? setDropdownOptions(getTagSelectOptions(projects))
-      : setDropdownOptions(
-          mockSkills.map((skill) => ({ label: skill.name, value: skill.name }))
-        )
+    view === 'projects' && setDropdownOptions(getTagSelectOptions(projects))
   }, [])
 
   const handleSetToggleState = (state: BigToggleState) => {
-    state === 'left'
-      ? setDropdownOptions(getTagSelectOptions(projects))
-      : setDropdownOptions(
-          mockSkills.map((skill) => ({ label: skill.name, value: skill.name }))
-        )
+    state === 'left' && setDropdownOptions(getTagSelectOptions(projects))
+
     router.replace({
       query: { view: state === 'left' ? 'projects' : 'skills' },
     })
