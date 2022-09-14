@@ -36,8 +36,8 @@ export default function BigToggleButton({
     >
       <div
         className={`relative z-[2] transition-colors duration-75 dark:text-white ${
-          toggleState === position ? 'text-white' : ''
-        }`}
+          toggleState === position ? 'text-white ' : ''
+        } ${position === 'left' ? '-ml-4' : 'ml-4'}`}
       >
         {text}
       </div>

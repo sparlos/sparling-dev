@@ -50,9 +50,8 @@ export default function ProjectsAndSkills({
           <AnimatePresence>
             {!toggleState && (
               <motion.h1
-                key="heading"
                 layout
-                className="mb-14 text-4xl"
+                className="mb-6 mt-14 text-2xl sm:mt-0 sm:mb-14 sm:text-4xl"
                 {...headingAnimation}
               >
                 What are you looking for?
@@ -63,8 +62,8 @@ export default function ProjectsAndSkills({
             <BigToggle
               toggleState={toggleState}
               setToggleState={handleSetToggleState}
-              toggleLeftText="Personal projects"
-              toggleRightText="Work experience"
+              toggleLeftText="Projects"
+              toggleRightText="Experience"
               isPreToggled={isPreToggled}
             />
           </motion.div>
