@@ -112,7 +112,7 @@ export default function ProjectsAndSkills({
                         .map((project) => (
                           <motion.div
                             {...projectTileAnimation}
-                            key={project.title}
+                            key={project.slug}
                           >
                             <ProjectCard project={project} />
                           </motion.div>

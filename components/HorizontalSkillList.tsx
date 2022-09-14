@@ -23,8 +23,8 @@ export default function HorizontalSkillList({
       className="relative mt-10 grid sm:grid-cols-2 sm:gap-4"
       key="skills-list"
     >
-      <div>
-        {leftSkills.map((skill) => (
+      <div key="left-skills">
+        {leftSkills.map((skill, index) => (
           <SkillTile
             key={skill.name}
             skill={skill}
@@ -37,7 +37,7 @@ export default function HorizontalSkillList({
           />
         ))}
       </div>
-      <div>
+      <div key="right-skills">
         {rightSkills.map((skill) => (
           <SkillTile
             key={skill.name}

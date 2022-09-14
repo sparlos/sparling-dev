@@ -23,17 +23,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       <div className="pointer-events-none absolute top-0 left-0 z-10 flex h-20 w-full items-start justify-between rounded-lg bg-gradient-to-b from-black/50 px-4 pt-2">
         {new Array(3).fill(undefined).map((_, index) => {
-          console.log(index)
           const logo = logos[index]
           return logo ? (
             <motion.div
               className="flex items-center"
-              key={`${logo} logo for ${title}`}
+              key={`${project}-logo-${index}`}
             >
               <Image alt="logo image" width={15} height={15} src={logo} />
             </motion.div>
           ) : (
-            <div />
+            <div key={index} />
           )
         })}
       </div>
