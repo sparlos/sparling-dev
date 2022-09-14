@@ -18,6 +18,7 @@ import ProjectCard from '../../components/ProjectCard'
 import { GetServerSidePropsContext } from 'next'
 import { mockSkills, Skill } from '../../utils/skills'
 import HorizontalSkillList from '../../components/HorizontalSkillList'
+import { useRouter } from 'next/router'
 
 type ProjectsAndSkillsProps = {
   toggleStateFromParams?: BigToggleState
@@ -37,10 +38,14 @@ export default function ProjectsAndSkills({
     setDropdownValues,
     handleSetToggleState,
   } = useProjectSkillsDropdown({ setToggleState, setSelectedSkill })
+  const router = useRouter()
 
   const handleClickSkillLink = (skillName: string) => {
     setToggleState('left')
     setDropdownValues([{ label: skillName, value: skillName }])
+    router.replace({
+      query: { view: 'projects' },
+    })
   }
 
   return (
