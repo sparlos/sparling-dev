@@ -7,12 +7,14 @@ type HorizontalSkillListProps = {
   selectedSkill: Skill | null
   setSelectedSkill: (newSkill: Skill | null) => void
   skills: Skill[]
+  onClickSkillLink: (skillName: string) => void
 }
 
 export default function HorizontalSkillList({
   selectedSkill,
   setSelectedSkill,
   skills,
+  onClickSkillLink,
 }: HorizontalSkillListProps) {
   const [leftSkills, rightSkills] = splitSkills(skills)
 
@@ -28,6 +30,7 @@ export default function HorizontalSkillList({
           <SkillTile
             key={skill.name}
             skill={skill}
+            onClickSkillLink={onClickSkillLink}
             isSelected={skill === selectedSkill}
             onClick={() =>
               selectedSkill === skill
@@ -42,6 +45,7 @@ export default function HorizontalSkillList({
           <SkillTile
             key={skill.name}
             skill={skill}
+            onClickSkillLink={onClickSkillLink}
             isSelected={skill === selectedSkill}
             onClick={() =>
               selectedSkill === skill

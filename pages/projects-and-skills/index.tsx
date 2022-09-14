@@ -38,6 +38,11 @@ export default function ProjectsAndSkills({
     handleSetToggleState,
   } = useProjectSkillsDropdown({ setToggleState, setSelectedSkill })
 
+  const handleClickSkillLink = (skillName: string) => {
+    setToggleState('left')
+    setDropdownValues([{ label: skillName, value: skillName }])
+  }
+
   return (
     <ScrollableContentContainer
       large
@@ -122,6 +127,7 @@ export default function ProjectsAndSkills({
               )}
               {toggleState === 'right' && (
                 <HorizontalSkillList
+                  onClickSkillLink={handleClickSkillLink}
                   selectedSkill={selectedSkill}
                   setSelectedSkill={setSelectedSkill}
                   skills={mockSkills}

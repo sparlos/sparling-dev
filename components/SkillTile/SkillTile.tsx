@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { FiChevronDown } from 'react-icons/fi'
 import { DEFAULT_SPRING_TRANSITION } from '../../utils/framer'
@@ -8,12 +8,14 @@ type SkillTileProps = {
   skill: Skill
   isSelected: boolean
   onClick: () => void
+  onClickSkillLink: (skillName: string) => void
 }
 
 export default function SkillTile({
   skill,
   isSelected,
   onClick,
+  onClickSkillLink,
 }: SkillTileProps) {
   return (
     <motion.button
@@ -72,11 +74,25 @@ export default function SkillTile({
           initial={{ opacity: 0 }}
           animate={{ opacity: isSelected ? 1 : 0 }}
           transition={{ duration: 0.2 }}
-          className="px-8 pb-4"
+          className="px-8 pb-12"
         >
           {skill.description}
         </motion.div>
       </motion.div>
+      {isSelected && (
+        <motion.div
+          className="absolute bottom-4 left-0 flex w-full justify-center text-sm text-cyan-700 dark:text-cyan-400"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <button
+            onClick={() => onClickSkillLink(skill.name)}
+            className="underline"
+          >
+            See projects using {skill.name}
+          </button>
+        </motion.div>
+      )}
     </motion.button>
   )
 }
