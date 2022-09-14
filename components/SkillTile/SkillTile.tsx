@@ -1,7 +1,9 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FiChevronDown } from 'react-icons/fi'
+import projects from '../../data/projects'
 import { DEFAULT_SPRING_TRANSITION } from '../../utils/framer'
+import { getUniqueTags } from '../../utils/projects'
 import { Skill } from '../../utils/skills'
 
 type SkillTileProps = {
@@ -17,6 +19,8 @@ export default function SkillTile({
   onClick,
   onClickSkillLink,
 }: SkillTileProps) {
+  const hasProjects = getUniqueTags(projects).find((tag) => tag === skill.name)
+
   return (
     <motion.button
       aria-label={`display description for ${skill}`}
@@ -74,12 +78,12 @@ export default function SkillTile({
           initial={{ opacity: 0 }}
           animate={{ opacity: isSelected ? 1 : 0 }}
           transition={{ duration: 0.2 }}
-          className="px-8 pb-12"
+          className={`px-8 ${hasProjects ? 'pb-12' : 'pb-4'}`}
         >
           {skill.description}
         </motion.div>
       </motion.div>
-      {isSelected && (
+      {isSelected && hasProjects && (
         <motion.div
           className="absolute bottom-4 left-0 flex w-full justify-center text-sm text-cyan-700 dark:text-cyan-400"
           initial={{ opacity: 0 }}
