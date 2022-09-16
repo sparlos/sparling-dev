@@ -10,6 +10,10 @@ const sparlingCreations: Project = {
     portrait: [],
     landscape: [],
   },
+  description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis natus
+  nam ducimus aspernatur corrupti inventore dolorem libero ut voluptates
+  dolorum. Ad, rerum quod. Ipsa, aspernatur sint. Harum doloremque dolorem
+  quia.`,
 }
 
 export default sparlingCreations

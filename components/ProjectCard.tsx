@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
 import { Project } from '../data/projects'
-import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import { getSkillLogo, mockSkills } from '../utils/skills'
 
 type ProjectCardProps = {
@@ -44,6 +42,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               className="rounded-t-lg object-cover"
               src={images.cover}
               alt={`cover image for ${title} project`}
+              placeholder="blur"
             />
           </div>
           <div className="flex w-full flex-1 items-center justify-center py-4 text-sm">

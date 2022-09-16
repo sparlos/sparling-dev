@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image'
+import { ReactNode } from 'react'
 import codepen from './codepen'
 import oldPortfolio from './oldPortfolio'
 import newPortfolio from './portfolio'
@@ -12,6 +13,7 @@ type ProjectImages = {
 
 export type Project = {
   title: string
+  description: string
   slug: string
   tags: string[]
   images: ProjectImages
