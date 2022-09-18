@@ -1,7 +1,8 @@
 import { useTheme } from 'next-themes'
-import { Fragment, ReactNode, useEffect, useState } from 'react'
+import { Fragment, ReactNode, useEffect, useRef, useState } from 'react'
 import { FiMenu, FiMoon, FiSun } from 'react-icons/fi'
 import { motion } from 'framer-motion'
+import { useOnClickOutside } from 'usehooks-ts'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 
 type LayoutProps = {
@@ -16,6 +17,15 @@ export default function Layout({ children }: LayoutProps) {
   const { theme, systemTheme, setTheme } = useTheme()
 
   const currentTheme = theme !== 'system' ? theme : systemTheme
+
+  const handleClickOutsideNav = () => {
+    if (isMenuActive) {
+      setIsMenuActive(false)
+    }
+  }
+
+  const navButtonRef = useRef() as React.MutableRefObject<HTMLButtonElement>
+  useOnClickOutside(navButtonRef, handleClickOutsideNav)
 
   useEffect(() => {
     setMounted(true)
@@ -59,6 +69,7 @@ export default function Layout({ children }: LayoutProps) {
               </div>
               <div className="relative ml-4 rounded shadow-md">
                 <motion.button
+                  ref={navButtonRef}
                   aria-label={`turn dark mode ${
                     currentTheme === 'dark' ? 'off' : 'on'
                   }`}
