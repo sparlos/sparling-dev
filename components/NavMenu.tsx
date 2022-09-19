@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { useOnClickOutside } from 'usehooks-ts'
@@ -68,22 +69,45 @@ export default function NavMenu() {
             height: '3rem',
           }}
           animate={{
-            width: isMenuActive ? '12rem' : '3rem',
-            height: isMenuActive ? '16rem' : '3rem',
+            width: isMenuActive ? '11rem' : '3rem',
+            height: isMenuActive ? '12rem' : '3rem',
           }}
-          className="absolute top-0 right-0 z-10 h-full w-64 overflow-hidden rounded bg-white p-4 dark:bg-slate-700"
+          className={`absolute top-0 right-0 z-10 h-full w-64 overflow-hidden rounded bg-white p-4 ${
+            isMenuActive ? 'shadow-md' : 'shadow-none'
+          } dark:bg-slate-700`}
         >
           <AnimatePresence>
             {isMenuActive && (
               <motion.div
-                className="whitespace-nowrap"
+                className="pointer-events-auto whitespace-nowrap pt-8 pr-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.1 } }}
                 exit={{ opacity: 0, transition: { duration: 0.1, delay: 0 } }}
               >
-                <motion.div>who I am</motion.div>
-                <motion.div>what I do</motion.div>
-                <motion.div>where I&apos;m found</motion.div>
+                <Link href="/about">
+                  <motion.button
+                    onClick={handleClickOutsideNav}
+                    className="mb-3 block w-full text-right underline"
+                  >
+                    who I am
+                  </motion.button>
+                </Link>
+                <Link href="/projects-and-skills">
+                  <motion.button
+                    onClick={handleClickOutsideNav}
+                    className="mb-3 block w-full text-right underline"
+                  >
+                    what I do
+                  </motion.button>
+                </Link>
+                <Link href="/contact">
+                  <motion.button
+                    onClick={handleClickOutsideNav}
+                    className="block w-full text-right underline"
+                  >
+                    where I&apos;m found
+                  </motion.button>
+                </Link>
               </motion.div>
             )}
           </AnimatePresence>
