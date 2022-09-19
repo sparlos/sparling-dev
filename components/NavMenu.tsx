@@ -70,7 +70,7 @@ export default function NavMenu() {
           }}
           animate={{
             width: isMenuActive ? '11rem' : '3rem',
-            height: isMenuActive ? '12rem' : '3rem',
+            height: isMenuActive ? '13rem' : '3rem',
           }}
           className={`absolute top-0 right-0 z-10 h-full w-64 overflow-hidden rounded bg-white p-4 ${
             isMenuActive ? 'shadow-md' : 'shadow-none'
@@ -103,9 +103,17 @@ export default function NavMenu() {
                 <Link href="/contact">
                   <motion.button
                     onClick={handleClickOutsideNav}
-                    className="block w-full text-right underline"
+                    className="mb-3 block w-full text-right underline"
                   >
                     where I&apos;m found
+                  </motion.button>
+                </Link>
+                <Link href="/">
+                  <motion.button
+                    onClick={handleClickOutsideNav}
+                    className="block w-full text-right underline"
+                  >
+                    home
                   </motion.button>
                 </Link>
               </motion.div>
