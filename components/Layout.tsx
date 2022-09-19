@@ -1,8 +1,7 @@
 import { useTheme } from 'next-themes'
-import { Fragment, ReactNode, useEffect, useRef, useState } from 'react'
-import { FiMenu, FiMoon, FiSun } from 'react-icons/fi'
+import { Fragment, ReactNode, useEffect, useState } from 'react'
+import { FiMoon, FiSun } from 'react-icons/fi'
 import { motion } from 'framer-motion'
-import { useOnClickOutside } from 'usehooks-ts'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 import NavMenu from './NavMenu'
 

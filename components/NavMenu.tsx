@@ -18,7 +18,7 @@ export default function NavMenu() {
   }
 
   const navButtonRef = useRef() as React.MutableRefObject<HTMLButtonElement>
-  useOnClickOutside(navButtonRef, handleClickOutsideNav)
+  useOnClickOutside(navButtonRef, handleClickOutsideNav, 'mouseup')
 
   return (
     <div className="relative ml-4 rounded shadow-md">
