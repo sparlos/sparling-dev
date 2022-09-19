@@ -10,5 +10,5 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ✅ 💡 - ability to navigate to the projects-and-skills page with a pre-defined toggle state (i.e. a link that automatically selects either projects or skills - URL query param, different route altogether? see what works best w/ next)
 ⬜️ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
 ✅ 🛠 - completely remove dropdown for skills page, since it's not really necessary
-⬜️ 🐞 - fix "quit game" button positioning now that nav menu exists (overlaps)
+✅ 🐞 - fix "quit game" button positioning now that nav menu exists (overlaps)
 ⬜️ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically
