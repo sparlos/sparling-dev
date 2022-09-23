@@ -1,12 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { useOnClickOutside } from 'usehooks-ts'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 
 export default function NavMenu() {
+  const router = useRouter()
   const [isMenuButtonHovered, setIsMenuButtonHovered] = useState(false)
   const [isMenuActive, setIsMenuActive] = useState(false)
 
@@ -14,6 +16,15 @@ export default function NavMenu() {
     if (isMenuActive) {
       setIsMenuActive(false)
     }
+  }
+
+  const isSelectedPath = (path: string) => {
+    const { pathname } = router
+
+    if (path === '/') {
+      return pathname === '/'
+    }
+    return pathname.includes(path)
   }
 
   const navMenuRef = useRef() as React.MutableRefObject<HTMLButtonElement>
@@ -87,7 +98,9 @@ export default function NavMenu() {
                 <Link href="/about">
                   <motion.button
                     onClick={handleClickOutsideNav}
-                    className="mb-3 block w-full text-right underline"
+                    className={`mb-3 block w-full text-right underline ${
+                      isSelectedPath('about') && 'text-teal-400'
+                    }`}
                   >
                     who I am
                   </motion.button>
@@ -95,7 +108,9 @@ export default function NavMenu() {
                 <Link href="/projects-and-skills">
                   <motion.button
                     onClick={handleClickOutsideNav}
-                    className="mb-3 block w-full text-right underline"
+                    className={`mb-3 block w-full text-right underline ${
+                      isSelectedPath('projects-and-skills') && 'text-teal-400'
+                    }`}
                   >
                     what I do
                   </motion.button>
@@ -103,7 +118,9 @@ export default function NavMenu() {
                 <Link href="/contact">
                   <motion.button
                     onClick={handleClickOutsideNav}
-                    className="mb-3 block w-full text-right underline"
+                    className={`mb-3 block w-full text-right underline ${
+                      isSelectedPath('contact') && 'text-teal-400'
+                    }`}
                   >
                     where I&apos;m found
                   </motion.button>
@@ -111,7 +128,9 @@ export default function NavMenu() {
                 <Link href="/">
                   <motion.button
                     onClick={handleClickOutsideNav}
-                    className="block w-full text-right underline"
+                    className={`block w-full text-right underline ${
+                      isSelectedPath('/') && 'text-teal-400'
+                    }`}
                   >
                     home
                   </motion.button>
