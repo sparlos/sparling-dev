@@ -13,7 +13,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
   return (
     <ScrollableContentContainer large>
       <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-3">
+        <div className="col-span-4 md:col-span-3">
           <div>
             <h1 className="mt-3 mb-2 text-4xl">{project.title}</h1>
             <div className="width-full mb-6 flex">
@@ -33,32 +33,28 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               Back to projects
             </button>
           </Link>
-          <Image
-            className="mb-4 rounded-md shadow-md"
-            src={project.images.cover}
-            alt={`${project.title} cover image`}
-            placeholder="blur"
-          />
-          {/* TODO update with landscape/desktop images */}
-          <Image
-            className="mb-4 rounded-md shadow-md"
-            src={project.images.cover}
-            alt={`${project.title} cover image`}
-            placeholder="blur"
-          />
-          <Image
-            className="mb-4 rounded-md shadow-md"
-            src={project.images.cover}
-            alt={`${project.title} cover image`}
-            placeholder="blur"
-          />
+          {project.images.landscape.map((landscapeImage, index) => (
+            <Image
+              key={`landscape-image-${index}`}
+              className="mb-4 rounded-md shadow-md"
+              src={landscapeImage}
+              alt={`${project.title} cover image`}
+              placeholder="blur"
+            />
+          ))}
         </div>
-        <div>
-          {/* TODO: update with portrait/mobile images */}
-          <div className="mb-4 h-[400px] w-full bg-red-200"></div>
-          <div className="mb-4 h-[400px] w-full bg-red-200"></div>
-          <div className="mb-4 h-[400px] w-full bg-red-200"></div>
-          <div className="mb-4 h-[400px] w-full bg-red-200"></div>
+        <div className="col-span-4 md:col-span-1">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
+            {project.images.portrait.map((portraitImage, index) => (
+              <Image
+                key={`portrait-image-${index}`}
+                className="rounded-md shadow-md"
+                src={portraitImage}
+                alt={`${project.title} cover image`}
+                placeholder="blur"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </ScrollableContentContainer>

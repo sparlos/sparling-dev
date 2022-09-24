@@ -8,6 +8,8 @@ import sparlingCreations from './sparlingCreations'
 type ProjectImages = {
   cover: StaticImageData
   landscape: StaticImageData[]
+  // portrait images should be taken via chrome dev tools "pixel 5"
+  // (cmd + shift + p, "Capture screenshot")
   portrait: StaticImageData[]
 }
 
