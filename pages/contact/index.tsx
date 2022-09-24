@@ -1,5 +1,5 @@
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
-import { FiCodepen, FiGithub, FiMail } from 'react-icons/fi'
+import { FiCodepen, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { IconType } from 'react-icons'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -34,7 +34,7 @@ const FloatingIconLink = ({ iconLink }: { iconLink: IconLink }) => {
       href={link}
       target="_blank"
       rel="noreferrer"
-      className="mb-4 flex items-center text-xl underline"
+      className="relative mb-8 flex items-center text-lg underline"
       onHoverStart={() => handleHover()}
       onHoverEnd={() => handleBlur()}
       onFocus={() => handleHover()}
@@ -42,10 +42,34 @@ const FloatingIconLink = ({ iconLink }: { iconLink: IconLink }) => {
     >
       <motion.div>{linkName}</motion.div>
       <motion.div
-        className="ml-2"
+        className="absolute -left-6 mr-2"
+        initial={{ opacity: 0, rotate: 35 }}
+        animate={{
+          opacity: isHovered ? 1 : 0,
+          rotate: isHovered ? -720 : 0,
+          x: isHovered ? -150 : 0,
+          y: isHovered ? 50 : 0,
+        }}
+        transition={{
+          opacity: { duration: 0.5 },
+          duration: isHovered ? 1.75 : 0.5,
+        }}
+      >
+        <Icon />
+      </motion.div>
+      <motion.div
+        className="absolute -right-6 ml-2"
         initial={{ opacity: 0, rotate: -35 }}
-        animate={{ opacity: isHovered ? 1 : 0, rotate: isHovered ? 0 : -45 }}
-        transition={DEFAULT_SPRING_TRANSITION}
+        animate={{
+          opacity: isHovered ? 1 : 0,
+          rotate: isHovered ? 720 : 0,
+          x: isHovered ? 150 : 0,
+          y: isHovered ? 50 : 0,
+        }}
+        transition={{
+          opacity: { duration: 0.5 },
+          duration: isHovered ? 1.75 : 0.5,
+        }}
       >
         <Icon />
       </motion.div>
@@ -72,13 +96,19 @@ const links: IconLink[] = [
     link: 'https://codepen.io/sparlos',
     iconType: 'codepen',
   },
+  {
+    Icon: FiLinkedin,
+    linkName: 'Linkedin',
+    link: 'https://ca.linkedin.com/in/stephen-sparling-033643171',
+    iconType: 'linkedin',
+  },
 ]
 
 export default function Contact() {
   return (
     <ScrollableContentContainer large title="contact | sparling.dev">
-      <h1 className="mb-12 text-4xl">Places I&apos;m found</h1>
-      <div className="flex flex-col items-start">
+      <h1 className="mt-6 text-center text-4xl">Check out my stuff!</h1>
+      <div className="mt-12 flex flex-col items-center">
         {links.map((link) => (
           <FloatingIconLink key={link.linkName} iconLink={link} />
         ))}

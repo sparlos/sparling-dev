@@ -3,6 +3,7 @@ import {
   FiCode,
   FiCodepen,
   FiGithub,
+  FiLinkedin,
   FiMail,
   FiSend,
   FiUser,
@@ -31,6 +32,8 @@ const getBackgroundIcon = (
       return <FiMail size={iconSize} width="100%" />
     case 'codepen':
       return <FiCodepen size={iconSize} width="100%" />
+    case 'linkedin':
+      return <FiLinkedin size={iconSize} width="100%" />
     default:
       return null
   }
