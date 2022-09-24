@@ -121,7 +121,7 @@ const Home: NextPage = () => {
           />
           <LinkButton
             Icon={FiSend}
-            href="/about"
+            href="/contact"
             label="where I'm found"
             bgColor="bg-violet-500"
             backgroundIcon="mail"

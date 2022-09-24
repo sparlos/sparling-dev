@@ -1,55 +1,72 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiCode, FiSend, FiUser } from 'react-icons/fi'
-import useUIStore from '../store/uiStore'
+import {
+  FiCode,
+  FiCodepen,
+  FiGithub,
+  FiMail,
+  FiSend,
+  FiUser,
+} from 'react-icons/fi'
+import useUIStore, { BackgroundIcon } from '../store/uiStore'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
 
 const ICON_SIZE = 800
 const ICON_CLASS =
   'absolute inset-0 z-0 flex items-center justify-center text-slate-200 dark:text-slate-700'
 
-export default function IconBackground() {
+const getBackgroundIcon = (
+  backgroundIcon: BackgroundIcon,
+  iconSize: number
+) => {
+  switch (backgroundIcon) {
+    case 'code':
+      return <FiCode size={iconSize} width="100%" />
+    case 'github':
+      return <FiGithub size={iconSize} width="100%" />
+    case 'mail':
+      return <FiSend size={iconSize} width="100%" />
+    case 'user':
+      return <FiUser size={iconSize} width="100%" />
+    case 'email':
+      return <FiMail size={iconSize} width="100%" />
+    case 'codepen':
+      return <FiCodepen size={iconSize} width="100%" />
+    default:
+      return null
+  }
+}
+
+export default function IconBackground({
+  iconSize = ICON_SIZE,
+  iconOpacity = 1,
+}: {
+  iconSize?: number
+  iconOpacity?: number
+}) {
   const { backgroundIcon } = useUIStore()
 
+  const renderIcon = (backgroundIcon: BackgroundIcon) => {
+    if (!backgroundIcon) return null
+    return (
+      <motion.div
+        key={backgroundIcon}
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 0.5, scale: 1 }}
+        exit={{ opacity: 0 }}
+        transition={DEFAULT_SPRING_TRANSITION}
+        className={ICON_CLASS}
+      >
+        {getBackgroundIcon(backgroundIcon, iconSize)}
+      </motion.div>
+    )
+  }
+
   return (
-    <div className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden">
-      <AnimatePresence>
-        {backgroundIcon === 'user' && (
-          <motion.div
-            key="user"
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 0.5, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={DEFAULT_SPRING_TRANSITION}
-            className={ICON_CLASS}
-          >
-            <FiUser size={ICON_SIZE} width="100%" />
-          </motion.div>
-        )}
-        {backgroundIcon === 'code' && (
-          <motion.div
-            key="code"
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 0.5, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={DEFAULT_SPRING_TRANSITION}
-            className={ICON_CLASS}
-          >
-            <FiCode size={ICON_SIZE} width="100%" />
-          </motion.div>
-        )}
-        {backgroundIcon === 'mail' && (
-          <motion.div
-            key="mail"
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 0.5, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={DEFAULT_SPRING_TRANSITION}
-            className={ICON_CLASS}
-          >
-            <FiSend size={ICON_SIZE} width="100%" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div
+      style={{ opacity: iconOpacity }}
+      className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden"
+    >
+      <AnimatePresence>{renderIcon(backgroundIcon)}</AnimatePresence>
     </div>
   )
 }

@@ -1,6 +1,13 @@
 import create from 'zustand'
 
-export type BackgroundIcon = 'user' | 'code' | 'mail' | null
+export type BackgroundIcon =
+  | 'user'
+  | 'code'
+  | 'mail'
+  | 'github'
+  | 'email'
+  | 'codepen'
+  | null
 
 type UIStore = {
   backgroundIcon: BackgroundIcon
