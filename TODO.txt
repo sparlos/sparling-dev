@@ -5,10 +5,11 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ✅ 🐞 - Chrome android, status bar disappearing on scroll in /about causes BG gradient to not cover 100% of the height of the page
 ✅ 🐞 - scrolling not working on small screens for home page, very small height makes buttons unclickable
 ✅ 🐞 - prevent overflow for large background icons on hover of buttons for home page
-⬜️ 🤔 - switch home game to canvas rendering to optimize performance, make entity positions not dependent on state (use react-game-engine?)
 ✅ 🛠 - refactor BigToggle to at least separate out animations/refactor to make it cleaner
 ✅ 💡 - ability to navigate to the projects-and-skills page with a pre-defined toggle state (i.e. a link that automatically selects either projects or skills - URL query param, different route altogether? see what works best w/ next)
-⬜️ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
 ✅ 🛠 - completely remove dropdown for skills page, since it's not really necessary
+⬜️ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
+⬜️ 🤔 - switch home game to canvas rendering to optimize performance, make entity positions not dependent on state (use react-game-engine?)
+⬜️ 🤔 - add "next up" to project page, where a link is rendered at the bottom of any given project to another related project (need to maintain state of previously visited projects to avoid potential loops)
 ✅ 🐞 - fix "quit game" button positioning now that nav menu exists (overlaps)
 ⬜️ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically
