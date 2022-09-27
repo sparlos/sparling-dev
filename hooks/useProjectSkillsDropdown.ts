@@ -24,9 +24,7 @@ export default function useProjectSkillsDropdown({
   >([])
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const view = params.get('view')
-    view === 'projects' && setDropdownOptions(getTagSelectOptions(projects))
+    setDropdownOptions(getTagSelectOptions(projects))
   }, [])
 
   const handleSetToggleState = (state: BigToggleState) => {

@@ -11,3 +11,5 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ⬜️ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
 ⬜️ 🤔 - switch home game to canvas rendering to optimize performance, make entity positions not dependent on state (use react-game-engine?)
 ⬜️ 🤔 - add "next up" to project page, where a link is rendered at the bottom of any given project to another related project (need to maintain state of previously visited projects to avoid potential loops)
+✅ 🐞 - fix "quit game" button positioning now that nav menu exists (overlaps)
+⬜️ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically

@@ -13,6 +13,8 @@ import {
   scoreNumberAnimation,
   subtitleAnimation,
 } from '../utils/animations/rootRoute'
+import { useEffect } from 'react'
+import useUIStore from '../store/uiStore'
 
 const Home: NextPage = () => {
   const {
@@ -28,6 +30,11 @@ const Home: NextPage = () => {
     endGame,
     joystickAreaRef,
   } = useHomeScreenGame()
+  const { setBackgroundIcon } = useUIStore()
+
+  useEffect(() => {
+    return () => setBackgroundIcon(null)
+  }, [setBackgroundIcon])
 
   return (
     <div
@@ -121,7 +128,7 @@ const Home: NextPage = () => {
           />
           <LinkButton
             Icon={FiSend}
-            href="/about"
+            href="/contact"
             label="where I'm found"
             bgColor="bg-violet-500"
             backgroundIcon="mail"
