@@ -2,8 +2,7 @@ import ScrollableContentContainer from '../../components/ScrollableContentContai
 import { FiCodepen, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { IconType } from 'react-icons'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { DEFAULT_SPRING_TRANSITION } from '../../utils/framer'
+import { useEffect, useState } from 'react'
 import IconBackground from '../../components/IconBackground'
 import useUIStore, { BackgroundIcon } from '../../store/uiStore'
 
@@ -19,6 +18,10 @@ const FloatingIconLink = ({ iconLink }: { iconLink: IconLink }) => {
   const [isHovered, setIsHovered] = useState(false)
   const { Icon, linkName, link } = iconLink
 
+  useEffect(() => {
+    return () => setBackgroundIcon(null)
+  }, [setBackgroundIcon])
+
   const handleHover = () => {
     setIsHovered(true)
     setBackgroundIcon(iconLink.iconType)
@@ -30,17 +33,19 @@ const FloatingIconLink = ({ iconLink }: { iconLink: IconLink }) => {
   }
 
   return (
-    <motion.a
-      href={link}
-      target="_blank"
-      rel="noreferrer"
-      className="relative mb-8 flex items-center text-lg underline"
-      onHoverStart={() => handleHover()}
-      onHoverEnd={() => handleBlur()}
-      onFocus={() => handleHover()}
-      onBlur={() => handleBlur()}
-    >
-      <motion.div>{linkName}</motion.div>
+    <div className="relative mb-8 flex items-center text-lg">
+      <motion.a
+        className="underline"
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        onHoverStart={() => handleHover()}
+        onHoverEnd={() => handleBlur()}
+        onFocus={() => handleHover()}
+        onBlur={() => handleBlur()}
+      >
+        {linkName}
+      </motion.a>
       <motion.div
         className="absolute -left-6 mr-2"
         initial={{ opacity: 0, rotate: 35 }}
@@ -73,7 +78,7 @@ const FloatingIconLink = ({ iconLink }: { iconLink: IconLink }) => {
       >
         <Icon />
       </motion.div>
-    </motion.a>
+    </div>
   )
 }
 
