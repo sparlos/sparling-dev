@@ -118,7 +118,7 @@ export default function Contact() {
           <FloatingIconLink key={link.linkName} iconLink={link} />
         ))}
       </div>
-      <IconBackground iconSize={700} iconOpacity={0.5} />
+      <IconBackground iconSize={700} iconOpacity={0.35} />
     </ScrollableContentContainer>
   )
 }
