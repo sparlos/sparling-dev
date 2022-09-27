@@ -1,9 +1,14 @@
+import { motion } from 'framer-motion'
 import { GetStaticPropsContext } from 'next'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import ScrollableContentContainer from '../../../components/ScrollableContentContainer'
 import projects from '../../../data/projects'
 import { Project } from '../../../data/projects/index'
+import {
+  getImageSlideDownAnimation,
+  getTextSlideLeftAnimation,
+} from '../../../utils/animations/project'
 
 type DynamicProjectProps = {
   project: Project
@@ -15,8 +20,16 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
       <div className="grid grid-cols-4 gap-4">
         <div className="col-span-4 md:col-span-3">
           <div>
-            <h1 className="mt-3 mb-2 text-4xl">{project.title}</h1>
-            <div className="width-full mb-6 flex">
+            <motion.h1
+              className="mt-3 mb-2 text-4xl"
+              {...getTextSlideLeftAnimation()}
+            >
+              {project.title}
+            </motion.h1>
+            <motion.div
+              className="width-full mb-6 flex"
+              {...getTextSlideLeftAnimation()}
+            >
               {project.tags.map((tag, index) => (
                 <div
                   className="mr-2 text-slate-500 dark:text-slate-200"
@@ -25,34 +38,47 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
                   {tag} {index !== project.tags.length - 1 && ' |'}
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
-          <div className="mb-4">{project.description}</div>
+          <motion.div {...getTextSlideLeftAnimation()} className="mb-4">
+            {project.description}
+          </motion.div>
           <Link href="/projects-and-skills?view=projects">
-            <button className="mb-8 text-cyan-700 underline dark:text-cyan-500">
+            <motion.button
+              className="mb-8 text-cyan-700 underline dark:text-cyan-500"
+              {...getTextSlideLeftAnimation()}
+            >
               Back to projects
-            </button>
+            </motion.button>
           </Link>
           {project.images.landscape.map((landscapeImage, index) => (
-            <Image
+            <motion.div
               key={`landscape-image-${index}`}
-              className="mb-4 rounded-md shadow-md"
-              src={landscapeImage}
-              alt={`${project.title} cover image`}
-              placeholder="blur"
-            />
+              {...getImageSlideDownAnimation(0.25 + index * 0.1)}
+            >
+              <Image
+                className="mb-4 rounded-md shadow-md"
+                src={landscapeImage}
+                alt={`${project.title} cover image`}
+                placeholder="blur"
+              />
+            </motion.div>
           ))}
         </div>
         <div className="col-span-4 md:col-span-1">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
             {project.images.portrait.map((portraitImage, index) => (
-              <Image
+              <motion.div
                 key={`portrait-image-${index}`}
-                className="rounded-md shadow-md"
-                src={portraitImage}
-                alt={`${project.title} cover image`}
-                placeholder="blur"
-              />
+                {...getImageSlideDownAnimation(0.2 + index * 0.15)}
+              >
+                <Image
+                  className="rounded-md shadow-md"
+                  src={portraitImage}
+                  alt={`${project.title} cover image`}
+                  placeholder="blur"
+                />
+              </motion.div>
             ))}
           </div>
         </div>
