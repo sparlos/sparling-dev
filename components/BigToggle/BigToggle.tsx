@@ -11,7 +11,7 @@ import BigToggleButton from './components/BigToggleButton'
 
 export type BigToggleState = 'left' | 'right' | null
 
-type BigToggleProps = {
+export type BigToggleProps = {
   toggleState: BigToggleState
   shrinkOnSelect?: boolean
   setToggleState: (newState: BigToggleState) => void
