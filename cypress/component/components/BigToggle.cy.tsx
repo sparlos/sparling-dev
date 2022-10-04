@@ -25,5 +25,20 @@ describe('<BigToggle>', function () {
     cy.get('@setToggleStateSpy').should('have.been.calledWith', 'right')
     cy.contains('left').click()
     cy.get('@setToggleStateSpy').should('have.been.calledWith', 'left')
+    cy.get('@setToggleStateSpy').then(function (spy) {
+      expect(spy).to.be.calledTwice
+    })
+  })
+
+  it('should display the passed in left & right text', () => {
+    const mockLeftText = 'mockLeftText'
+    const mockRightText = 'mockRightText'
+    setup({
+      toggleLeftText: mockLeftText,
+      toggleRightText: mockRightText,
+    })
+
+    cy.contains(mockLeftText).should('be.visible')
+    cy.contains(mockRightText).should('be.visible')
   })
 })
