@@ -3,7 +3,7 @@ import { skillsListAnimation } from '../utils/animations/projectsAndSkills'
 import { Skill, splitSkills } from '../utils/skills'
 import SkillTile from './SkillTile'
 
-type HorizontalSkillListProps = {
+export type HorizontalSkillListProps = {
   selectedSkill: Skill | null
   setSelectedSkill: (newSkill: Skill | null) => void
   skills: Skill[]
@@ -25,7 +25,7 @@ export default function HorizontalSkillList({
       className="relative mt-10 grid sm:grid-cols-2 sm:gap-4"
       key="skills-list"
     >
-      <div key="left-skills">
+      <div key="left-skills" data-cy="left-skills">
         {leftSkills.map((skill, index) => (
           <SkillTile
             key={skill.name}
@@ -40,7 +40,7 @@ export default function HorizontalSkillList({
           />
         ))}
       </div>
-      <div key="right-skills">
+      <div key="right-skills" data-cy="right-skills">
         {rightSkills.map((skill) => (
           <SkillTile
             key={skill.name}
