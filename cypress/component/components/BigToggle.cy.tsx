@@ -25,9 +25,7 @@ describe('<BigToggle>', function () {
     cy.get('@setToggleStateSpy').should('have.been.calledWith', 'right')
     cy.contains('left').click()
     cy.get('@setToggleStateSpy').should('have.been.calledWith', 'left')
-    cy.get('@setToggleStateSpy').then(function (spy) {
-      expect(spy).to.be.calledTwice
-    })
+    cy.get('@setToggleStateSpy').should('have.been.calledTwice')
   })
 
   it('should display the passed in left & right text', () => {

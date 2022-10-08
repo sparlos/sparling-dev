@@ -6,7 +6,7 @@ import { DEFAULT_SPRING_TRANSITION } from '../../utils/framer'
 import { getUniqueTags } from '../../utils/projects'
 import { Skill } from '../../utils/skills'
 
-type SkillTileProps = {
+export type SkillTileProps = {
   skill: Skill
   isSelected: boolean
   onClick: () => void
@@ -76,6 +76,7 @@ export default function SkillTile({
           className="mt-2 text-sm"
         >
           <motion.div
+            data-cy="expandable-description-box"
             initial={{ opacity: 0 }}
             animate={{ opacity: isSelected ? 1 : 0 }}
             transition={{ duration: 0.2 }}

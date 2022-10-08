@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/core": ">=7.0.0 <8.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "@types/sat": "^0.0.31",
     "framer-motion": "^7.2.1",
     "next": "12.2.5",
