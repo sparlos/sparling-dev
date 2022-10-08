@@ -107,3 +107,14 @@ export const splitSkills = (skills: Skill[]): [Skill[], Skill[]] => {
   const secondHalf = skills.slice(midpoint, skills.length)
   return [firstHalf, secondHalf]
 }
+
+export const encodeSkillsForUrl = (skillNames: string[]) => {
+  const joinedSkillNames = skillNames.join('&')
+  return encodeURIComponent(joinedSkillNames)
+}
+
+export const decodeSkillsFromUrl = (skillNamesQuery: string) => {
+  if (!skillNamesQuery) return []
+  const decodedUri = decodeURIComponent(skillNamesQuery)
+  return decodedUri.split('&')
+}
