@@ -75,8 +75,16 @@ export default function About() {
         Along with those specialized technologies, I have a very strong
         foundation in HTML (semantics/accessibility is a big deal to me), CSS
         (SCSS, styled components, cross browser testing), and JavaScript
-        (basically everything you&apos;d read about in the &quot;You Don&apos;t
-        Know JS Yet&quot; book series).
+        (basically everything you&apos;d read about in the{' '}
+        <a
+          className="underline"
+          href="https://github.com/getify/You-Dont-Know-JS"
+          target="_blank"
+          rel="noreferrer"
+        >
+          &quot;You Don&apos;t Know JS Yet&quot;
+        </a>{' '}
+        book series).
       </motion.p>
       <motion.p
         className="mt-8"
@@ -87,14 +95,15 @@ export default function About() {
         }}
       >
         While I have strong software development skills, I believe the hallmark
-        of a truly great developer is soft skills, specifically their ability to
-        communicate. Being able to communicate extremely effectively both with
-        technical (other developers, technical clients) and non-technical
-        (project managers, designers, non-technical clients) individuals is one
-        of my greatest assets. I strive to discuss complex ideas in a way that
-        anyone can understand, taking into account their level of software
-        knowledge. I&apos;m also a great leader, having been promoted to a Staff
-        Software Developer after just 2 years of working at finnovate.io.
+        of a truly great developer are soft skills, specifically a
+        developer&apos;s ability to communicate. Being able to communicate
+        extremely effectively both with technical (other developers, technical
+        clients) and non-technical (project managers, designers, non-technical
+        clients) individuals is one of my greatest assets. I strive to discuss
+        complex ideas in a way that anyone can understand, taking into account
+        their level of software knowledge. I&apos;m also a great leader, having
+        been promoted to a Staff Software Developer after just 2 years of
+        working at finnovate.io.
       </motion.p>
       <motion.p
         className="mt-8"
@@ -106,7 +115,11 @@ export default function About() {
       >
         If you&apos;ve made it this far, thanks for reading about me! If
         you&apos;d like to reach out and start a dialogue to learn more, head on
-        over to the contact page with ways you can do that.
+        over to{' '}
+        <Link href="/contact">
+          <button className="underline">the contact page</button>
+        </Link>{' '}
+        with ways you can do that.
       </motion.p>
     </ScrollableContentContainer>
   )
