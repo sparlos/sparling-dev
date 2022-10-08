@@ -72,6 +72,13 @@ export default function ProjectsAndSkills({
     })
   }
 
+  const filteredProjects = projects.filter((project) => {
+    if (dropdownValues.length === 0) return true
+    return (dropdownValues as DropdownOption[]).some((dropdownOption) =>
+      project.tags.includes(dropdownOption.value)
+    )
+  })
+
   return (
     <ScrollableContentContainer
       large
@@ -137,21 +144,14 @@ export default function ProjectsAndSkills({
                     className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
                   >
                     <AnimatePresence>
-                      {projects
-                        .filter((project) =>
-                          (dropdownValues as DropdownOption[]).every(
-                            (dropdownOption) =>
-                              project.tags.includes(dropdownOption.value)
-                          )
-                        )
-                        .map((project) => (
-                          <motion.div
-                            {...projectTileAnimation}
-                            key={project.slug}
-                          >
-                            <ProjectCard project={project} />
-                          </motion.div>
-                        ))}
+                      {filteredProjects.map((project) => (
+                        <motion.div
+                          {...projectTileAnimation}
+                          key={project.slug}
+                        >
+                          <ProjectCard project={project} />
+                        </motion.div>
+                      ))}
                     </AnimatePresence>
                   </motion.div>
                 </motion.div>
