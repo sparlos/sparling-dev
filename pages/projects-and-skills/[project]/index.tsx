@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { GetStaticPropsContext } from 'next'
 import Image from 'next/future/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import ScrollableContentContainer from '../../../components/ScrollableContentContainer'
 import projects from '../../../data/projects'
 import { Project } from '../../../data/projects/index'
@@ -15,6 +16,8 @@ type DynamicProjectProps = {
 }
 
 export default function DynamicProject({ project }: DynamicProjectProps) {
+  const router = useRouter()
+
   return (
     <ScrollableContentContainer large>
       <div className="grid grid-cols-4 gap-4">
@@ -43,14 +46,14 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
           <motion.div {...getTextSlideLeftAnimation()} className="mb-4">
             {project.description}
           </motion.div>
-          <Link href="/projects-and-skills?view=projects">
+          <button onClick={() => router.back()}>
             <motion.button
               className="mb-8 text-cyan-700 underline dark:text-cyan-500"
               {...getTextSlideLeftAnimation()}
             >
               Back to projects
             </motion.button>
-          </Link>
+          </button>
           {project.images.landscape.map((landscapeImage, index) => (
             <motion.div
               key={`landscape-image-${index}`}

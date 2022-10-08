@@ -16,16 +16,18 @@ import useProjectSkillsDropdown, {
 import projects from '../../data/projects'
 import ProjectCard from '../../components/ProjectCard'
 import { GetServerSidePropsContext } from 'next'
-import { mockSkills, Skill } from '../../utils/skills'
+import { encodeSkillsForUrl, mockSkills, Skill } from '../../utils/skills'
 import HorizontalSkillList from '../../components/HorizontalSkillList'
 import { useRouter } from 'next/router'
 
 type ProjectsAndSkillsProps = {
   toggleStateFromParams?: BigToggleState
+  skillsFromParams: string
 }
 
 export default function ProjectsAndSkills({
   toggleStateFromParams,
+  skillsFromParams,
 }: ProjectsAndSkillsProps) {
   const [isPreToggled] = useState(!!toggleStateFromParams)
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
@@ -37,16 +39,45 @@ export default function ProjectsAndSkills({
     dropdownValues,
     setDropdownValues,
     handleSetToggleState,
-  } = useProjectSkillsDropdown({ setToggleState, setSelectedSkill })
+  } = useProjectSkillsDropdown({
+    setToggleState,
+    setSelectedSkill,
+    skillsFromParams,
+  })
   const router = useRouter()
+
+  const handleSetDropdownValues = (
+    newValue: string | DropdownOption[],
+    replaceQuery = true
+  ) => {
+    setDropdownValues(newValue)
+    const skillsForUrl = encodeSkillsForUrl(
+      (newValue as DropdownOption[]).map((option) => option.value)
+    )
+    replaceQuery &&
+      router.replace({
+        query: { ...router.query, skills: skillsForUrl },
+      })
+  }
 
   const handleClickSkillLink = (skillName: string) => {
     setToggleState('left')
-    setDropdownValues([{ label: skillName, value: skillName }])
+    const newDropdownValues = [{ label: skillName, value: skillName }]
+    handleSetDropdownValues(newDropdownValues, false)
+    const skillsForUrl = encodeSkillsForUrl(
+      newDropdownValues.map((option) => option.value)
+    )
     router.replace({
-      query: { view: 'projects' },
+      query: { view: 'projects', skills: skillsForUrl },
     })
   }
+
+  const filteredProjects = projects.filter((project) => {
+    if (dropdownValues.length === 0) return true
+    return (dropdownValues as DropdownOption[]).some((dropdownOption) =>
+      project.tags.includes(dropdownOption.value)
+    )
+  })
 
   return (
     <ScrollableContentContainer
@@ -99,7 +130,9 @@ export default function ProjectsAndSkills({
                       options={dropdownOptions}
                       value={dropdownValues}
                       onChange={(newValue) =>
-                        setDropdownValues(newValue as string | DropdownOption[])
+                        handleSetDropdownValues(
+                          newValue as string | DropdownOption[]
+                        )
                       }
                       isMulti={toggleState === 'left'}
                       placeholder="React, AWS, etc."
@@ -111,21 +144,14 @@ export default function ProjectsAndSkills({
                     className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
                   >
                     <AnimatePresence>
-                      {projects
-                        .filter((project) =>
-                          (dropdownValues as DropdownOption[]).every(
-                            (dropdownOption) =>
-                              project.tags.includes(dropdownOption.value)
-                          )
-                        )
-                        .map((project) => (
-                          <motion.div
-                            {...projectTileAnimation}
-                            key={project.slug}
-                          >
-                            <ProjectCard project={project} />
-                          </motion.div>
-                        ))}
+                      {filteredProjects.map((project) => (
+                        <motion.div
+                          {...projectTileAnimation}
+                          key={project.slug}
+                        >
+                          <ProjectCard project={project} />
+                        </motion.div>
+                      ))}
                     </AnimatePresence>
                   </motion.div>
                 </motion.div>
@@ -147,7 +173,7 @@ export default function ProjectsAndSkills({
 }
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-  const { view } = query
+  const { view, skills } = query
   return {
     props: {
       toggleStateFromParams: view
@@ -155,6 +181,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
           ? 'left'
           : 'right'
         : null,
+      skillsFromParams: skills || '',
     },
   }
 }

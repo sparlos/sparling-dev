@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { BigToggleState } from '../components/BigToggle'
 import { getTagSelectOptions } from '../utils/projects'
-import { mockSkills, Skill } from '../utils/skills'
+import { decodeSkillsFromUrl, mockSkills, Skill } from '../utils/skills'
 import projects from '../data/projects'
 
 export type DropdownOption = {
@@ -13,15 +13,22 @@ export type DropdownOption = {
 export default function useProjectSkillsDropdown({
   setToggleState,
   setSelectedSkill,
+  skillsFromParams,
 }: {
   setToggleState: (newState: BigToggleState) => void
   setSelectedSkill: (newSkill: Skill | null) => void
+  skillsFromParams: string
 }) {
   const router = useRouter()
   const [dropdownOptions, setDropdownOptions] = useState<DropdownOption[]>([])
   const [dropdownValues, setDropdownValues] = useState<
     string | DropdownOption[]
-  >([])
+  >(
+    decodeSkillsFromUrl(skillsFromParams).map((skill) => ({
+      label: skill,
+      value: skill,
+    }))
+  )
 
   useEffect(() => {
     setDropdownOptions(getTagSelectOptions(projects))
