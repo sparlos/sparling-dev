@@ -13,3 +13,4 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ⬜️ 🤔 - add "next up" to project page, where a link is rendered at the bottom of any given project to another related project (need to maintain state of previously visited projects to avoid potential loops)
 ✅ 🐞 - fix "quit game" button positioning now that nav menu exists (overlaps)
 ⬜️ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically
+⬜️ 🛠 - use selective radix-ui elements to handle specific functionality (BigToggle, skill accordions, etc.)
