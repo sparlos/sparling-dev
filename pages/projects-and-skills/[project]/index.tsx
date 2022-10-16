@@ -46,14 +46,13 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
           <motion.div {...getTextSlideLeftAnimation()} className="mb-4">
             {project.description}
           </motion.div>
-          <button onClick={() => router.back()}>
-            <motion.button
-              className="mb-8 text-cyan-700 underline dark:text-cyan-500"
-              {...getTextSlideLeftAnimation()}
-            >
-              Back to projects
-            </motion.button>
-          </button>
+          <motion.button
+            onClick={() => router.back()}
+            className="mb-8 text-cyan-700 underline dark:text-cyan-500"
+            {...getTextSlideLeftAnimation()}
+          >
+            Back to projects
+          </motion.button>
           {project.images.landscape.map((landscapeImage, index) => (
             <motion.div
               key={`landscape-image-${index}`}
