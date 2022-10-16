@@ -4,7 +4,7 @@ import coverImage from '../../public/projects/newPortfolio/cover.png'
 const newPortfolio: Project = {
   title: 'new portfolio',
   slug: 'new-portfolio',
-  tags: ['react', 'Next.js', 'tailwind'],
+  tags: ['react', 'Next.js', 'Tailwind'],
   images: {
     cover: coverImage,
     portrait: [],
