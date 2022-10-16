@@ -11,7 +11,15 @@ import landscape3 from '../../public/projects/oldPortfolio/landscape/3.png'
 const oldPortfolio: Project = {
   slug: 'old-portfolio',
   title: 'Old Portfolio',
-  tags: ['react', 'tailwind'],
+  tags: [
+    'React',
+    'GraphQL',
+    'Tailwind',
+    'Figma',
+    'Gatsby',
+    'SCSS',
+    'Framer Motion',
+  ],
   images: {
     cover: coverImage,
     portrait: [mobile1, mobile2, mobile3, mobile4],

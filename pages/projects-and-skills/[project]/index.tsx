@@ -30,7 +30,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               {project.title}
             </motion.h1>
             <motion.div
-              className="width-full mb-6 flex"
+              className="width-full mb-6 flex flex-wrap"
               {...getTextSlideLeftAnimation()}
             >
               {project.tags.map((tag, index) => (

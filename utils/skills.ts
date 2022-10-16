@@ -29,7 +29,7 @@ export const getSkillLogo = (skills: Skill[], skillName: string) => {
 
 export const mockSkills: Skill[] = [
   {
-    name: 'react',
+    name: 'React',
     description: `this is some flavour text about this skill. I will talk about how I am
           soooo good at this skill and everyone else who tries to master this
           skill is still not as good as I am`,
