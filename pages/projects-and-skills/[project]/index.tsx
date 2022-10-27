@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { GetStaticPropsContext } from 'next'
 import Image from 'next/future/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import ScrollableContentContainer from '../../../components/ScrollableContentContainer'
 import projects from '../../../data/projects'
 import { Project } from '../../../data/projects/index'
@@ -10,6 +10,7 @@ import {
   getImageSlideDownAnimation,
   getTextSlideLeftAnimation,
 } from '../../../utils/animations/project'
+import { purifyProjectDescription } from '../../../utils/projects'
 
 type DynamicProjectProps = {
   project: Project
@@ -17,6 +18,13 @@ type DynamicProjectProps = {
 
 export default function DynamicProject({ project }: DynamicProjectProps) {
   const router = useRouter()
+  const [purifiedDescription, setPurifiedDescription] = useState(
+    project.description
+  )
+
+  useEffect(() => {
+    setPurifiedDescription(purifyProjectDescription(project.description))
+  }, [project])
 
   return (
     <ScrollableContentContainer large>
@@ -43,8 +51,12 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               ))}
             </motion.div>
           </div>
-          <motion.div {...getTextSlideLeftAnimation()} className="mb-4">
-            {project.description}
+          <motion.div {...getTextSlideLeftAnimation()} className="mb-4 pr-8">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: purifiedDescription,
+              }}
+            />
           </motion.div>
           <motion.button
             onClick={() => router.back()}

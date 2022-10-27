@@ -1,4 +1,4 @@
-emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch 💡 = core feature)
+emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature/stretch 💡 = core feature)
 
 --------------------
 
@@ -14,3 +14,4 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ✅ 🐞 - fix "quit game" button positioning now that nav menu exists (overlaps)
 ⬜️ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically
 ⬜️ 🛠 - use selective radix-ui elements to handle specific functionality (BigToggle, skill accordions, etc.)
+⬜️ 🛠 - simple entrance animations for "contact" and "home" pages
