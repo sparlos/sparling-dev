@@ -10,6 +10,10 @@ html, body, #__next {
   @apply mb-4;
 }
 
+.project-description__list {
+  @apply list-disc ml-8;
+}
+
 .project-description__link {
   @apply mb-8 text-cyan-700 underline dark:text-cyan-500;
 }
