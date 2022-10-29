@@ -29,7 +29,13 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
   return (
     <ScrollableContentContainer large>
       <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-4 md:col-span-3">
+        <div
+          className={`col-span-4 ${
+            project.images.portrait.length === 0
+              ? 'md:col-span-4'
+              : 'md:col-span-3'
+          }`}
+        >
           <div>
             <motion.h1
               className="mt-3 mb-2 text-4xl"
@@ -51,7 +57,10 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               ))}
             </motion.div>
           </div>
-          <motion.div {...getTextSlideLeftAnimation()} className="mb-4 pr-8">
+          <motion.div
+            {...getTextSlideLeftAnimation()}
+            className="mb-4 max-w-prose pr-8"
+          >
             <div
               dangerouslySetInnerHTML={{
                 __html: purifiedDescription,

@@ -27,6 +27,8 @@ export type SkillName =
   | 'Framer Motion'
   | 'Gatsby'
   | 'Algorithms'
+  | 'Vuetify'
+  | 'Material Design'
 
 export type Skill = {
   name: SkillName
