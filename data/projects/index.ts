@@ -2,6 +2,7 @@ import { StaticImageData } from 'next/image'
 import { SkillName } from '../../utils/skills'
 import codepen from './codepen'
 import livestreamRadio from './livestreamRadio'
+import midiParticles from './midiParticles'
 import oldPortfolio from './oldPortfolio'
 import newPortfolio from './portfolio'
 import sparlingCreations from './sparlingCreations'
@@ -27,6 +28,7 @@ const projects: Project[] = [
   studioPlanner,
   newPortfolio,
   oldPortfolio,
+  midiParticles,
   livestreamRadio,
   codepen,
   sparlingCreations,

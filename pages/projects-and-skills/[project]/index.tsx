@@ -80,10 +80,10 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               {...getImageSlideDownAnimation(0.25 + index * 0.1)}
             >
               <Image
-                className="mb-4 rounded-md shadow-md"
+                className="mx-auto mb-4 rounded-md shadow-md"
                 src={landscapeImage}
                 alt={`${project.title} cover image`}
-                placeholder="blur"
+                // placeholder="blur"
               />
             </motion.div>
           ))}
@@ -99,7 +99,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
                   className="rounded-md shadow-md"
                   src={portraitImage}
                   alt={`${project.title} cover image`}
-                  placeholder="blur"
+                  // placeholder="blur"
                 />
               </motion.div>
             ))}
