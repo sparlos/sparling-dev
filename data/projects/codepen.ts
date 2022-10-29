@@ -4,7 +4,7 @@ import coverImage from '../../public/projects/codepen/cover.png'
 const codepen: Project = {
   title: 'CodePen stuff',
   slug: 'codepen-stuff',
-  tags: ['vueJS', 'audio', 'algorithms'],
+  tags: ['vueJS', 'Audio', 'Algorithms'],
   images: {
     cover: coverImage,
     portrait: [],

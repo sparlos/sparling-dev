@@ -12,8 +12,24 @@ import headphonesLogo from '../public/logos/headphones.svg'
 import headphonesLightLogo from '../public/logos/headphonesLight.svg'
 import { StaticImageData } from 'next/image'
 
+export type SkillName =
+  | 'React'
+  | 'AWS'
+  | 'Tailwind'
+  | 'SCSS'
+  | 'vueJS'
+  | 'MongoDB'
+  | 'MySQL'
+  | 'Next.js'
+  | 'Audio'
+  | 'GraphQL'
+  | 'Figma'
+  | 'Framer Motion'
+  | 'Gatsby'
+  | 'Algorithms'
+
 export type Skill = {
-  name: string
+  name: SkillName
   description: string
   logo?: string | StaticImageData
   logoDarkVariant?: string
@@ -36,7 +52,7 @@ export const mockSkills: Skill[] = [
     logo: reactLogo,
   },
   {
-    name: 'aws',
+    name: 'AWS',
     description: `this is some flavour text about this skill. I will talk about how I am
           soooo good at this skill and everyone else who tries to master this
           skill is still not as good as I am this is some flavour text about this skill. I will talk about how I am
@@ -93,7 +109,7 @@ export const mockSkills: Skill[] = [
     logo: nextJSLogo,
   },
   {
-    name: 'audio',
+    name: 'Audio',
     description: 'null',
     logo: headphonesLogo,
     logoDarkVariant: headphonesLightLogo,

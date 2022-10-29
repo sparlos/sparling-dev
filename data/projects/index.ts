@@ -1,8 +1,10 @@
 import { StaticImageData } from 'next/image'
+import { SkillName } from '../../utils/skills'
 import codepen from './codepen'
 import oldPortfolio from './oldPortfolio'
 import newPortfolio from './portfolio'
 import sparlingCreations from './sparlingCreations'
+import studioPlanner from './studioPlanner'
 
 type ProjectImages = {
   cover: StaticImageData
@@ -16,11 +18,12 @@ export type Project = {
   title: string
   description: string
   slug: string
-  tags: string[]
+  tags: SkillName[]
   images: ProjectImages
 }
 
 const projects: Project[] = [
+  studioPlanner,
   oldPortfolio,
   newPortfolio,
   codepen,

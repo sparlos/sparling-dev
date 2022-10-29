@@ -4,7 +4,7 @@ import coverImage from '../../public/projects/sparlingCreations/cover.png'
 const sparlingCreations: Project = {
   title: 'Sparling Creations',
   slug: 'sparling-creations',
-  tags: ['vueJS', 'audio', 'cockpit CMS'],
+  tags: ['vueJS', 'Audio'],
   images: {
     cover: coverImage,
     portrait: [],
