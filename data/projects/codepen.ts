@@ -9,7 +9,7 @@ import landscape5 from '../../public/projects/codepen/landscape/5.png'
 const codepen: Project = {
   title: 'CodePen stuff',
   slug: 'codepen-stuff',
-  tags: ['vueJS', 'Audio', 'Algorithms'],
+  tags: ['vueJS', 'SCSS', 'Audio', 'Algorithms'],
   images: {
     cover: coverImage,
     portrait: [],

@@ -7,7 +7,7 @@ import landscape3 from '../../public/projects/midiParticles/landscape/3.gif'
 const midiParticles: Project = {
   slug: 'midi-particles',
   title: 'MIDI Particles',
-  tags: ['vueJS', 'Vuetify', 'SCSS', 'Material Design'],
+  tags: ['vueJS', 'Web MIDI API', 'SCSS', 'Vuex', 'Canvas', 'OoP'],
   images: {
     cover: coverImage,
     portrait: [],

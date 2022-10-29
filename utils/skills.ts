@@ -29,6 +29,10 @@ export type SkillName =
   | 'Algorithms'
   | 'Vuetify'
   | 'Material Design'
+  | 'Web MIDI API'
+  | 'Vuex'
+  | 'Canvas'
+  | 'OoP'
 
 export type Skill = {
   name: SkillName
