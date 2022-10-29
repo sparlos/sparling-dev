@@ -9,6 +9,7 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature, stretch �
 ✅ 💡 - ability to navigate to the projects-and-skills page with a pre-defined toggle state (i.e. a link that automatically selects either projects or skills - URL query param, different route altogether? see what works best w/ next)
 ✅ 🛠 - completely remove dropdown for skills page, since it's not really necessary
 ⬜️ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
+⬜️ 🛠 - update project card styling to be 2 per row, move tag icons to bottom, add tag name as well if room
 ⬜️ 🤔 - switch home game to canvas rendering to optimize performance, make entity positions not dependent on state (use react-game-engine?)
 ⬜️ 🤔 - add "next up" to project page, where a link is rendered at the bottom of any given project to another related project (need to maintain state of previously visited projects to avoid potential loops)
 ✅ 🐞 - fix "quit game" button positioning now that nav menu exists (overlaps)
