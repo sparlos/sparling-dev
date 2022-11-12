@@ -1,5 +1,5 @@
 import SkillTile, { SkillTileProps } from '../../../components/SkillTile'
-import { Skill } from '../../../utils/skills'
+import { Skill, SkillName } from '../../../utils/skills'
 import * as projectUitls from '../../../utils/projects'
 
 const explandableDescriptionBoxSelector = '[data-cy=expandable-description-box]'
@@ -7,7 +7,7 @@ const explandableDescriptionBoxSelector = '[data-cy=expandable-description-box]'
 function setup(propOverrides?: Partial<SkillTileProps>) {
   const defaultMockSkill: Skill = {
     description: 'mock skill',
-    name: 'Mock Skill Name',
+    name: 'Mock Skill Name' as SkillName,
   }
 
   const mockProps: SkillTileProps = {
