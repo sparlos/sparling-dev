@@ -17,9 +17,8 @@ import projects from '../../data/projects'
 import skills from '../../data/skills'
 import ProjectCard from '../../components/ProjectCard'
 import { GetServerSidePropsContext } from 'next'
-import { encodeSkillsForUrl, Skill, SkillName } from '../../utils/skills'
+import { Skill, SkillName } from '../../utils/skills'
 import HorizontalSkillList from '../../components/HorizontalSkillList'
-import { useRouter } from 'next/router'
 
 type ProjectsAndSkillsProps = {
   toggleStateFromParams?: BigToggleState
@@ -38,41 +37,13 @@ export default function ProjectsAndSkills({
   const {
     dropdownOptions,
     dropdownValues,
-    setDropdownValues,
+    handleSetDropdownValues,
     handleSetToggleState,
   } = useProjectSkillsDropdown({
     setToggleState,
     setSelectedSkill,
     skillsFromParams,
   })
-  const router = useRouter()
-
-  const handleSetDropdownValues = (
-    newValue: string | DropdownOption[],
-    replaceQuery = true
-  ) => {
-    setDropdownValues(newValue)
-    const skillsForUrl = encodeSkillsForUrl(
-      (newValue as DropdownOption[]).map((option) => option.value)
-    )
-    replaceQuery &&
-      router.replace({
-        query: { ...router.query, skills: skillsForUrl },
-      })
-  }
-
-  const handleClickSkillLink = (skillName: string) => {
-    setToggleState('left')
-    const newDropdownValues = [{ label: skillName, value: skillName }]
-    handleSetDropdownValues(newDropdownValues, false)
-    const skillsForUrl = encodeSkillsForUrl(
-      newDropdownValues.map((option) => option.value)
-    )
-    router.replace({
-      query: { view: 'projects', skills: skillsForUrl },
-    })
-  }
-
   const filteredProjects = projects.filter((project) => {
     if (dropdownValues.length === 0) return true
     return (dropdownValues as DropdownOption[]).some((dropdownOption) =>
@@ -159,7 +130,9 @@ export default function ProjectsAndSkills({
               )}
               {toggleState === 'right' && (
                 <HorizontalSkillList
-                  onClickSkillLink={handleClickSkillLink}
+                  onClickSkillLink={(skillName) =>
+                    handleSetToggleState('left', skillName)
+                  }
                   selectedSkill={selectedSkill}
                   setSelectedSkill={setSelectedSkill}
                   skills={skills}

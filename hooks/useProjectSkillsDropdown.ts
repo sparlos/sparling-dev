@@ -1,13 +1,18 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { BigToggleState } from '../components/BigToggle'
 import { getTagSelectOptions } from '../utils/projects'
-import { decodeSkillsFromUrl, Skill } from '../utils/skills'
-import projects from '../data/projects'
+import { decodeSkillsFromUrl, encodeSkillsForUrl, Skill } from '../utils/skills'
+import projects, { Project } from '../data/projects'
 
 export type DropdownOption = {
   value: string
   label: string
+}
+
+type ProjectSkillsQueryParams = {
+  view?: string
+  skills?: string
 }
 
 export default function useProjectSkillsDropdown({
@@ -20,7 +25,15 @@ export default function useProjectSkillsDropdown({
   skillsFromParams: string
 }) {
   const router = useRouter()
-  const [dropdownOptions, setDropdownOptions] = useState<DropdownOption[]>([])
+  const [internalHistory, setInternalHistory] = useState<
+    ProjectSkillsQueryParams[]
+  >([])
+
+  console.log(internalHistory)
+
+  const [dropdownOptions, _] = useState<DropdownOption[]>(
+    getTagSelectOptions(projects)
+  )
   const [dropdownValues, setDropdownValues] = useState<
     string | DropdownOption[]
   >(
@@ -30,17 +43,47 @@ export default function useProjectSkillsDropdown({
     }))
   )
 
-  useEffect(() => {
-    setDropdownOptions(getTagSelectOptions(projects))
-  }, [])
+  const handleSetDropdownValues = (
+    newValue: string | DropdownOption[],
+    replaceQuery = true
+  ) => {
+    setDropdownValues(newValue)
+    const skillsForUrl = encodeSkillsForUrl(
+      (newValue as DropdownOption[]).map((option) => option.value)
+    )
+    if (replaceQuery) {
+      const newQuery: ProjectSkillsQueryParams = {
+        ...router.query,
+        skills: skillsForUrl,
+      }
 
-  const handleSetToggleState = (state: BigToggleState) => {
-    state === 'left' && setDropdownOptions(getTagSelectOptions(projects))
+      setInternalHistory((prevValue) => [...prevValue, newQuery])
+      router.replace({
+        query: newQuery,
+      })
+    }
+  }
+
+  const handleSetToggleState = (state: BigToggleState, skillName?: string) => {
+    let newQuery: ProjectSkillsQueryParams = {
+      view: state === 'left' ? 'projects' : 'skills',
+    }
+
+    if (skillName) {
+      const newDropdownValues = [{ label: skillName, value: skillName }]
+      handleSetDropdownValues(newDropdownValues, false)
+      const skillsForUrl = encodeSkillsForUrl(
+        newDropdownValues.map((option) => option.value)
+      )
+      newQuery.skills = skillsForUrl
+    } else {
+      setDropdownValues([])
+    }
 
     router.replace({
-      query: { view: state === 'left' ? 'projects' : 'skills' },
+      query: newQuery,
     })
-    setDropdownValues([])
+    setInternalHistory((prevValue) => [...prevValue, newQuery])
     setToggleState(state)
     setSelectedSkill(null)
   }
@@ -50,5 +93,6 @@ export default function useProjectSkillsDropdown({
     dropdownValues,
     setDropdownValues,
     handleSetToggleState,
+    handleSetDropdownValues,
   }
 }
