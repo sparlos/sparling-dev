@@ -27,17 +27,10 @@ const skills: Skill[] = [
   },
   {
     name: 'AWS',
-    description: `this is some flavour text about this skill. I will talk about how I am
-          soooo good at this skill and everyone else who tries to master this
-          skill is still not as good as I am this is some flavour text about this skill. I will talk about how I am
-          soooo good at this skill and everyone else who tries to master this
-          skill is still not as good as I am this is some flavour text about this skill. I will talk about how I am
-          soooo good at this skill and everyone else who tries to master this
-          skill is still not as good as I am this is some flavour text about this skill. I will talk about how I am
-          soooo good at this skill and everyone else who tries to master this
-          skill is still not as good as I amthis is some flavour text about this skill. I will talk about how I am
-          soooo good at this skill and everyone else who tries to master this
-          skill is still not as good as I am`,
+    description: [
+      `I've built multiple projects that have used a wide variety of services offered by AWS, including Elastic Beanstalk, S3, CodePipeline, CodeBuild, CloudFront, and others.`,
+      `My crowning achievement AWS-wise was creating a fully custom build pipeline for a frontend application using the AWS CDK, all defined in TypeScript. The pipeline retrieved the source code from GitHub using AWS CodeStar, built and ran linting/tests (unit and E2E via Cypress) via AWS CodeBuild, pushed the built code up to an S3 bucket behind CloudFront (both defined using CDK).`,
+    ],
     logo: awsLogo,
     logoDarkVariant: awsLightLogo,
   },
@@ -99,6 +92,7 @@ const skills: Skill[] = [
   { name: 'Framer Motion', description: 'null', logo: framerMotionLogo },
   { name: 'Gatsby', description: 'null', logo: gatsbyLogo },
   { name: 'Material Design', description: 'null', logo: materialDesignLogo },
+  { name: 'Cypress', description: 'null' },
 ]
 
 export default skills

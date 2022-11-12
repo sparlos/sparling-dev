@@ -24,10 +24,11 @@ export type SkillName =
   | 'Supabase'
   | 'Chakra UI'
   | 'dnd-kit'
+  | 'Cypress'
 
 export type Skill = {
   name: SkillName
-  description: string
+  description: string | string[]
   logo?: string | StaticImageData
   logoDarkVariant?: string
 }
