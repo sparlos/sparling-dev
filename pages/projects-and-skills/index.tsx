@@ -113,7 +113,7 @@ export default function ProjectsAndSkills({
                   <motion.div
                     key="projects-list"
                     {...projectListAnimation}
-                    className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
+                    className="mt-6 grid gap-4 md:grid-cols-2"
                   >
                     <AnimatePresence>
                       {filteredProjects.map((project) => (
