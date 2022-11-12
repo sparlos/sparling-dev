@@ -1,5 +1,5 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/sparlingCreations/cover.png'
+import coverImage from '../../public/projects/sparlingCreations/cover.jpg'
 
 const sparlingCreations: Project = {
   title: 'Sparling Creations',

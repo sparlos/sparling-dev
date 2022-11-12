@@ -1,12 +1,12 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/oldPortfolio/cover.png'
-import mobile1 from '../../public/projects/oldPortfolio/mobile/1.png'
-import mobile2 from '../../public/projects/oldPortfolio/mobile/2.png'
-import mobile3 from '../../public/projects/oldPortfolio/mobile/3.png'
-import mobile4 from '../../public/projects/oldPortfolio/mobile/4.png'
-import landscape1 from '../../public/projects/oldPortfolio/landscape/1.png'
-import landscape2 from '../../public/projects/oldPortfolio/landscape/2.png'
-import landscape3 from '../../public/projects/oldPortfolio/landscape/3.png'
+import coverImage from '../../public/projects/oldPortfolio/cover.jpg'
+import mobile1 from '../../public/projects/oldPortfolio/mobile/1.jpg'
+import mobile2 from '../../public/projects/oldPortfolio/mobile/2.jpg'
+import mobile3 from '../../public/projects/oldPortfolio/mobile/3.jpg'
+import mobile4 from '../../public/projects/oldPortfolio/mobile/4.jpg'
+import landscape1 from '../../public/projects/oldPortfolio/landscape/1.jpg'
+import landscape2 from '../../public/projects/oldPortfolio/landscape/2.jpg'
+import landscape3 from '../../public/projects/oldPortfolio/landscape/3.jpg'
 
 const oldPortfolio: Project = {
   slug: 'old-portfolio',

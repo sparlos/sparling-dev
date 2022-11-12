@@ -1,5 +1,5 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/newPortfolio/cover.png'
+import coverImage from '../../public/projects/newPortfolio/cover.jpg'
 
 const newPortfolio: Project = {
   title: 'new portfolio',

@@ -1,7 +1,7 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/midiParticles/cover.png'
+import coverImage from '../../public/projects/midiParticles/cover.jpg'
 import landscape1 from '../../public/projects/midiParticles/landscape/1.jpeg'
-import landscape2 from '../../public/projects/midiParticles/landscape/2.png'
+import landscape2 from '../../public/projects/midiParticles/landscape/2.jpg'
 import landscape3 from '../../public/projects/midiParticles/landscape/3.gif'
 
 const midiParticles: Project = {

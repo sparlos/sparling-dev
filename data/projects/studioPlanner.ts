@@ -1,9 +1,9 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/studioPlanner/cover.png'
-import mobile1 from '../../public/projects/studioPlanner/mobile/1.png'
-import mobile2 from '../../public/projects/studioPlanner/mobile/2.png'
-import landscape1 from '../../public/projects/studioPlanner/landscape/1.png'
-import landscape2 from '../../public/projects/studioPlanner/landscape/2.png'
+import coverImage from '../../public/projects/studioPlanner/cover.jpg'
+import mobile1 from '../../public/projects/studioPlanner/mobile/1.jpg'
+import mobile2 from '../../public/projects/studioPlanner/mobile/2.jpg'
+import landscape1 from '../../public/projects/studioPlanner/landscape/1.jpg'
+import landscape2 from '../../public/projects/studioPlanner/landscape/2.jpg'
 
 const studioPlanner: Project = {
   slug: 'studio-planner',

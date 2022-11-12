@@ -1,9 +1,9 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/livestreamRadio/cover.png'
-import landscape1 from '../../public/projects/livestreamRadio/landscape/1.png'
-import landscape2 from '../../public/projects/livestreamRadio/landscape/2.png'
-import landscape3 from '../../public/projects/livestreamRadio/landscape/3.png'
-import landscape4 from '../../public/projects/livestreamRadio/landscape/4.png'
+import coverImage from '../../public/projects/livestreamRadio/cover.jpg'
+import landscape1 from '../../public/projects/livestreamRadio/landscape/1.jpg'
+import landscape2 from '../../public/projects/livestreamRadio/landscape/2.jpg'
+import landscape3 from '../../public/projects/livestreamRadio/landscape/3.jpg'
+import landscape4 from '../../public/projects/livestreamRadio/landscape/4.jpg'
 
 const livestreamRadio: Project = {
   slug: 'livestream-radio',

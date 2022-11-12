@@ -1,10 +1,10 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/codepen/cover.png'
-import landscape1 from '../../public/projects/codepen/landscape/1.png'
-import landscape2 from '../../public/projects/codepen/landscape/2.png'
-import landscape3 from '../../public/projects/codepen/landscape/3.png'
-import landscape4 from '../../public/projects/codepen/landscape/4.png'
-import landscape5 from '../../public/projects/codepen/landscape/5.png'
+import coverImage from '../../public/projects/codepen/cover.jpg'
+import landscape1 from '../../public/projects/codepen/landscape/1.jpg'
+import landscape2 from '../../public/projects/codepen/landscape/2.jpg'
+import landscape3 from '../../public/projects/codepen/landscape/3.jpg'
+import landscape4 from '../../public/projects/codepen/landscape/4.jpg'
+import landscape5 from '../../public/projects/codepen/landscape/5.jpg'
 
 const codepen: Project = {
   title: 'CodePen stuff',
