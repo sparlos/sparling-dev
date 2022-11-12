@@ -25,6 +25,10 @@ export type SkillName =
   | 'Chakra UI'
   | 'dnd-kit'
   | 'Cypress'
+  | 'Python'
+  | 'Node.js'
+  | 'Docker'
+  | 'Kubernetes'
 
 export type Skill = {
   name: SkillName
