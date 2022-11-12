@@ -47,18 +47,19 @@ export default function LinkButton({
         onFocus={() => handleFocusButton(true)}
         onBlur={() => handleFocusButton(false)}
         className={
-          'h-18 group relative w-64 max-w-full sm:h-28 sm:w-32 ' +
+          'group relative mb-10 h-32 w-40 max-w-full sm:mb-0 sm:h-28 sm:w-32 ' +
           (className || '')
         }
       >
         <motion.div
-          className="peer relative z-10 flex h-full w-full flex-col items-center rounded bg-white p-4 shadow-md dark:bg-slate-700"
+          className="peer relative z-10 flex h-full w-full flex-col items-center rounded-md bg-white p-4 shadow-md dark:bg-slate-700 sm:rounded"
           transition={DEFAULT_SPRING_TRANSITION}
           animate={isButtonFocused ? BUTTON_ACTIVE_ANIMATION : {}}
           onHoverStart={() => handleFocusButton(true)}
           onHoverEnd={() => handleFocusButton(false)}
         >
           <motion.div
+            className="flex flex-1 items-end sm:block"
             ref={iconRef}
             animate={{
               scale: isButtonFocused ? 1.35 : 1,
@@ -76,14 +77,14 @@ export default function LinkButton({
               />
             )}
           </motion.div>
-          <div className="text-sm">{label}</div>
+          <div className="flex-1 text-sm sm:block">{label}</div>
         </motion.div>
         <div
           className={'absolute inset-0 z-0 h-full w-full rounded-md ' + bgColor}
         />
         <div
           className={
-            'absolute inset-0 z-0 h-full w-full scale-125 rounded-md p-6 opacity-0 blur transition duration-500 group-focus:scale-50 peer-hover:scale-50 dark:opacity-25 ' +
+            'scale:100 absolute inset-0 z-0 h-full w-full rounded-md p-6 opacity-0 blur transition duration-500 group-focus:scale-50 peer-hover:scale-50 dark:opacity-25 sm:scale-125 ' +
             bgColor
           }
         />
