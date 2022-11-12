@@ -19,7 +19,7 @@ export default function ScrollableContentContainer({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div
-        className={`ml-auto mr-auto ${size} px-6 pt-24 pb-32 leading-relaxed sm:px-12`}
+        className={`ml-auto mr-auto ${size} container px-6 pt-24 pb-32 leading-relaxed sm:px-12`}
       >
         {children}
       </div>
