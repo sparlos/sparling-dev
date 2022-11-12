@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BigToggleState } from '../components/BigToggle'
 import { getTagSelectOptions } from '../utils/projects'
 import { decodeSkillsFromUrl, encodeSkillsForUrl, Skill } from '../utils/skills'
@@ -25,11 +25,39 @@ export default function useProjectSkillsDropdown({
   skillsFromParams: string
 }) {
   const router = useRouter()
-  const [internalHistory, setInternalHistory] = useState<
-    ProjectSkillsQueryParams[]
-  >([])
 
-  console.log(internalHistory)
+  useEffect(() => {
+    const handleRouteChange = () => {
+      const params = new URL(window.location.href).searchParams
+      const view = params.get('view')
+      const skills = params.get('skills')
+
+      if (view) {
+        const newToggleState = view === 'projects' ? 'left' : 'right'
+        setToggleState(newToggleState)
+      }
+
+      if (skills) {
+        const newDropdownValues = decodeSkillsFromUrl(skills).map((skill) => ({
+          label: skill,
+          value: skill,
+        }))
+        setDropdownValues(newDropdownValues)
+      } else {
+        setDropdownValues([])
+      }
+
+      if (!view && !skills) {
+        setToggleState(null)
+      }
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router, setToggleState])
 
   const [dropdownOptions, _] = useState<DropdownOption[]>(
     getTagSelectOptions(projects)
@@ -56,9 +84,7 @@ export default function useProjectSkillsDropdown({
         ...router.query,
         skills: skillsForUrl,
       }
-
-      setInternalHistory((prevValue) => [...prevValue, newQuery])
-      router.replace({
+      router.push({
         query: newQuery,
       })
     }
@@ -80,10 +106,9 @@ export default function useProjectSkillsDropdown({
       setDropdownValues([])
     }
 
-    router.replace({
+    router.push({
       query: newQuery,
     })
-    setInternalHistory((prevValue) => [...prevValue, newQuery])
     setToggleState(state)
     setSelectedSkill(null)
   }
