@@ -3,12 +3,14 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': '>=7.0.0 <8.0.0'
   '@babel/plugin-transform-modules-commonjs': ^7.18.6
+  '@types/dompurify': ^2.3.4
   '@types/node': 18.7.14
   '@types/react': 18.0.18
   '@types/react-dom': 18.0.6
   '@types/sat': ^0.0.31
   autoprefixer: ^10.4.8
   cypress: ^10.9.0
+  dompurify: ^2.4.0
   eslint: 8.23.0
   eslint-config-next: 12.2.5
   framer-motion: ^7.2.1
@@ -33,7 +35,9 @@ specifiers:
 dependencies:
   '@babel/core': 7.19.0
   '@babel/plugin-transform-modules-commonjs': 7.18.6_@babel+core@7.19.0
+  '@types/dompurify': 2.3.4
   '@types/sat': 0.0.31
+  dompurify: 2.4.0
   framer-motion: 7.2.1_biqbaboplfbrettd7655fr4n2y
   next: 12.2.5_badbbegk2q2gbu2cmty4coqfru
   next-themes: 0.2.0_3xcjr4wz26biff45sz3jtokgje
@@ -743,6 +747,12 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@types/dompurify/2.3.4:
+    resolution: {integrity: sha512-EXzDatIb5EspL2eb/xPGmaC8pePcTHrkDCONjeisusLFrVfl38Pjea/R0YJGu3k9ZQadSvMqW0WXPI2hEo2Ajg==}
+    dependencies:
+      '@types/trusted-types': 2.0.2
+    dev: false
+
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
@@ -795,6 +805,10 @@ packages:
   /@types/sizzle/2.3.3:
     resolution: {integrity: sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==}
     dev: true
+
+  /@types/trusted-types/2.0.2:
+    resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
+    dev: false
 
   /@types/yauzl/2.10.0:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
@@ -1524,6 +1538,10 @@ packages:
     dependencies:
       '@babel/runtime': 7.18.9
       csstype: 3.1.0
+    dev: false
+
+  /dompurify/2.4.0:
+    resolution: {integrity: sha512-Be9tbQMZds4a3C6xTmz68NlMfeONA//4dOavl/1rNw50E+/QO0KVpbcU0PcaW0nsQxurXls9ZocqFxk8R2mWEA==}
     dev: false
 
   /ecc-jsbn/0.1.2:

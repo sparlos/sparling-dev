@@ -1,9 +1,12 @@
 import { StaticImageData } from 'next/image'
-import { ReactNode } from 'react'
+import { SkillName } from '../../utils/skills'
 import codepen from './codepen'
+import livestreamRadio from './livestreamRadio'
+import midiParticles from './midiParticles'
 import oldPortfolio from './oldPortfolio'
 import newPortfolio from './portfolio'
 import sparlingCreations from './sparlingCreations'
+import studioPlanner from './studioPlanner'
 
 type ProjectImages = {
   cover: StaticImageData
@@ -17,13 +20,16 @@ export type Project = {
   title: string
   description: string
   slug: string
-  tags: string[]
+  tags: SkillName[]
   images: ProjectImages
 }
 
 const projects: Project[] = [
-  oldPortfolio,
+  studioPlanner,
   newPortfolio,
+  oldPortfolio,
+  midiParticles,
+  livestreamRadio,
   codepen,
   sparlingCreations,
 ]

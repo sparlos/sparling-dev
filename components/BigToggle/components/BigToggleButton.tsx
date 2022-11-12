@@ -28,7 +28,7 @@ export default function BigToggleButton({
           ? 'relative flex-1 overflow-hidden rounded-l-lg border-y border-l border-solid'
           : 'relative -ml-4 flex-1 overflow-hidden rounded-r-lg border-y border-r border-solid'
       }
-      onClick={() => setToggleState(position)}
+      onClick={() => toggleState !== position && setToggleState(position)}
       onHoverStart={() => setHoveredState(position)}
       onFocus={() => setHoveredState(position)}
       onBlur={() => setHoveredState(null)}

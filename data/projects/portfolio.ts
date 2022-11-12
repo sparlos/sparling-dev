@@ -1,10 +1,10 @@
 import { Project } from './index'
-import coverImage from '../../public/projects/newPortfolio/cover.png'
+import coverImage from '../../public/projects/newPortfolio/cover.jpg'
 
 const newPortfolio: Project = {
   title: 'new portfolio',
   slug: 'new-portfolio',
-  tags: ['react', 'Next.js', 'tailwind'],
+  tags: ['React', 'Next.js', 'Tailwind', 'Framer Motion'],
   images: {
     cover: coverImage,
     portrait: [],

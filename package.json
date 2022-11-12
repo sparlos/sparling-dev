@@ -13,7 +13,9 @@
   "dependencies": {
     "@babel/core": ">=7.0.0 <8.0.0",
     "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "@types/dompurify": "^2.3.4",
     "@types/sat": "^0.0.31",
+    "dompurify": "^2.4.0",
     "framer-motion": "^7.2.1",
     "next": "12.2.5",
     "next-themes": "^0.2.0",

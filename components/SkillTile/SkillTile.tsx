@@ -24,9 +24,9 @@ export default function SkillTile({
   return (
     <div className="relative">
       <motion.button
-        aria-label={`display description for ${skill}`}
+        aria-label={`display description for ${skill.name}`}
         onClick={onClick}
-        className="min-h-10 relative mx-auto mb-4 flex w-full flex-col items-center overflow-hidden rounded-lg shadow-md dark:bg-slate-600"
+        className="relative mx-auto mb-4 flex min-h-[2.875rem] w-full flex-col items-center overflow-hidden rounded-lg shadow-md dark:bg-slate-600"
         transition={{
           type: 'spring',
           stiffness: 200,
@@ -80,9 +80,18 @@ export default function SkillTile({
             initial={{ opacity: 0 }}
             animate={{ opacity: isSelected ? 1 : 0 }}
             transition={{ duration: 0.2 }}
-            className={`px-8 ${hasProjects ? 'pb-12' : 'pb-4'}`}
+            className={`px-8 text-left ${hasProjects ? 'pb-12' : 'pb-4'}`}
           >
-            {skill.description}
+            {Array.isArray(skill.description)
+              ? skill.description.map((paragraph, key) => (
+                  <p
+                    key={`${skill.name}-description-paragraph-${key}`}
+                    className="mb-2"
+                  >
+                    {paragraph}
+                  </p>
+                ))
+              : skill.description}
           </motion.div>
         </motion.div>
       </motion.button>

@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { GetStaticPropsContext } from 'next'
 import Image from 'next/future/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import ScrollableContentContainer from '../../../components/ScrollableContentContainer'
 import projects from '../../../data/projects'
 import { Project } from '../../../data/projects/index'
@@ -10,6 +10,7 @@ import {
   getImageSlideDownAnimation,
   getTextSlideLeftAnimation,
 } from '../../../utils/animations/project'
+import { purifyProjectDescription } from '../../../utils/projects'
 
 type DynamicProjectProps = {
   project: Project
@@ -17,11 +18,24 @@ type DynamicProjectProps = {
 
 export default function DynamicProject({ project }: DynamicProjectProps) {
   const router = useRouter()
+  const [purifiedDescription, setPurifiedDescription] = useState(
+    project.description
+  )
+
+  useEffect(() => {
+    setPurifiedDescription(purifyProjectDescription(project.description))
+  }, [project])
 
   return (
     <ScrollableContentContainer large>
       <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-4 md:col-span-3">
+        <div
+          className={`col-span-4 ${
+            project.images.portrait.length === 0
+              ? 'md:col-span-4'
+              : 'md:col-span-3'
+          }`}
+        >
           <div>
             <motion.h1
               className="mt-3 mb-2 text-4xl"
@@ -30,7 +44,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               {project.title}
             </motion.h1>
             <motion.div
-              className="width-full mb-6 flex"
+              className="width-full mb-6 flex flex-wrap"
               {...getTextSlideLeftAnimation()}
             >
               {project.tags.map((tag, index) => (
@@ -43,27 +57,33 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               ))}
             </motion.div>
           </div>
-          <motion.div {...getTextSlideLeftAnimation()} className="mb-4">
-            {project.description}
+          <motion.div
+            {...getTextSlideLeftAnimation()}
+            className="mb-4 max-w-prose pr-8"
+          >
+            <div
+              dangerouslySetInnerHTML={{
+                __html: purifiedDescription,
+              }}
+            />
           </motion.div>
-          <button onClick={() => router.back()}>
-            <motion.button
-              className="mb-8 text-cyan-700 underline dark:text-cyan-500"
-              {...getTextSlideLeftAnimation()}
-            >
-              Back to projects
-            </motion.button>
-          </button>
+          <motion.button
+            onClick={() => router.back()}
+            className="mb-8 text-cyan-700 underline dark:text-cyan-500"
+            {...getTextSlideLeftAnimation()}
+          >
+            Back to projects
+          </motion.button>
           {project.images.landscape.map((landscapeImage, index) => (
             <motion.div
               key={`landscape-image-${index}`}
               {...getImageSlideDownAnimation(0.25 + index * 0.1)}
             >
               <Image
-                className="mb-4 rounded-md shadow-md"
+                className="mx-auto mb-4 rounded-md shadow-md"
                 src={landscapeImage}
                 alt={`${project.title} cover image`}
-                placeholder="blur"
+                // placeholder="blur"
               />
             </motion.div>
           ))}
@@ -79,7 +99,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
                   className="rounded-md shadow-md"
                   src={portraitImage}
                   alt={`${project.title} cover image`}
-                  placeholder="blur"
+                  // placeholder="blur"
                 />
               </motion.div>
             ))}
