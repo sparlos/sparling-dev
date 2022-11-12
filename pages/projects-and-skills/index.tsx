@@ -53,7 +53,7 @@ export default function ProjectsAndSkills({
 
   return (
     <ScrollableContentContainer
-      large
+      size="max-w-7xl"
       title={`${
         toggleState === 'right' ? 'skills' : 'projects'
       } | sparling.dev`}

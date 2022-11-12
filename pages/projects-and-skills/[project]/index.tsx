@@ -27,7 +27,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
   }, [project])
 
   return (
-    <ScrollableContentContainer large>
+    <ScrollableContentContainer size="max-w-6xl">
       <div className="grid grid-cols-4 gap-4">
         <div
           className={`col-span-4 ${
@@ -68,7 +68,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
             />
           </motion.div>
           <motion.button
-            onClick={() => router.back()}
+            onClick={() => router.push('/projects-and-skills?view=projects')}
             className="mb-8 text-cyan-700 underline dark:text-cyan-500"
             {...getTextSlideLeftAnimation()}
           >
@@ -87,6 +87,13 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               />
             </motion.div>
           ))}
+          <motion.button
+            onClick={() => router.push('/projects-and-skills?view=projects')}
+            className="mb-8 mt-4 hidden w-full text-center text-lg text-cyan-700 underline dark:text-cyan-500 md:inline"
+            {...getTextSlideLeftAnimation()}
+          >
+            Back to projects
+          </motion.button>
         </div>
         <div className="col-span-4 md:col-span-1">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
