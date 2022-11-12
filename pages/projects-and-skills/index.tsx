@@ -14,9 +14,10 @@ import useProjectSkillsDropdown, {
   DropdownOption,
 } from '../../hooks/useProjectSkillsDropdown'
 import projects from '../../data/projects'
+import skills from '../../data/skills'
 import ProjectCard from '../../components/ProjectCard'
 import { GetServerSidePropsContext } from 'next'
-import { encodeSkillsForUrl, mockSkills, Skill } from '../../utils/skills'
+import { encodeSkillsForUrl, Skill, SkillName } from '../../utils/skills'
 import HorizontalSkillList from '../../components/HorizontalSkillList'
 import { useRouter } from 'next/router'
 
@@ -75,7 +76,7 @@ export default function ProjectsAndSkills({
   const filteredProjects = projects.filter((project) => {
     if (dropdownValues.length === 0) return true
     return (dropdownValues as DropdownOption[]).some((dropdownOption) =>
-      project.tags.includes(dropdownOption.value)
+      project.tags.includes(dropdownOption.value as SkillName)
     )
   })
 
@@ -161,7 +162,7 @@ export default function ProjectsAndSkills({
                   onClickSkillLink={handleClickSkillLink}
                   selectedSkill={selectedSkill}
                   setSelectedSkill={setSelectedSkill}
-                  skills={mockSkills}
+                  skills={skills}
                 />
               )}
             </AnimatePresence>

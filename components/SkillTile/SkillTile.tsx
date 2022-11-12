@@ -24,9 +24,9 @@ export default function SkillTile({
   return (
     <div className="relative">
       <motion.button
-        aria-label={`display description for ${skill}`}
+        aria-label={`display description for ${skill.name}`}
         onClick={onClick}
-        className="min-h-10 relative mx-auto mb-4 flex w-full flex-col items-center overflow-hidden rounded-lg shadow-md dark:bg-slate-600"
+        className="relative mx-auto mb-4 flex min-h-[2.875rem] w-full flex-col items-center overflow-hidden rounded-lg shadow-md dark:bg-slate-600"
         transition={{
           type: 'spring',
           stiffness: 200,

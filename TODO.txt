@@ -17,3 +17,4 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature/stretch �
 ⬜️ 🛠 - simple entrance animations for "contact" and "home" pages
 ⬜️ 🤔 - allow images on project page to be clickable, opens a fullscreen popup carousel to swipe through all images
 ⬜️ 🛠 - compress images (probably to JPEG) so they aren't huge (100-200kb instead 1-2mb pls)
+⬜️ 🛠 - make Contact page look less ass and do something cool on it maybe

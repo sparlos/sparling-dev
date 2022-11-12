@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Project } from '../data/projects'
-import { getSkillLogo, mockSkills } from '../utils/skills'
+import skills from '../data/skills'
+import { getSkillLogo } from '../utils/skills'
 
 type ProjectCardProps = {
   project: Project
@@ -11,7 +12,7 @@ type ProjectCardProps = {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const { slug, title, images, tags } = project
   const logos = tags
-    .map((tag) => getSkillLogo(mockSkills, tag))
+    .map((tag) => getSkillLogo(skills, tag))
     .filter((logo) => logo)
 
   return (

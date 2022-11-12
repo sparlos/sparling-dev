@@ -1,7 +1,7 @@
 import HorizontalSkillList, {
   HorizontalSkillListProps,
 } from '../../../components/HorizontalSkillList'
-import { Skill } from '../../../utils/skills'
+import { Skill, SkillName } from '../../../utils/skills'
 
 const leftSkillsSelector = '[data-cy=left-skills]'
 const rightSkillsSelector = '[data-cy=right-skills]'
@@ -12,7 +12,7 @@ function getMockSkills(numberOfSkills = 6) {
   for (let i = 0; i < numberOfSkills; i++) {
     const mockSkill: Skill = {
       description: `Mock skill ${i + 1} description`,
-      name: `Mock Skill ${i + 1}`,
+      name: `Mock Skill ${i + 1}` as SkillName,
     }
     mockSkills.push(mockSkill)
   }
@@ -58,7 +58,7 @@ describe('<HorizontalSkillList>', () => {
 
   it('should call setSelectedSkill on click of a skill with the correct argument', () => {
     const mockSkill: Skill = {
-      name: 'mock skill',
+      name: 'mock skill' as SkillName,
       description: 'this is a mock skill',
     }
 
@@ -72,7 +72,7 @@ describe('<HorizontalSkillList>', () => {
 
   it('should set selectedSkill to null if click on currently selected skill', () => {
     const mockSkill: Skill = {
-      name: 'mock skill',
+      name: 'mock skill' as SkillName,
       description: 'this is a mock skill',
     }
 

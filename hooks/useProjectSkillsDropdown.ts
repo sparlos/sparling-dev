@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { BigToggleState } from '../components/BigToggle'
 import { getTagSelectOptions } from '../utils/projects'
-import { decodeSkillsFromUrl, mockSkills, Skill } from '../utils/skills'
+import { decodeSkillsFromUrl, Skill } from '../utils/skills'
 import projects from '../data/projects'
 
 export type DropdownOption = {
