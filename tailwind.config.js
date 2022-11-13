@@ -10,6 +10,12 @@ module.exports = {
       fontFamily: {
         sans: ['"Red Hat Display"', 'ui-sans-serif', 'system-ui'],
       },
+      colors: {
+        email: '#C71610',
+        github: '#6cc644',
+        codepen: '#FCD000',
+        linkedin: '#0077B5',
+      },
     },
   },
   plugins: [],
