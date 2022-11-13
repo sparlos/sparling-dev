@@ -111,7 +111,7 @@ const links: IconLink[] = [
 
 export default function Contact() {
   return (
-    <ScrollableContentContainer large title="contact | sparling.dev">
+    <ScrollableContentContainer size="max-w-5xl" title="contact | sparling.dev">
       <h1 className="mt-6 text-center text-4xl">Check out my stuff!</h1>
       <div className="mt-12 flex flex-col items-center">
         {links.map((link) => (
