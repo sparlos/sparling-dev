@@ -47,7 +47,7 @@ const links: IconLink[] = [
 export default function Contact() {
   return (
     <div className="relative flex h-full flex-col items-center overflow-auto text-center">
-      <div className="relative z-10 mt-auto mb-56 flex w-full max-w-4xl flex-col items-center py-24">
+      <div className="relative z-10 mb-auto flex w-full max-w-4xl flex-col items-center py-24 sm:mt-16 md:mt-24">
         <h1 className="mt-6 text-center text-4xl">Where to find me</h1>
         <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:mt-20 sm:grid-cols-2 md:grid-cols-4">
           {links.map((link, index) => (
@@ -72,7 +72,7 @@ export default function Contact() {
           ))}
         </div>
       </div>
-      <IconBackground iconSize={700} iconOpacity={0.35} />
+      <IconBackground iconSize={700} iconOpacity={0.35} isFixed />
     </div>
   )
 }
