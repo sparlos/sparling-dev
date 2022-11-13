@@ -9,7 +9,7 @@ export const getToggleContainerAnimation = (
     : { height: '3.5rem', width: 'auto' },
   animate: {
     height: isSmall ? '2.5rem' : '3.5rem',
-    width: isSmall ? '34rem' : 'auto',
+    width: isSmall ? '50rem' : 'auto',
   },
   transition: DEFAULT_SPRING_TRANSITION,
 })
