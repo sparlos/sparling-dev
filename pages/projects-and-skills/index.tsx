@@ -53,7 +53,7 @@ export default function ProjectsAndSkills({
 
   return (
     <ScrollableContentContainer
-      large
+      size="max-w-6xl"
       title={`${
         toggleState === 'right' ? 'skills' : 'projects'
       } | sparling.dev`}
@@ -64,7 +64,7 @@ export default function ProjectsAndSkills({
             {!toggleState && (
               <motion.h1
                 layout
-                className="mb-6 mt-14 text-2xl sm:mt-0 sm:mb-14 sm:text-4xl"
+                className="mb-6 mt-14 text-2xl sm:mt-10 sm:mb-14 sm:text-4xl"
                 {...headingAnimation}
               >
                 What are you looking for?
@@ -113,7 +113,7 @@ export default function ProjectsAndSkills({
                   <motion.div
                     key="projects-list"
                     {...projectListAnimation}
-                    className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
+                    className="mt-6 grid gap-4 md:grid-cols-2"
                   >
                     <AnimatePresence>
                       {filteredProjects.map((project) => (

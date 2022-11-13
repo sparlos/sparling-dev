@@ -69,7 +69,11 @@ const skills: Skill[] = [
     description: `While I have no experience with Next professionally, I've built a few sites you can see on this portfolio using it (including this portfolio itself!). I'm familiar with using the built-in SSR/SSG to optimize load times and performance.`,
     logo: nextJSLogo,
   },
-  { name: 'Node.js', description: 'null', logo: nodejsLogo },
+  {
+    name: 'Node.js',
+    description: `I use Node.js daily in my professional life. I’ve worked on dozens of projects that use Node.js as a backend server, using the Express framework to facilitate REST/GraphQL APIs.`,
+    logo: nodejsLogo,
+  },
   {
     name: 'Python',
     description: `I have quite a bit of both personal and professional experience using Python, having worked on a fairly robust Django application in my professional life. Personally, I like using Python for music and audio related side projects.`,

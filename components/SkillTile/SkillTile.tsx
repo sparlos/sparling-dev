@@ -73,7 +73,7 @@ export default function SkillTile({
         <motion.div
           initial={{ height: 0 }}
           animate={{ height: isSelected ? 'auto' : 0 }}
-          className="mt-2 text-sm"
+          className="mt-2"
         >
           <motion.div
             data-cy="expandable-description-box"
@@ -97,7 +97,7 @@ export default function SkillTile({
       </motion.button>
       {isSelected && hasProjects && (
         <motion.div
-          className="absolute bottom-4 left-0 flex w-full justify-center text-sm text-cyan-700 dark:text-cyan-400"
+          className="absolute bottom-4 left-0 flex w-full justify-center text-cyan-700 dark:text-cyan-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
