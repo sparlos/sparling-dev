@@ -2,11 +2,19 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import LinkButton from '../components/LinkButton'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiUser, FiCode, FiSend, FiStar } from 'react-icons/fi'
-import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
+import { FiUser, FiCode, FiSend } from 'react-icons/fi'
 import useHomeScreenGame from '../hooks/useHomeScreenGame'
 import HomeGame from '../components/HomeGame'
 import IconBackground from '../components/IconBackground'
+import {
+  controlsAnimation,
+  headingNameAnimation,
+  scoreContainerAnimation,
+  scoreNumberAnimation,
+  subtitleAnimation,
+} from '../utils/animations/rootRoute'
+import { useEffect } from 'react'
+import useUIStore from '../store/uiStore'
 
 const Home: NextPage = () => {
   const {
@@ -22,6 +30,11 @@ const Home: NextPage = () => {
     endGame,
     joystickAreaRef,
   } = useHomeScreenGame()
+  const { setBackgroundIcon } = useUIStore()
+
+  useEffect(() => {
+    return () => setBackgroundIcon(null)
+  }, [setBackgroundIcon])
 
   return (
     <div
@@ -45,24 +58,19 @@ const Home: NextPage = () => {
         itemPosition={itemPosition}
         onQuitGame={endGame}
       />
-      <div className="relative z-10 my-auto flex flex-col items-center">
-        <AnimatePresence mode="wait">
+      <div className="relative z-10 my-auto flex flex-col items-center py-24">
+        <AnimatePresence initial={false} mode="wait">
           {isPlayerInitialized ? (
             <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={DEFAULT_SPRING_TRANSITION}
+              {...scoreContainerAnimation}
               key="score"
               className="flex font-sans text-4xl font-semibold sm:text-6xl"
             >
               <AnimatePresence mode="wait">
                 <motion.div
                   className="ml-1"
+                  {...scoreNumberAnimation}
                   key={score}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.15 }}
                 >
                   {score}
                 </motion.div>
@@ -70,31 +78,27 @@ const Home: NextPage = () => {
             </motion.h1>
           ) : (
             <motion.h1
-              exit={{ opacity: 0, y: 10 }}
+              {...headingNameAnimation}
               key="name"
               className="font-sans text-4xl font-semibold sm:text-6xl"
-              transition={DEFAULT_SPRING_TRANSITION}
             >
               stephen sparling
             </motion.h1>
           )}
         </AnimatePresence>
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} mode="wait">
           {isPlayerInitialized ? (
             <motion.h2
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+              {...controlsAnimation}
               key="instructions"
               className="mt-8 flex"
-              transition={DEFAULT_SPRING_TRANSITION}
             >
               WASD to move. high score: {highScore}
             </motion.h2>
           ) : (
             <motion.h2
               key="subtitle"
-              exit={{ opacity: 0, y: 10 }}
-              transition={DEFAULT_SPRING_TRANSITION}
+              {...subtitleAnimation}
               className="mt-8 flex text-sm sm:text-base"
             >
               web developer |
@@ -116,7 +120,7 @@ const Home: NextPage = () => {
           />
           <LinkButton
             Icon={FiCode}
-            href="/about"
+            href="/projects-and-skills"
             label="what I do"
             className="mb-6 sm:mr-24 sm:mb-0"
             bgColor="bg-red-500"
@@ -124,7 +128,7 @@ const Home: NextPage = () => {
           />
           <LinkButton
             Icon={FiSend}
-            href="/about"
+            href="/contact"
             label="where I'm found"
             bgColor="bg-violet-500"
             backgroundIcon="mail"

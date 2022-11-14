@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import Head from 'next/head'
+import Link from 'next/link'
+import ScrollableContentContainer from '../../components/ScrollableContentContainer'
 import {
   DEFAULT_SLIDE_DOWN_PROPS,
   DEFAULT_SLIDE_RIGHT_PROPS,
@@ -8,68 +9,118 @@ import {
 
 export default function About() {
   return (
-    <div className="h-full w-full overflow-auto">
-      <Head>
-        <title>about | sparling.dev</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <div className="ml-auto mr-auto max-w-3xl px-12 pt-24 pb-32 leading-relaxed lg:ml-44 lg:mr-0">
-        <motion.h1 className="text-4xl" {...DEFAULT_SLIDE_DOWN_PROPS}>
-          Hi, I&apos;m Stephen!
-        </motion.h1>
-        <motion.p
-          className="mt-14"
-          {...DEFAULT_SLIDE_RIGHT_PROPS}
-          transition={{
-            ...DEFAULT_SPRING_TRANSITION,
-            delay: 0.05,
-          }}
+    <ScrollableContentContainer title="about | sparling.dev">
+      <motion.h1 className="text-4xl" {...DEFAULT_SLIDE_DOWN_PROPS}>
+        Hi, I&apos;m Stephen!
+      </motion.h1>
+      <motion.p
+        className="mt-14"
+        {...DEFAULT_SLIDE_RIGHT_PROPS}
+        transition={{
+          ...DEFAULT_SPRING_TRANSITION,
+          delay: 0.05,
+        }}
+      >
+        I went into web development because I am someone who loves to create.
+        The power to use simple text files to make complex web applications,
+        beautiful layouts, and robust backend systems is something that I find
+        extremely magical, even after having done it for the last 5 years.
+      </motion.p>
+      <motion.p
+        className="mt-8"
+        {...DEFAULT_SLIDE_RIGHT_PROPS}
+        transition={{
+          ...DEFAULT_SPRING_TRANSITION,
+          delay: 0.1,
+        }}
+      >
+        I&apos;ve been working professionally in the field since March 2020 at
+        my current company,{' '}
+        <a
+          className="underline"
+          href="https://finnovate.io/"
+          target="_blank"
+          rel="noreferrer"
         >
-          I&apos;m a driven young professional in the world of full stack web
-          design & development. I&apos;ve spent the last few years honing my
-          skills in top web technologies including React, jQuery, SQL, PHP,
-          Node, SASS & SCSS, Bootstrap, VS Code, Figma, WordPress, Python, Vue,
-          MongoDB, and GraphQL.
-        </motion.p>
-        <motion.p
-          className="mt-8"
-          {...DEFAULT_SLIDE_RIGHT_PROPS}
-          transition={{
-            ...DEFAULT_SPRING_TRANSITION,
-            delay: 0.1,
-          }}
+          finnovate.io
+        </a>
+        . While working here, I&apos;ve been able to foster countless skills
+        while working with a wide variety of teams to bring software to life.
+      </motion.p>
+      <motion.p
+        className="mt-8"
+        {...DEFAULT_SLIDE_RIGHT_PROPS}
+        transition={{
+          ...DEFAULT_SPRING_TRANSITION,
+          delay: 0.15,
+        }}
+      >
+        I&apos;ve also had the chance to work with a vast array of technologies,
+        which you can take an in-depth look{' '}
+        <Link href="/projects-and-skills?view=skills">
+          <button className="underline">on the skills page.</button>
+        </Link>{' '}
+        For the sake of summary, some technologies I&apos;ve had a lot of
+        professional experience with are: React, AWS, Python/Django, Kubernetes,
+        GCP, React Native, Node, Postgres, MongoDB, and MySQL.
+      </motion.p>
+      <motion.p
+        className="mt-8"
+        {...DEFAULT_SLIDE_RIGHT_PROPS}
+        transition={{
+          ...DEFAULT_SPRING_TRANSITION,
+          delay: 0.2,
+        }}
+      >
+        Along with those specialized technologies, I have a very strong
+        foundation in HTML (semantics/accessibility is a big deal to me), CSS
+        (SCSS, styled components, cross browser testing), and JavaScript
+        (basically everything you&apos;d read about in the{' '}
+        <a
+          className="underline"
+          href="https://github.com/getify/You-Dont-Know-JS"
+          target="_blank"
+          rel="noreferrer"
         >
-          At my last job, I worked within a large team of other sales associates
-          and multiple managers. I gained a lot of valuable experience
-          pertaining to communication, teamwork, meeting the varied expectations
-          of multiple people, and achieving goals on a deadline.
-        </motion.p>
-        <motion.p
-          className="mt-8"
-          {...DEFAULT_SLIDE_RIGHT_PROPS}
-          transition={{
-            ...DEFAULT_SPRING_TRANSITION,
-            delay: 0.15,
-          }}
-        >
-          I&apos;m hardworking, receptive and unrelenting when it comes to doing
-          the very best that I can. This is demonstrated by my 4 year study at
-          York University, culminating in a Bachelor of Fine Arts with Honours.
-          I was awarded a Magna Cum Laude for my efforts across those 4 years.
-        </motion.p>
-        <motion.p
-          className="mt-8"
-          {...DEFAULT_SLIDE_RIGHT_PROPS}
-          transition={{
-            ...DEFAULT_SPRING_TRANSITION,
-            delay: 0.2,
-          }}
-        >
-          If all of this sounds good to you, I&apos;m ready to work. Preferably
-          full-time; I&apos;m open to either local (Toronto area) or remote
-          work. Please reach out to me and I&apos;d love to start a dialogue.
-        </motion.p>
-      </div>
-    </div>
+          &quot;You Don&apos;t Know JS Yet&quot;
+        </a>{' '}
+        book series).
+      </motion.p>
+      <motion.p
+        className="mt-8"
+        {...DEFAULT_SLIDE_RIGHT_PROPS}
+        transition={{
+          ...DEFAULT_SPRING_TRANSITION,
+          delay: 0.25,
+        }}
+      >
+        While I have strong software development skills, I believe the hallmark
+        of a truly great developer are soft skills, specifically a
+        developer&apos;s ability to communicate. Being able to communicate
+        extremely effectively both with technical (other developers, technical
+        clients) and non-technical (project managers, designers, non-technical
+        clients) individuals is one of my greatest assets. I strive to discuss
+        complex ideas in a way that anyone can understand, taking into account
+        their level of software knowledge. I&apos;m also a great leader, having
+        been promoted to a Staff Software Developer after just 2 years of
+        working at finnovate.io.
+      </motion.p>
+      <motion.p
+        className="mt-8"
+        {...DEFAULT_SLIDE_RIGHT_PROPS}
+        transition={{
+          ...DEFAULT_SPRING_TRANSITION,
+          delay: 0.3,
+        }}
+      >
+        If you&apos;ve made it this far, thanks for reading about me! If
+        you&apos;d like to reach out and start a dialogue to learn more, head on
+        over to{' '}
+        <Link href="/contact">
+          <button className="underline">the contact page</button>
+        </Link>{' '}
+        with ways you can do that.
+      </motion.p>
+    </ScrollableContentContainer>
   )
 }

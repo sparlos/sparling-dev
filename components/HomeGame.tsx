@@ -21,16 +21,20 @@ export default function HomeGame({
 }: HomeGameProps) {
   return (
     <Fragment>
-      {isPlayerInitialized && (
-        <motion.button
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-8 right-24 w-48 rounded p-3 shadow-md dark:bg-slate-700"
-          onClick={() => onQuitGame()}
-        >
-          Quit Game
-        </motion.button>
-      )}
+      <AnimatePresence>
+        {isPlayerInitialized && (
+          <motion.button
+            key="exit-button"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute right-[22.5rem] top-8 w-48 rounded p-3 shadow-md dark:bg-slate-700"
+            onClick={() => onQuitGame()}
+          >
+            Quit Game
+          </motion.button>
+        )}
+      </AnimatePresence>
       {isPlayerInitialized && (
         <motion.div
           initial={{
