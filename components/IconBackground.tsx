@@ -42,9 +42,11 @@ const getBackgroundIcon = (
 export default function IconBackground({
   iconSize = ICON_SIZE,
   iconOpacity = 1,
+  isFixed = false,
 }: {
   iconSize?: number
   iconOpacity?: number
+  isFixed?: boolean
 }) {
   const { backgroundIcon } = useUIStore()
 
@@ -67,7 +69,9 @@ export default function IconBackground({
   return (
     <div
       style={{ opacity: iconOpacity }}
-      className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden"
+      className={`pointer-events-none inset-0 h-full w-full overflow-hidden ${
+        isFixed ? 'fixed' : 'absolute'
+      }`}
     >
       <AnimatePresence>{renderIcon(backgroundIcon)}</AnimatePresence>
     </div>
