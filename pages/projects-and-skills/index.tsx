@@ -107,7 +107,7 @@ export default function ProjectsAndSkills({
                         )
                       }
                       isMulti={toggleState === 'left'}
-                      placeholder="React, AWS, etc."
+                      placeholder="React, SCSS, etc."
                     />
                   </motion.div>
                   <motion.div

@@ -27,7 +27,10 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
   }, [project])
 
   return (
-    <ScrollableContentContainer size="max-w-6xl">
+    <ScrollableContentContainer
+      title={`${project.title} | sparling.dev`}
+      size="max-w-6xl"
+    >
       <div className="grid grid-cols-4 gap-4">
         <div
           className={`col-span-4 ${

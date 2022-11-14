@@ -8,7 +8,14 @@ import landscape2 from '../../public/projects/studioPlanner/landscape/2.jpg'
 const studioPlanner: Project = {
   slug: 'studio-planner',
   title: 'Studio Planner',
-  tags: ['Next.js', 'React', 'Supabase', 'Chakra UI', 'dnd-kit'],
+  tags: [
+    'Next.js',
+    'React',
+    'Supabase',
+    'Chakra UI',
+    'dnd-kit',
+    'Framer Motion',
+  ],
   images: {
     cover: coverImage,
     portrait: [mobile1, mobile2],

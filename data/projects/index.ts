@@ -25,8 +25,8 @@ export type Project = {
 }
 
 const projects: Project[] = [
-  studioPlanner,
   newPortfolio,
+  studioPlanner,
   oldPortfolio,
   midiParticles,
   livestreamRadio,
