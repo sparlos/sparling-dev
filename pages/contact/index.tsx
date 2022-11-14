@@ -1,9 +1,13 @@
-import ScrollableContentContainer from '../../components/ScrollableContentContainer'
-import { FiCodepen, FiGithub, FiLinkedin, FiMail, FiUser } from 'react-icons/fi'
+import { motion } from 'framer-motion'
+import { FiCodepen, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { IconType } from 'react-icons'
 import IconBackground from '../../components/IconBackground'
-import useUIStore, { BackgroundIcon } from '../../store/uiStore'
+import { BackgroundIcon } from '../../store/uiStore'
 import LinkButton from '../../components/LinkButton'
+import {
+  getLinkSlideDownAnimation,
+  headingAnimation,
+} from '../../utils/animations/contact'
 
 type IconLink = {
   Icon: IconType
@@ -48,16 +52,19 @@ export default function Contact() {
   return (
     <div className="relative flex h-full flex-col items-center overflow-auto text-center">
       <div className="relative z-10 mb-auto flex w-full max-w-4xl flex-col items-center py-24 sm:mt-16 md:mt-24">
-        <h1 className="mt-6 text-center text-4xl">Where to find me</h1>
+        <motion.h1 className="mt-6 text-center text-4xl" {...headingAnimation}>
+          Where to find me
+        </motion.h1>
         <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:mt-20 sm:grid-cols-2 md:grid-cols-4">
           {links.map((link, index) => (
-            <div
+            <motion.div
               className={`flex ${
                 index % 2 === 0
                   ? 'sm:mr-8 sm:justify-end'
                   : 'sm:ml-8 sm:justify-start'
               } mb-4 justify-center sm:mb-8 md:mb-0 md:mr-0 md:ml-0 md:justify-center`}
               key={link.link + index}
+              {...getLinkSlideDownAnimation(index * 0.05)}
             >
               <LinkButton
                 Icon={link.Icon}
@@ -68,7 +75,7 @@ export default function Contact() {
                 className="mb-0"
                 openInNewTab
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
