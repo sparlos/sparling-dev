@@ -8,6 +8,7 @@ import {
   getLinkSlideDownAnimation,
   headingAnimation,
 } from '../../utils/animations/contact'
+import Head from 'next/head'
 
 type IconLink = {
   Icon: IconType
@@ -51,6 +52,10 @@ const links: IconLink[] = [
 export default function Contact() {
   return (
     <div className="relative flex h-full flex-col items-center overflow-auto text-center">
+      <Head>
+        <title>contact | sparling.dev</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className="relative z-10 mb-auto flex w-full max-w-4xl flex-col items-center py-24 sm:mt-16 md:mt-24">
         <motion.h1 className="mt-6 text-center text-4xl" {...headingAnimation}>
           Where to find me
