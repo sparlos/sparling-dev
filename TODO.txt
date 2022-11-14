@@ -21,3 +21,4 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature/stretch �
 ⬜️ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically
 ⬜️ 🤔 - allow images on project page to be clickable, opens a fullscreen popup carousel to swipe through all images
 ⬜️ 🛠 - add "sizes" prop to next Image tags to improve performance
+⬜️ 🛠 - add "back to projects" link in [project] page for mobile view
