@@ -46,7 +46,7 @@ export default function LinkButton({
     onClick: () => setBackgroundIcon(null),
     onBlur: () => handleFocusButton(false),
     className:
-      'group relative mb-10 h-32 w-40 max-w-full sm:mb-0 sm:h-28 sm:w-32 ' +
+      'group relative h-28 w-32 max-w-full sm:mb-0 sm:h-28 sm:w-32 ' +
       (className || ''),
   }
 
