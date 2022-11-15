@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { GetStaticPropsContext } from 'next'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import ScrollableContentContainer from '../../../components/ScrollableContentContainer'
@@ -82,13 +82,15 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               key={`landscape-image-${index}`}
               {...getImageSlideDownAnimation(0.25 + index * 0.1)}
             >
-              <Image
-                sizes="75vw"
-                className="mx-auto mb-4 rounded-md shadow-md"
-                src={landscapeImage}
-                alt={`${project.title} cover image`}
-                // placeholder="blur"
-              />
+              <div className="mx-auto mb-4 rounded-md shadow-md">
+                <Image
+                  className="rounded-md shadow-md"
+                  sizes="75vw"
+                  src={landscapeImage}
+                  alt={`${project.title} cover image`}
+                  placeholder="blur"
+                />
+              </div>
             </motion.div>
           ))}
           <motion.button
@@ -111,7 +113,7 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
                   className="rounded-md shadow-md"
                   src={portraitImage}
                   alt={`${project.title} cover image`}
-                  // placeholder="blur"
+                  placeholder="blur"
                 />
               </motion.div>
             ))}
