@@ -58,7 +58,7 @@ const Home: NextPage = () => {
         itemPosition={itemPosition}
         onQuitGame={endGame}
       />
-      <div className="relative z-10 mt-8 flex flex-col items-center py-24 sm:my-auto sm:mt-0">
+      <div className="relative z-10 mt-8 flex flex-col items-center py-24 sm:my-auto sm:mt-auto">
         <AnimatePresence initial={false} mode="wait">
           {isPlayerInitialized ? (
             <motion.h1
