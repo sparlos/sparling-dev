@@ -1,19 +1,21 @@
 import Head from 'next/head'
-import { ReactNode } from 'react'
+import { MutableRefObject, ReactNode } from 'react'
 
 type ScrollableContentContainerProps = {
   children: ReactNode
   title?: string
   size?: string
+  scrollContainerRef?: MutableRefObject<HTMLDivElement>
 }
 
 export default function ScrollableContentContainer({
   children,
   title,
   size = 'max-w-3xl',
+  scrollContainerRef,
 }: ScrollableContentContainerProps) {
   return (
-    <div className="h-full w-full overflow-auto">
+    <div ref={scrollContainerRef} className="h-full w-full overflow-auto">
       <Head>
         <title>{title || 'sparling.dev'}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

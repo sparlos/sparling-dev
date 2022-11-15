@@ -1,16 +1,19 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { MutableRefObject, useEffect, useRef } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
 import projects from '../../data/projects'
 import { DEFAULT_SPRING_TRANSITION } from '../../utils/framer'
 import { getUniqueTags } from '../../utils/projects'
 import { Skill } from '../../utils/skills'
+import useScrollToSkillTile from './hooks/useScrollToSkillTile'
 
 export type SkillTileProps = {
   skill: Skill
   isSelected: boolean
   onClick: () => void
   onClickSkillLink: (skillName: string) => void
+  scrollContainerRef?: MutableRefObject<HTMLDivElement>
 }
 
 export default function SkillTile({
@@ -18,14 +21,20 @@ export default function SkillTile({
   isSelected,
   onClick,
   onClickSkillLink,
+  scrollContainerRef,
 }: SkillTileProps) {
   const hasProjects = getUniqueTags(projects).find((tag) => tag === skill.name)
+  const { ref, handleScrollTo } = useScrollToSkillTile({
+    scrollContainerRef,
+    isSelected,
+  })
 
   return (
     <div className="relative">
       <motion.button
+        ref={ref}
         aria-label={`display description for ${skill.name}`}
-        onClick={onClick}
+        onClick={() => handleScrollTo(onClick)}
         className="relative mx-auto mb-4 flex min-h-[2.875rem] w-full flex-col items-center overflow-hidden rounded-lg shadow-md dark:bg-slate-600"
         transition={{
           type: 'spring',
