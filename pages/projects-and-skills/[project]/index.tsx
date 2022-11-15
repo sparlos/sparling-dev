@@ -114,6 +114,13 @@ export default function DynamicProject({ project }: DynamicProjectProps) {
               </motion.div>
             ))}
           </div>
+          <motion.button
+            onClick={() => router.push('/projects-and-skills?view=projects')}
+            className="mb-8 mt-10 inline w-full text-center text-lg text-cyan-700 underline dark:text-cyan-500 md:hidden"
+            {...getTextSlideLeftAnimation()}
+          >
+            Back to projects
+          </motion.button>
         </div>
       </div>
     </ScrollableContentContainer>
