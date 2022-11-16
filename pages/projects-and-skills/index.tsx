@@ -1,5 +1,5 @@
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { useState } from 'react'
+import { MutableRefObject, useRef, useState } from 'react'
 import Select from '../../components/Select'
 import BigToggle, { BigToggleState } from '../../components/BigToggle'
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
@@ -34,6 +34,7 @@ export default function ProjectsAndSkills({
   const [toggleState, setToggleState] = useState<BigToggleState>(
     toggleStateFromParams || null
   )
+  const scrollContainerRef = useRef() as MutableRefObject<HTMLDivElement>
   const {
     dropdownOptions,
     dropdownValues,
@@ -53,6 +54,7 @@ export default function ProjectsAndSkills({
 
   return (
     <ScrollableContentContainer
+      scrollContainerRef={scrollContainerRef}
       size="max-w-6xl"
       title={`${
         toggleState === 'right' ? 'skills' : 'projects'
@@ -136,6 +138,7 @@ export default function ProjectsAndSkills({
                   selectedSkill={selectedSkill}
                   setSelectedSkill={setSelectedSkill}
                   skills={skills}
+                  scrollContainerRef={scrollContainerRef}
                 />
               )}
             </AnimatePresence>

@@ -24,6 +24,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <button className="flex h-full w-full flex-col justify-between">
           <div className="relative h-32 w-full sm:h-56 md:h-32 lg:h-56">
             <Image
+              sizes="50vw"
               layout="fill"
               className="rounded-t-lg object-cover"
               src={images.cover}

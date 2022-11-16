@@ -10,11 +10,11 @@ import {
 export default function About() {
   return (
     <ScrollableContentContainer title="about | sparling.dev">
-      <motion.h1 className="text-4xl" {...DEFAULT_SLIDE_DOWN_PROPS}>
+      <motion.h1 className="mt-4 text-4xl" {...DEFAULT_SLIDE_DOWN_PROPS}>
         Hi, I&apos;m Stephen!
       </motion.h1>
       <motion.p
-        className="mt-14"
+        className="mt-8 sm:mt-14"
         {...DEFAULT_SLIDE_RIGHT_PROPS}
         transition={{
           ...DEFAULT_SPRING_TRANSITION,
