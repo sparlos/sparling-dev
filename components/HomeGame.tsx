@@ -23,16 +23,18 @@ export default function HomeGame({
     <Fragment>
       <AnimatePresence>
         {isPlayerInitialized && (
-          <motion.button
-            key="exit-button"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute right-[22.5rem] top-8 w-48 rounded p-3 shadow-md dark:bg-slate-700"
-            onClick={() => onQuitGame()}
-          >
-            Quit Game
-          </motion.button>
+          <div className="relative top-8 mx-auto w-full max-w-7xl text-end">
+            <motion.button
+              key="exit-button"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute right-[10rem] w-48 rounded p-3 shadow-md dark:bg-slate-700"
+              onClick={() => onQuitGame()}
+            >
+              Quit Game
+            </motion.button>
+          </div>
         )}
       </AnimatePresence>
       {isPlayerInitialized && (
