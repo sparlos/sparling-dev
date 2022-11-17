@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { BigToggleState } from '../components/BigToggle'
 import { getTagSelectOptions } from '../utils/projects'
 import { decodeSkillsFromUrl, encodeSkillsForUrl, Skill } from '../utils/skills'
-import projects, { Project } from '../data/projects'
+import projects from '../data/projects'
 
 export type DropdownOption = {
   value: string
@@ -18,11 +18,9 @@ type ProjectSkillsQueryParams = {
 export default function useProjectSkillsDropdown({
   setToggleState,
   setSelectedSkill,
-  skillsFromParams,
 }: {
   setToggleState: (newState: BigToggleState) => void
   setSelectedSkill: (newSkill: Skill | null) => void
-  skillsFromParams: string
 }) {
   const router = useRouter()
 
@@ -64,12 +62,7 @@ export default function useProjectSkillsDropdown({
   )
   const [dropdownValues, setDropdownValues] = useState<
     string | DropdownOption[]
-  >(
-    decodeSkillsFromUrl(skillsFromParams).map((skill) => ({
-      label: skill,
-      value: skill,
-    }))
-  )
+  >('')
 
   const handleSetDropdownValues = (
     newValue: string | DropdownOption[],

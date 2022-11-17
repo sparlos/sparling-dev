@@ -1,5 +1,5 @@
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { MutableRefObject, useRef, useState } from 'react'
+import { MutableRefObject, useEffect, useRef, useState } from 'react'
 import Select from '../../components/Select'
 import BigToggle, { BigToggleState } from '../../components/BigToggle'
 import ScrollableContentContainer from '../../components/ScrollableContentContainer'
@@ -16,41 +16,53 @@ import useProjectSkillsDropdown, {
 import projects from '../../data/projects'
 import skills from '../../data/skills'
 import ProjectCard from '../../components/ProjectCard'
-import { GetServerSidePropsContext } from 'next'
-import { Skill, SkillName } from '../../utils/skills'
+import { Skill, SkillName, decodeSkillsFromUrl } from '../../utils/skills'
 import HorizontalSkillList from '../../components/HorizontalSkillList'
 
-type ProjectsAndSkillsProps = {
-  toggleStateFromParams?: BigToggleState
-  skillsFromParams: string
-}
-
-export default function ProjectsAndSkills({
-  toggleStateFromParams,
-  skillsFromParams,
-}: ProjectsAndSkillsProps) {
-  const [isPreToggled] = useState(!!toggleStateFromParams)
+export default function ProjectsAndSkills() {
+  const [hasCheckedQueryOnLoad, setHasCheckedQueryOnLoad] = useState(false)
+  const [isPreToggled, setIsPreToggled] = useState(false)
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
-  const [toggleState, setToggleState] = useState<BigToggleState>(
-    toggleStateFromParams || null
-  )
+  const [toggleState, setToggleState] = useState<BigToggleState>(null)
   const scrollContainerRef = useRef() as MutableRefObject<HTMLDivElement>
   const {
     dropdownOptions,
     dropdownValues,
+    setDropdownValues,
     handleSetDropdownValues,
     handleSetToggleState,
   } = useProjectSkillsDropdown({
     setToggleState,
     setSelectedSkill,
-    skillsFromParams,
   })
+
+  useEffect(() => {
+    if (!hasCheckedQueryOnLoad) {
+      const params = new URLSearchParams(window.location.search)
+      const view = params.get('view')
+      const skills = params.get('skills')
+      setIsPreToggled(!!view)
+      if (view) {
+        setToggleState(view === 'projects' ? 'left' : 'right')
+      }
+      setDropdownValues(
+        decodeSkillsFromUrl(skills as string).map((skill) => ({
+          label: skill,
+          value: skill,
+        }))
+      )
+      setHasCheckedQueryOnLoad(true)
+    }
+  }, [hasCheckedQueryOnLoad, setDropdownValues])
+
   const filteredProjects = projects.filter((project) => {
     if (dropdownValues.length === 0) return true
     return (dropdownValues as DropdownOption[]).some((dropdownOption) =>
       project.tags.includes(dropdownOption.value as SkillName)
     )
   })
+
+  if (!hasCheckedQueryOnLoad) return null
 
   return (
     <ScrollableContentContainer
@@ -147,18 +159,4 @@ export default function ProjectsAndSkills({
       </motion.div>
     </ScrollableContentContainer>
   )
-}
-
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-  const { view, skills } = query
-  return {
-    props: {
-      toggleStateFromParams: view
-        ? view === 'projects'
-          ? 'left'
-          : 'right'
-        : null,
-      skillsFromParams: skills || '',
-    },
-  }
 }
