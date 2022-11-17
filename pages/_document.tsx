@@ -12,6 +12,11 @@ export default function Document() {
           name="description"
           content="The website of Stephen Sparling, developer."
         />
+        <meta property="og:title" content="Stephen Sparling" />
+        <meta
+          property="og:description"
+          content="The website of Stephen Sparling, developer."
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <body className="bg-white">
