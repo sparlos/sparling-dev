@@ -17,7 +17,6 @@ export default function Document() {
           property="og:description"
           content="The website of Stephen Sparling, developer."
         />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <body className="bg-white">
         <Main />

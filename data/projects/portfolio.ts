@@ -15,7 +15,7 @@ import landscape7 from '../../public/projects/newPortfolio/landscape/7.jpg'
 const newPortfolio: Project = {
   title: 'Portfolio',
   slug: 'portfolio',
-  tags: ['React', 'Next.js', 'Tailwind', 'Framer Motion'],
+  tags: ['React', 'Next.js', 'Tailwind', 'Framer Motion', 'Figma'],
   images: {
     cover: coverImage,
     portrait: [mobile1, mobile2, mobile3, mobile4],

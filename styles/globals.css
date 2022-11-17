@@ -87,7 +87,7 @@ html, body, #__next {
 */
 
 .accordion-content[data-state='closed'] {
-  animation: slideUp 1ms;
+  animation: slideUp 0ms;
   animation-delay: 500ms;
 }
 
