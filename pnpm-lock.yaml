@@ -24,6 +24,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-icons: ^4.4.0
+  react-loading-skeleton: ^3.1.0
   react-resize-detector: ^7.1.2
   react-select: ^5.4.0
   sass: ^1.54.8
@@ -47,6 +48,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
+  react-loading-skeleton: 3.1.0_react@18.2.0
   react-resize-detector: 7.1.2_biqbaboplfbrettd7655fr4n2y
   react-select: 5.4.0_q3lhx7j73grdkfcigv3e6242um
   sass: 1.54.8
@@ -3323,6 +3325,14 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  /react-loading-skeleton/3.1.0_react@18.2.0:
+    resolution: {integrity: sha512-j1U1CWWs68nBPOg7tkQqnlFcAMFF6oEK6MgqAo15f8A5p7mjH6xyKn2gHbkcimpwfO0VQXqxAswnSYVr8lWzjw==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-resize-detector/7.1.2_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-zXnPJ2m8+6oq9Nn8zsep/orts9vQv3elrpA+R8XTcW7DVVUJ9vwDwMXaBtykAYjMnkCIaOoK9vObyR7ZgFNlOw==}
