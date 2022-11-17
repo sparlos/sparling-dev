@@ -18,6 +18,7 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature/stretch �
 ✅ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically
 ✅ 🐞 - fix "quit game" button positioning on mobile (is off screen since it uses hard coded right value)
 ✅ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
+⬜️ 🐞 - dark mode -> android scroll up to hide URL header -> shows "blank" bottom area until stop scrolling
 
 Potential phase 2 improvements below
 
