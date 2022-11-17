@@ -9,7 +9,7 @@ export default function useScrollToSkillTile({
   scrollContainerRef,
   isSelected,
 }: UseScrollToSkillTileOptions) {
-  const ref = useRef() as MutableRefObject<HTMLButtonElement>
+  const ref = useRef() as MutableRefObject<HTMLDivElement>
   const initialTop = useRef<number>(0)
 
   useEffect(() => {

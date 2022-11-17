@@ -20,6 +20,7 @@ export default function HorizontalSkillList({
   scrollContainerRef,
 }: HorizontalSkillListProps) {
   const [leftSkills, rightSkills] = splitSkills(skills)
+  console.log(selectedSkill)
 
   return (
     <motion.div
@@ -35,7 +36,7 @@ export default function HorizontalSkillList({
             key={skill.name}
             skill={skill}
             onClickSkillLink={onClickSkillLink}
-            isSelected={skill === selectedSkill}
+            isSelected={skill.name === selectedSkill?.name}
             onClick={() =>
               selectedSkill === skill
                 ? setSelectedSkill(null)

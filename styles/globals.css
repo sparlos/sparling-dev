@@ -64,3 +64,22 @@ html, body, #__next {
     @apply text-black dark:text-white;
   }
 }
+
+/* 
+  make radix accordion wait for framer motion collapse animation
+  to finish before setting accordion content height to 0
+*/
+
+.accordion-content[data-state='closed'] {
+  animation: slideUp 1ms;
+  animation-delay: 300ms;
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
