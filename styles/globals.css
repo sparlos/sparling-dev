@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html, body, #__next {
-  height: 100%;
+  height: 100vh;
 }
 
 .project-description__paragraph {

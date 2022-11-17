@@ -19,7 +19,7 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature/stretch �
 ✅ 🐞 - fix "quit game" button positioning on mobile (is off screen since it uses hard coded right value)
 ✅ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
 ✅ 🛠 - remove "getServerSideProps" from projects-and-skills -> suspect it's causing page navigation speed issues, just grab the query param on mount instead and render "null" 
-⬜️ 🐞 - dark mode -> android scroll up to hide URL header -> shows "blank" bottom area until stop scrolling
+✅ 🐞 - dark mode -> android scroll up to hide URL header -> shows "blank" bottom area until stop scrolling
 
 Potential phase 2 improvements below
 
