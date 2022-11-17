@@ -30,7 +30,7 @@ describe('<SkillTile>', function () {
 
   it('should not show the description if isSelected is false', () => {
     setup()
-    cy.get(explandableDescriptionBoxSelector).should('not.be.visible')
+    cy.get(explandableDescriptionBoxSelector).should('not.exist')
   })
 
   it('should show the description if isSelected is true', () => {
