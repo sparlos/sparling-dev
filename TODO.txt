@@ -17,7 +17,7 @@ emoji bank: ⬜️ ✅ 🐞 🤔 💡 🛠 (🤔 = potential feature/stretch �
 ✅ 🛠 - use selective radix-ui elements to handle specific functionality (BigToggle, skill accordions, etc.)
 ✅ 🐞 - home page -> "what I do" -> select projects -> select "vue.js" or "next.js" from dropdown -> projects/experience selector distorts vertically
 ⬜️ 🛠 - update react-select to completely use tailwind styling (clear button, delete chip button, etc.)
-⬜️ 🐞 - fix "quit game" button positioning on mobile (is off screen since it uses hard coded right value)
+✅ 🐞 - fix "quit game" button positioning on mobile (is off screen since it uses hard coded right value)
 
 Potential phase 2 improvements below
 
