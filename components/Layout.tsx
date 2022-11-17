@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="flex h-full w-full transition-colors duration-200 dark:bg-gradient-to-b dark:from-slate-600 dark:to-slate-700">
       <div className="relative mx-auto flex h-full w-full flex-col">
-        <div className="container pointer-events-none absolute inset-0 z-50 mx-auto flex h-full w-full items-start justify-end py-8 px-8">
+        <div className="pointer-events-none absolute inset-0 z-50 mx-auto flex h-full w-full max-w-7xl items-start justify-end py-8 px-8">
           {mounted && (
             <Fragment>
               <div className="relative rounded shadow-md">

@@ -63,6 +63,22 @@ html, body, #__next {
   .custom-react-select-container .custom-react-select__multi-value__label {
     @apply text-black dark:text-white;
   }
+
+  .custom-react-select-container .custom-react-select__indicator {
+    @apply text-black dark:text-white;
+  }
+
+  .custom-react-select-container .custom-react-select__indicator:hover {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+
+  .custom-react-select-container .custom-react-select__indicator:hover {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+
+  .custom-react-select-container .custom-react-select__multi-value__remove:hover {
+    @apply bg-red-300;
+  }
 }
 
 /* 
