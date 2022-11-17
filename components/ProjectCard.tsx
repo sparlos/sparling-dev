@@ -4,12 +4,16 @@ import Link from 'next/link'
 import { Project } from '../data/projects'
 import skills from '../data/skills'
 import { getSkillLogo } from '../utils/skills'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { useState } from 'react'
 
 type ProjectCardProps = {
   project: Project
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
   const { slug, title, images, tags } = project
   const logos = tags
     .map((tag) => getSkillLogo(skills, tag))
@@ -24,13 +28,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <button className="flex h-full w-full flex-col justify-between">
           <div className="relative h-32 w-full sm:h-56 md:h-32 lg:h-56">
             <Image
+              onLoadingComplete={() => setIsImageLoaded(true)}
               sizes="50vw"
               layout="fill"
-              className="rounded-t-lg object-cover"
+              className="absolute top-0 left-0 z-10 h-full w-full rounded-t-lg object-cover"
               src={images.cover}
               alt={`cover image for ${title} project`}
-              placeholder="blur"
             />
+            {!isImageLoaded && (
+              <SkeletonTheme
+                borderRadius="0.75rem"
+                baseColor="#cbd5e1"
+                highlightColor="#e2e8f0"
+              >
+                <Skeleton className="absolute -top-[5px] left-0 h-full w-full" />
+              </SkeletonTheme>
+            )}
           </div>
           <div className="align-center flex w-full flex-1 flex-col items-center justify-center py-4 px-16 text-center">
             <div>{title}</div>
