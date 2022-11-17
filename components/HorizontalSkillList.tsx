@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { MutableRefObject } from 'react'
 import { skillsListAnimation } from '../utils/animations/projectsAndSkills'
 import { Skill, splitSkills } from '../utils/skills'
 import SkillTile from './SkillTile'
@@ -8,6 +9,7 @@ export type HorizontalSkillListProps = {
   setSelectedSkill: (newSkill: Skill | null) => void
   skills: Skill[]
   onClickSkillLink: (skillName: string) => void
+  scrollContainerRef?: MutableRefObject<HTMLDivElement>
 }
 
 export default function HorizontalSkillList({
@@ -15,8 +17,14 @@ export default function HorizontalSkillList({
   setSelectedSkill,
   skills,
   onClickSkillLink,
+  scrollContainerRef,
 }: HorizontalSkillListProps) {
   const [leftSkills, rightSkills] = splitSkills(skills)
+
+  const handleSkillLinkClick = (skillName: string) => {
+    scrollContainerRef?.current.scrollTo(0, 0)
+    onClickSkillLink(skillName)
+  }
 
   return (
     <motion.div
@@ -28,10 +36,11 @@ export default function HorizontalSkillList({
       <div key="left-skills" data-cy="left-skills">
         {leftSkills.map((skill, index) => (
           <SkillTile
+            scrollContainerRef={scrollContainerRef}
             key={skill.name}
             skill={skill}
-            onClickSkillLink={onClickSkillLink}
-            isSelected={skill === selectedSkill}
+            onClickSkillLink={handleSkillLinkClick}
+            isSelected={skill.name === selectedSkill?.name}
             onClick={() =>
               selectedSkill === skill
                 ? setSelectedSkill(null)
@@ -43,9 +52,10 @@ export default function HorizontalSkillList({
       <div key="right-skills" data-cy="right-skills">
         {rightSkills.map((skill) => (
           <SkillTile
+            scrollContainerRef={scrollContainerRef}
             key={skill.name}
             skill={skill}
-            onClickSkillLink={onClickSkillLink}
+            onClickSkillLink={handleSkillLinkClick}
             isSelected={skill === selectedSkill}
             onClick={() =>
               selectedSkill === skill

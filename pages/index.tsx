@@ -58,7 +58,7 @@ const Home: NextPage = () => {
         itemPosition={itemPosition}
         onQuitGame={endGame}
       />
-      <div className="relative z-10 my-auto flex flex-col items-center py-24">
+      <div className="relative z-10 mt-8 flex flex-col items-center py-24 sm:my-auto sm:mt-auto">
         <AnimatePresence initial={false} mode="wait">
           {isPlayerInitialized ? (
             <motion.h1
@@ -99,7 +99,7 @@ const Home: NextPage = () => {
             <motion.h2
               key="subtitle"
               {...subtitleAnimation}
-              className="mt-8 flex text-sm sm:text-base"
+              className="mt-4 flex text-sm sm:mt-8 sm:text-base"
             >
               web developer |
               <button onClick={startGame} className="ml-1 underline">
@@ -108,13 +108,13 @@ const Home: NextPage = () => {
             </motion.h2>
           )}
         </AnimatePresence>
-        <div className="relative mt-12 flex flex-col sm:flex-row">
+        <div className="relative mt-8 flex flex-col sm:mt-12 sm:flex-row">
           <LinkButton
             Icon={FiUser}
             showIcon={!isPlayerInitialized}
             href="/about"
             label="who I am"
-            className="mb-6 sm:mr-24 sm:mb-0"
+            className="mb-4 sm:mr-24 sm:mb-0"
             backgroundIcon="user"
             iconRef={playerRef}
           />
@@ -122,7 +122,7 @@ const Home: NextPage = () => {
             Icon={FiCode}
             href="/projects-and-skills"
             label="what I do"
-            className="mb-6 sm:mr-24 sm:mb-0"
+            className="mb-4 sm:mr-24 sm:mb-0"
             bgColor="bg-red-500"
             backgroundIcon="code"
           />

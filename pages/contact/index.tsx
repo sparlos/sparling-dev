@@ -56,11 +56,11 @@ export default function Contact() {
         <title>contact | sparling.dev</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="relative z-10 mb-auto flex w-full max-w-4xl flex-col items-center py-24 sm:mt-16 md:mt-24">
+      <div className="relative z-10 mt-2 mb-auto flex w-full max-w-4xl flex-col items-center py-24 sm:mt-16 md:mt-24">
         <motion.h1 className="mt-6 text-center text-4xl" {...headingAnimation}>
           Where to find me
         </motion.h1>
-        <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:mt-20 sm:grid-cols-2 md:grid-cols-4">
+        <div className="mt-10 grid w-full grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-4 md:grid-cols-4">
           {links.map((link, index) => (
             <motion.div
               className={`flex ${

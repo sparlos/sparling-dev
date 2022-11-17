@@ -63,4 +63,39 @@ html, body, #__next {
   .custom-react-select-container .custom-react-select__multi-value__label {
     @apply text-black dark:text-white;
   }
+
+  .custom-react-select-container .custom-react-select__indicator {
+    @apply text-black dark:text-white;
+  }
+
+  .custom-react-select-container .custom-react-select__indicator:hover {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+
+  .custom-react-select-container .custom-react-select__indicator:hover {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+
+  .custom-react-select-container .custom-react-select__multi-value__remove:hover {
+    @apply bg-red-300;
+  }
+}
+
+/* 
+  make radix accordion wait for framer motion collapse animation
+  to finish before setting accordion content height to 0
+*/
+
+.accordion-content[data-state='closed'] {
+  animation: slideUp 1ms;
+  animation-delay: 300ms;
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
