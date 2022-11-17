@@ -29,7 +29,7 @@ const oldPortfolio: Project = {
   <p class="project-description__paragraph">
     <a
       class="project-description__link"
-      href="https://sparling.dev"
+      href="https://old.sparling.dev"
       target="_blank"
       rel="noreferrer"
     >A website</a>
