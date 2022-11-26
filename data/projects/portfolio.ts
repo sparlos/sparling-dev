@@ -37,23 +37,13 @@ const newPortfolio: Project = {
       target="_blank"
       rel="noreferrer"
     >A minimalist website</a>
-    created to showcase my work. Similar to my previous developer portfolio,
-    I wanted to go for a website that was sleek, simple, and most
-    importantly, easy for users to get the information they need.
+    created to showcase my work. As with my previous developer portfolio, I like to go for a website that is sleek, simple, and most importantly, makes it easy for users to get the information they need.
   </p>
   <p class="project-description__paragraph">
-    The meatiest part of the app is the projects and skills page. This
-    allows the user to understand my capabilities via two different avenues:
-    either by the projects I've completed in the past, or by the experience
-    I've gained with specific technologies. The projects side is filterable
-    with a multi-select, allowing users to hone in on projects that use
-    specific technologies.
+    The meatiest part of the app is the projects and skills page, which introduces you to my capabilities via two different avenues: 1. the projects I've completed in the past; 2. the experience I've gained using specific technologies. The projects side is filterable with a multi-select, allowing users to hone in on projects that use specific technologies.
   </p>
   <p class="project-description__paragraph">
-    The project uses Next.js, making use of its static site generation
-    features to serve up specific project pages blazingly fast. Framer
-    Motion is used to facilitate quick and purposeful animations to guide
-    the user's eyes.
+    The project uses Next.js, making use of its static site generation features to serve up specific project pages blazingly fast. Framer Motion is used to facilitate quick and purposeful animations that guide the user's attention.
   </p>
   `,
 }
