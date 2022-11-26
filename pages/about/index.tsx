@@ -21,10 +21,10 @@ export default function About() {
           delay: 0.05,
         }}
       >
-        I went into web development because I am someone who loves to create.
-        The power to use simple text files to make complex web applications,
-        beautiful layouts, and robust backend systems is something that I find
-        extremely magical, even after having done it for the last 5 years.
+        I went into web development because I love to create. The power to turn
+        simple text files into complex web applications, beautiful layouts, and
+        robust backend systems is something that I find even more magical now
+        than when I began five years ago.
       </motion.p>
       <motion.p
         className="mt-8"
@@ -44,8 +44,8 @@ export default function About() {
         >
           finnovate.io
         </a>
-        . While working here, I&apos;ve been able to foster countless skills
-        while working with a wide variety of teams to bring software to life.
+        , where I&apos;ve been able to foster countless skills while working
+        with a diverse array of teams, bringing software to life.
       </motion.p>
       <motion.p
         className="mt-8"
@@ -55,8 +55,8 @@ export default function About() {
           delay: 0.15,
         }}
       >
-        I&apos;ve also had the chance to work with a vast array of technologies,
-        which you can take an in-depth look{' '}
+        I&apos;ve also had the chance to work with a vast variety of
+        technologies, which you can take an in-depth look at{' '}
         <Link href="/projects-and-skills?view=skills">
           <button className="underline">on the skills page.</button>
         </Link>{' '}
@@ -75,7 +75,7 @@ export default function About() {
         Along with those specialized technologies, I have a very strong
         foundation in HTML (semantics/accessibility is a big deal to me), CSS
         (SCSS, styled components, cross browser testing), and JavaScript
-        (basically everything you&apos;d read about in the{' '}
+        (basically everything you&apos;d read about in the excellent{' '}
         <a
           className="underline"
           href="https://github.com/getify/You-Dont-Know-JS"
@@ -97,13 +97,14 @@ export default function About() {
         While I have strong software development skills, I believe the hallmark
         of a truly great developer are soft skills, specifically a
         developer&apos;s ability to communicate. Being able to communicate
-        extremely effectively both with technical (other developers, technical
-        clients) and non-technical (project managers, designers, non-technical
-        clients) individuals is one of my greatest assets. I strive to discuss
-        complex ideas in a way that anyone can understand, taking into account
-        their level of software knowledge. I&apos;m also a great leader, having
-        been promoted to a Staff Software Developer after just 2 years of
-        working at finnovate.io.
+        extremely effectively both with technical individuals (other developers,
+        technically oriented clients) and non-technical individuals (project
+        managers, designers, clients who might not understand the technical
+        details of a project) is one of my greatest assets. I am consistently
+        able to discuss complex ideas in a way that anyone can understand,
+        taking into account their level of software knowledge. I&apos;m also a
+        great leader, having been promoted to Staff Software Developer after
+        just 2 years at finnovate.io.
       </motion.p>
       <motion.p
         className="mt-8"
@@ -119,7 +120,7 @@ export default function About() {
         <Link href="/contact">
           <button className="underline">the contact page</button>
         </Link>{' '}
-        with ways you can do that.
+        to find out how you can do that.
       </motion.p>
     </ScrollableContentContainer>
   )

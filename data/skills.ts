@@ -31,16 +31,16 @@ const skills: Skill[] = [
   {
     name: 'AWS',
     description: [
-      `I've built multiple projects that have used a wide variety of services offered by AWS, including Elastic Beanstalk, S3, CodePipeline, CodeBuild, CloudFront, and others.`,
-      `My crowning achievement AWS-wise was creating a fully custom build pipeline for a frontend application using AWS CDK, all defined in TypeScript.`,
-      `The pipeline retrieved source code from GitHub using AWS CodeStar, built and ran linting/tests (unit and E2E via Cypress) via AWS CodeBuild, and finally pushed the built code up to an S3 bucket behind CloudFront (both defined using CDK).`,
+      `I've built multiple projects that use a wide variety of services offered by AWS, including Elastic Beanstalk, S3, CodePipeline, CodeBuild, CloudFront, and others.`,
+      `My crowning achievement AWS-wise was creating a fully customized build pipeline for a frontend application using AWS CDK, completely defined in TypeScript.`,
+      `The pipeline retrieves source code from GitHub using AWS CodeStar, builds and runs linting/tests (unit and E2E via Cypress) via AWS CodeBuild, and finally pushes the built code up to an S3 bucket behind CloudFront (both defined using CDK).`,
     ],
     logo: awsLogo,
     logoDarkVariant: awsLightLogo,
   },
   {
     name: 'Tailwind',
-    description: `I don't use Tailwind too often, as I usually prefer to write custom SCSS using BEM for my styling needs (this is what I do professionally as well). However, Tailwind is an interesting technology and I use it for some personal projects (like this one!) to improve my familiarity with it.`,
+    description: `I don't use Tailwind too often, as I usually prefer to write custom SCSS using BEM for my styling needs (this is what I generally do professionally). However, Tailwind is an interesting technology and I use it for some personal projects (like this one!) to improve my familiarity with it.`,
     logo: tailwindLogo,
   },
   {
@@ -50,12 +50,12 @@ const skills: Skill[] = [
   },
   {
     name: 'vueJS',
-    description: `My very first JavaScript framework (unless you count jQuery). It has a special place in my heart, and most of the personal projects you see on this portfolio use it. I am quite familiar with 2.0, however I do not have much experience with 3.0.`,
+    description: `My very first JavaScript framework (unless you count jQuery). It has a special place in my heart, and most of the personal projects you see in this portfolio use it. I am quite familiar with 2.0, however I do not yet have much experience with 3.0.`,
     logo: vueLogo,
   },
   {
     name: 'MongoDB',
-    description: `I use MongoDB fairly regularly professionally, mostly in conjunction with the popular mongoose package for Node.js to define schemas to keep document structures as consistent as possible.`,
+    description: `I use MongoDB fairly regularly professionally, mostly in conjunction with the popular mongoose package for Node.js as a means of defining schemas to keep document structures as consistent as possible.`,
     logo: mongoLogo,
   },
   {
@@ -66,23 +66,23 @@ const skills: Skill[] = [
   },
   {
     name: 'Next.js',
-    description: `While I have no experience with Next professionally, I've built a few sites you can see on this portfolio using it (including this portfolio itself!). I'm familiar with using the built-in SSR/SSG to optimize load times and performance.`,
+    description: `While I have no experience with Next professionally, I've used it to build a few sites that you can see in this portfolio (including this portfolio itself!). I'm familiar with using the built-in SSR/SSG to optimize load times and performance.`,
     logo: nextJSLogo,
   },
   {
     name: 'Node.js',
-    description: `I use Node.js daily in my professional life. I’ve worked on dozens of projects that use Node.js as a backend server, using the Express framework to facilitate REST/GraphQL APIs.`,
+    description: `I use Node.js daily in my professional life, working on dozens of projects that use it as a backend server, utilizing the Express framework to facilitate REST/GraphQL APIs.`,
     logo: nodejsLogo,
   },
   {
     name: 'Python',
-    description: `I have quite a bit of both personal and professional experience using Python, having worked on a fairly robust Django application in my professional life. Personally, I like using Python for music and audio related side projects.`,
+    description: `I have quite a bit of experience using Python. Professionally, I used it while working on a fairly robust Django application. Personally, I like using Python for music and audio related side projects.`,
     logo: pythonLogo,
   },
   {
     name: 'GraphQL',
     description: [
-      `My biggest professional experience with GraphQL was integrating it with an existing Express project to convert a standard REST API into a GraphQL API. This was done using Apollo Server on the backend, and Apollo Client on the frontend.`,
+      `My most robust professional experience with GraphQL was integrating it with an existing Express project to convert a standard REST API into a GraphQL API. This was done using Apollo Server on the backend, and Apollo Client on the frontend.`,
       `I've also worked with GraphQL in a Django project that used Graphene to facilitate the GraphQL integration.`,
     ],
     logo: graphqlLogo,
@@ -119,7 +119,7 @@ const skills: Skill[] = [
   },
   {
     name: 'Kubernetes',
-    description: `My biggest professional experience with Kubernetes was working on a site that used Google Cloud Platform to hoist up a fairly robust Kubernetes system, that included Workloads to deploy pods for both server/client-side code and cron jobs as well as Ingresses to handle incoming network traffic.`,
+    description: `My most involved professional experience with Kubernetes was working on a site that used Google Cloud Platform to hoist up a fairly robust Kubernetes system that included Workloads to deploy pods for both server/client-side code and cron jobs as well as Ingresses to handle incoming network traffic.`,
     logo: kubernetesLogo,
   },
   // {
