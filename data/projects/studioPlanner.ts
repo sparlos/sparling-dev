@@ -23,24 +23,17 @@ const studioPlanner: Project = {
   },
   description: `
   <p class="project-description__paragraph">
+    Created to showcase a simple authenticated app, 
     <a
-      class="project-description__link"
-      href="https://studio-planner.vercel.app/login"
-      target="_blank"
-      rel="noreferrer"
-    >A website</a>
-    created to showcase a simple authenticated app that allows users to
-    sign up/log in, and then access an instrument dashboard. This
-    dashboard allows a user to view, create and delete instruments. It
-    uses Next.js to power the front end, with the backend and database
-    layers handled by Supbase.io. Built in a weekend.
+    class="project-description__link"
+    href="https://studio-planner.vercel.app/login"
+    target="_blank"
+    rel="noreferrer"
+    >this website</a>
+     allows users to sign up/log in, and then access a musical instrument dashboard to view, create and delete instruments. It uses Next.js to power the front end, with the backend and database layers handled by Supbase.io. Built in a weekend.
   </p>
   <p class="project-description__paragraph">
-    I usually do styling from the ground up using SCSS, but as the purpose
-    of this project was to display my fullstack abilities, I opted to use
-    Chakra UI to rapidly build out the front end (and because I've been
-    dying to play around with it). The dashboard allows drag and drop
-    functionality, which is powered by dnd kit.
+    I usually do styling from the ground up using SCSS, but the purpose of this project was to display my fullstack abilities, so I opted to use Chakra UI to rapidly build out the front end (also, I've been dying to play around with Chakra). The dashboard allows drag and drop functionality, which is powered by dnd kit.
   </p>
   `,
 }
