@@ -21,6 +21,7 @@ import cypressLogo from '../public/logos/cypress.svg'
 import dockerLogo from '../public/logos/docker.svg'
 import pythonLogo from '../public/logos/python.svg'
 import kubernetesLogo from '../public/logos/kubernetes.svg'
+import phpLogo from '../public/logos/php.svg'
 
 const skills: Skill[] = [
   {
@@ -121,6 +122,11 @@ const skills: Skill[] = [
     name: 'Kubernetes',
     description: `My most involved professional experience with Kubernetes was working on a site that used Google Cloud Platform to hoist up a fairly robust Kubernetes system that included Workloads to deploy pods for both server/client-side code and cron jobs as well as Ingresses to handle incoming network traffic.`,
     logo: kubernetesLogo,
+  },
+  {
+    name: 'PHP',
+    description: `Professionally, I have worked on the maintenance of mature platforms developed using PHP. Laravel is the framework I am most familiar with.`,
+    logo: phpLogo,
   },
   // {
   //   name: 'Audio',

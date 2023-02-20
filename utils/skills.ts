@@ -29,6 +29,7 @@ export type SkillName =
   | 'Node.js'
   | 'Docker'
   | 'Kubernetes'
+  | 'PHP'
 
 export type Skill = {
   name: SkillName
