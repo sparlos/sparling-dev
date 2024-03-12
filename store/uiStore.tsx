@@ -8,6 +8,7 @@ export type BackgroundIcon =
   | 'email'
   | 'codepen'
   | 'linkedin'
+  | 'write'
   | null
 
 type UIStore = {

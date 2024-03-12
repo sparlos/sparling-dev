@@ -81,16 +81,16 @@ export default function NavMenu() {
           }}
           animate={{
             width: isMenuActive ? '11rem' : '3rem',
-            height: isMenuActive ? '13rem' : '3rem',
+            height: isMenuActive ? '15rem' : '3rem',
           }}
-          className={`absolute top-0 right-0 z-10 h-full w-64 overflow-hidden rounded bg-white p-4 ${
+          className={`absolute right-0 top-0 z-10 h-full w-64 overflow-hidden rounded bg-white p-4 ${
             isMenuActive ? 'shadow-md' : 'shadow-none'
           } dark:bg-slate-700`}
         >
           <AnimatePresence>
             {isMenuActive && (
               <motion.div
-                className="pointer-events-auto whitespace-nowrap pt-8 pr-2"
+                className="pointer-events-auto whitespace-nowrap pr-2 pt-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.1 } }}
                 exit={{ opacity: 0, transition: { duration: 0.1, delay: 0 } }}
@@ -125,6 +125,16 @@ export default function NavMenu() {
                     where I&apos;m found
                   </motion.button>
                 </Link>
+                <a href="https://blog.sparling.dev">
+                  <motion.button
+                    onClick={handleClickOutsideNav}
+                    className={`mb-3 block w-full text-right underline ${
+                      isSelectedPath('contact') && 'text-teal-400'
+                    }`}
+                  >
+                    what I write
+                  </motion.button>
+                </a>
                 <Link href="/">
                   <motion.button
                     onClick={handleClickOutsideNav}
