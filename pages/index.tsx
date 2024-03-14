@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import LinkButton from '../components/LinkButton'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiUser, FiCode, FiSend } from 'react-icons/fi'
+import { FiUser, FiCode, FiSend, FiEdit2 } from 'react-icons/fi'
 import useHomeScreenGame from '../hooks/useHomeScreenGame'
 import HomeGame from '../components/HomeGame'
 import IconBackground from '../components/IconBackground'
@@ -114,7 +114,7 @@ const Home: NextPage = () => {
             showIcon={!isPlayerInitialized}
             href="/about"
             label="who I am"
-            className="mb-4 sm:mr-24 sm:mb-0"
+            className="mb-4 sm:mb-0 sm:mr-12"
             backgroundIcon="user"
             iconRef={playerRef}
           />
@@ -122,7 +122,7 @@ const Home: NextPage = () => {
             Icon={FiCode}
             href="/projects-and-skills"
             label="what I do"
-            className="mb-4 sm:mr-24 sm:mb-0"
+            className="mb-4 sm:mb-0 sm:mr-12"
             bgColor="bg-red-500"
             backgroundIcon="code"
           />
@@ -130,8 +130,16 @@ const Home: NextPage = () => {
             Icon={FiSend}
             href="/contact"
             label="where I'm found"
+            className="mb-4 sm:mb-0 sm:mr-12"
             bgColor="bg-violet-500"
             backgroundIcon="mail"
+          />
+          <LinkButton
+            Icon={FiEdit2}
+            href="https://blog.sparling.dev"
+            label="what I write"
+            bgColor="bg-orange-500"
+            backgroundIcon="write"
           />
         </div>
       </div>

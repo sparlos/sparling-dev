@@ -7,6 +7,7 @@ import {
   FiMail,
   FiSend,
   FiUser,
+  FiEdit2,
 } from 'react-icons/fi'
 import useUIStore, { BackgroundIcon } from '../store/uiStore'
 import { DEFAULT_SPRING_TRANSITION } from '../utils/framer'
@@ -34,6 +35,8 @@ const getBackgroundIcon = (
       return <FiCodepen size={iconSize} width="100%" />
     case 'linkedin':
       return <FiLinkedin size={iconSize} width="100%" />
+    case 'write':
+      return <FiEdit2 size={iconSize} width="100%" />
     default:
       return null
   }
