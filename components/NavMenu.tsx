@@ -128,9 +128,7 @@ export default function NavMenu() {
                 <a href="https://blog.sparling.dev">
                   <motion.button
                     onClick={handleClickOutsideNav}
-                    className={`mb-3 block w-full text-right underline ${
-                      isSelectedPath('contact') && 'text-teal-400'
-                    }`}
+                    className={`mb-3 block w-full text-right underline`}
                   >
                     what I write
                   </motion.button>
