@@ -104,7 +104,7 @@ export default function About() {
         able to discuss complex ideas in a way that anyone can understand,
         taking into account their level of software knowledge. I&apos;m also a
         great leader, having been promoted to Staff Software Developer after
-        just 2 years at finnovate.io.
+        just 2 years, and Senior Technical Lead 4 years in at finnovate.io.
       </motion.p>
       <motion.p
         className="mt-8"
